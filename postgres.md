@@ -32,3 +32,10 @@ PostgreSQL é uma SGBD SQL (Structured Query Language,)
 | GRANT | Atribuí um privilégio a um utilizador/grupo |
 | REVOKE | Retira um privilégio a um utilizador/grupo |
 
+
+## RDBMS
+
+Relational Database Management System
+
+### Tabela (table)
+
