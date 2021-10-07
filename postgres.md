@@ -22,7 +22,7 @@ PostgreSQL é uma SGBD SQL (Structured Query Language,)
 | ----------- | ----------- |
 | SELECT | Devolve um conjunto de registos |
 | INSERT | Insere um registo |
-| UPDATE | Mofifica um registo |
+| UPDATE | Modifica um registo |
 | DELETE | Elimina um registo |
 
 #### DCL - Data Control Language
