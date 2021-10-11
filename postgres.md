@@ -54,7 +54,7 @@ Relational Database Management System
 # Acesso
 
 1. terminal
-2. pgadmin4
+2. pgadmin4/datagrip
 3. qgis
 4. python
 
