@@ -109,11 +109,19 @@ Relational Database Management System
 ## Tables
 ```sql
   CREATE TABLE nome_da_tabela(
-    nome_da_coluna_a(1) + tipo_de_dados(1) + constrains(0...n), 
-    nome_da_coluna_b(1) + tipo_de_dados(1) + constrains(0...n), 
+    nome_da_coluna_a(1) + tipo_de_dados_a(1) + constrains_a(0...n), 
+    nome_da_coluna_b(1) + tipo_de_dados_b(1) + constrains_b(0...n), 
     .....
   );
 ```
 
-
+```sql
+  CREATE TABLE pessoa(
+    **id** int,
+    **nome** VARCHAR(100),
+    **ativo** BOOLEAN,
+    **inicio_atividade** TIMESTAMP,
+    **data_nacimento** DATE    
+  );
+```
 
