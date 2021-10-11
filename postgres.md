@@ -59,10 +59,12 @@ Relational Database Management System
 4. python
 
 ```console
-  foo@bar:~$ psql -h postgresdatabase-do-user-4575137-0.db.ondigitalocean.com -p 25060 -d defaultdb -U doadmin
+  psql -h postgresdatabase-do-user-4575137-0.db.ondigitalocean.com -p 25060 -d defaultdb -U doadmin
 ```
 
-
+```sql
+  select * from table
+```
 
 
 
