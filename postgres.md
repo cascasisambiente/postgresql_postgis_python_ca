@@ -58,6 +58,8 @@ Relational Database Management System
 3. qgis
 4. python
 
+## Começar
+
 ### Aceder via terminal (psql)
 
 ```console
@@ -75,11 +77,11 @@ Relational Database Management System
   psql -h postgresdatabase-do-user-4575137-0.db.ondigitalocean.com -p 25060 -d defaultdb -U doadmin
 ```
 
-Listar databases
+### Listar databases
 ```sql
   \l
 ```
-Conectar a outra base de dados
+### Conectar a outra base de dados
 ```sql
   \c
 ```
@@ -93,16 +95,24 @@ Conectar a outra base de dados
   \?
 ```
 
-### Listas databases
+## Databases
 
-```sql
-  \l
-```
-
-### Craiar databases
 
 ```sql
   CREATE DATABASE teste;
+```
+
+```sql
+  DROP DATABASE teste;
+```
+
+## Tables
+```sql
+  CREATE TABLE nome_da_tabela(
+    nome_da_coluna_a(1) + tipo_de_dados(1) + constrains(0...n), 
+    nome_da_coluna_b(1) + tipo_de_dados(1) + constrains(0...n), 
+    .....
+  );
 ```
 
 
