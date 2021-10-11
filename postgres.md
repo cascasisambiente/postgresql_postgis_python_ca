@@ -154,6 +154,12 @@ https://www.postgresql.org/docs/13/datatype.html
 | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | int | inteiro | -2,147,483,648 | 2,147,483,647 | sim | 4 bytes |
 | bigint | inteiro | -9,223,372,036,854,775,808 | 9,223,372,036,854,775,807 | sim | 8 bytes |
-| smallint | inteiro | -32,768 | 32,767| sim | 2 bytes |
+| smalint | inteiro | -32,768 | 32,767| sim | 2 bytes |
+| serial | inteiro auto incrementavél | 1 | 2,147,483,647 | sim | 4 bytes |
+| bigserial | inteiro auto incrementavél | 1 | 9,223,372,036,854,775,807 | sim | 8 bytes |
+| decimal | decimal | -10^38 +1 | 10^38 -1 | sim | 2 variável |
+| numeric | numeric | -10^38 +1 | 10^38 -1 | sim | 2 variável |
+| real | real | -1.79E + 308 | 1.79E + 308 | não | 2 variável |
+| float| double precision | -3.40E + 38 | 3.40E + 38 | não | 2 variável |
 
 
