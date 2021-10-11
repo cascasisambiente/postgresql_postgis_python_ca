@@ -1,7 +1,7 @@
 # POSTGRESQL
 
 
-PostgreSQL é uma SGBD SQL (Structured Query Language,)
+PostgreSQL é uma SGBD SQL (Structured Query Language, 1974)
 
 ## RDBMS
 
@@ -49,6 +49,17 @@ Relational Database Management System
 | ----------- | ----------- |
 | GRANT | Atribuí um privilégio a um utilizador/grupo |
 | REVOKE | Retira um privilégio a um utilizador/grupo |
+
+
+# Acesso
+
+1. terminal
+2. pgadmin4
+3. qgis
+4. python
+
+
+
 
 
 
