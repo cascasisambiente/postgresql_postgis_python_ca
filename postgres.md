@@ -140,6 +140,18 @@ Relational Database Management System
   );
 ```
 
+```sql
+  \d
+```
 
 # Tipo do dados
+
+https://www.postgresql.org/docs/13/datatype.html
+
+## Numéricos
+
+| data type | descrição | min | max | exacto? |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| int | inteiro | -2,147,483,648 | 2,147,483,647 | sim |
+
 
