@@ -150,8 +150,10 @@ https://www.postgresql.org/docs/13/datatype.html
 
 ## Numéricos
 
-| data type | descrição | min | max | exacto? |
-| ----------- | ----------- | ----------- | ----------- | ----------- |
-| int | inteiro | -2,147,483,648 | 2,147,483,647 | sim |
+| data type | descrição | min | max | exacto? | tamanho |
+| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| int | inteiro | -2,147,483,648 | 2,147,483,647 | sim | 4 bytes |
+| bigint | inteiro | -9,223,372,036,854,775,808 | 9,223,372,036,854,775,807 | sim | 8 bytes |
+| smallint | inteiro | -32,768 | 32,767| sim | 2 bytes |
 
 
