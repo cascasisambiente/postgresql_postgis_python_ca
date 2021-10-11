@@ -58,6 +58,9 @@ Relational Database Management System
 3. qgis
 4. python
 
+```console
+  foo@bar:~$ psql -h postgresdatabase-do-user-4575137-0.db.ondigitalocean.com -p 25060 -d defaultdb -U doadmin
+```
 
 
 
