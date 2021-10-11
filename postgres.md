@@ -58,13 +58,13 @@ Relational Database Management System
 3. qgis
 4. python
 
-# Aceder via terminal (psql)
+### Aceder via terminal (psql)
 
 ```console
   psql --help
 ```
 ```console
-  psql -h hostname -p port -d database -U user
+  psql -h hostname(default=localhost) -p port(default=5432) -d databasename(default=local username) -U user(default=local username)
 ```
 - hostname: postgresdatabase-do-user-4575137-0.db.ondigitalocean.com
 - port: 25060
@@ -73,6 +73,15 @@ Relational Database Management System
 
 ```console
   psql -h postgresdatabase-do-user-4575137-0.db.ondigitalocean.com -p 25060 -d defaultdb -U doadmin
+```
+
+Listar databases
+```sql
+  \l
+```
+Conectar a outra base de dados
+```sql
+  \c
 ```
 ### Ajuda
 
