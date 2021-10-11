@@ -7,9 +7,20 @@ PostgreSQL é uma SGBD SQL (Structured Query Language,)
 
 Relational Database Management System
 
-### Tabela (table)
+### Table
 
-![image](https://user-images.githubusercontent.com/60735895/136800478-5dc8025c-b057-47b8-a54e-dd811402dde8.png)
+![image](https://user-images.githubusercontent.com/60735895/136801316-29c68da5-a564-4301-b83f-086389e3ecb8.png)
+
+### Row
+
+![image](https://user-images.githubusercontent.com/60735895/136801371-63444d9e-b6ab-4d73-86fb-eb07266269f3.png)
+
+### Column
+
+![image](https://user-images.githubusercontent.com/60735895/136801489-1ac6b9f4-70e5-4f7d-b015-ce6e03a58069.png)
+
+### Null
+
 
 ## Comandos
 
