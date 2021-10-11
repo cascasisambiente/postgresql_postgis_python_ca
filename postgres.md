@@ -3,6 +3,13 @@
 
 PostgreSQL é uma SGBD SQL (Structured Query Language,)
 
+## RDBMS
+
+Relational Database Management System
+
+### Tabela (table)
+
+![image](https://user-images.githubusercontent.com/60735895/136800478-5dc8025c-b057-47b8-a54e-dd811402dde8.png)
 
 ## Comandos
 
@@ -33,9 +40,4 @@ PostgreSQL é uma SGBD SQL (Structured Query Language,)
 | REVOKE | Retira um privilégio a um utilizador/grupo |
 
 
-## RDBMS
-
-Relational Database Management System
-
-### Tabela (table)
 
