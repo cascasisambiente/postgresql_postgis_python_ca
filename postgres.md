@@ -152,14 +152,66 @@ https://www.postgresql.org/docs/13/datatype.html
 
 | data type | descrição | min | max | exacto? | tamanho |
 | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| int | inteiro | -2,147,483,648 | 2,147,483,647 | sim | 4 bytes |
 | bigint | inteiro | -9,223,372,036,854,775,808 | 9,223,372,036,854,775,807 | sim | 8 bytes |
+| int | inteiro | -2,147,483,648 | 2,147,483,647 | sim | 4 bytes |
 | smalint | inteiro | -32,768 | 32,767| sim | 2 bytes |
-| serial | inteiro auto incrementavél | 1 | 2,147,483,647 | sim | 4 bytes |
 | bigserial | inteiro auto incrementavél | 1 | 9,223,372,036,854,775,807 | sim | 8 bytes |
+| serial | inteiro auto incrementavél | 1 | 2,147,483,647 | sim | 4 bytes |
+| smallserial | inteiro auto incrementavél | 1 | 32,767 | sim | 2 bytes |
 | decimal | decimal | -10^38 +1 | 10^38 -1 | sim | 2 variável |
 | numeric | numeric | -10^38 +1 | 10^38 -1 | sim | 2 variável |
 | real | real | -1.79E + 308 | 1.79E + 308 | não | 2 variável |
 | float| double precision | -3.40E + 38 | 3.40E + 38 | não | 2 variável |
+
+
+## Tempo
+
+| data type | descrição | min | max | tamanho |
+| ----------- | ----------- | ----------- | ----------- | ----------- | 
+| timestamp | dia e hora sem timezone | 4713 AC | 294276 DC | 8 bytes |
+| timestamp (tz) | dia e hora com timezone | 4713 AC | 294276 DC | 8 bytes |
+| date | data | 4713 AC | 5874897 DC | 4 bytes |
+| time | hora sem timezone | 00:00:00 | 24:00:00 | 8 bytes |
+| time (tz) | hora com timezone | 00:00:00+1459 | 24:00:00-1459 | 12 bytes |
+| interval | intervalo de tempo | -178000000 anos | 178000000 anos | 12 bytes |
+
+
+
+## Binários
+
+| data type | descrição | tamanho |
+| ----------- | ----------- | ----------- | 
+| bytea | string binária | 4 bytes + tamanho da string |
+
+
+## Bolleano
+
+| data type | descrição | tamanho |
+| ----------- | ----------- | ----------- | 
+| bollean | verdadeiros / falso | 1 byte |
+
+
+## Texto
+
+| data type | descrição | tamanho max |
+| ----------- | ----------- | ----------- | 
+| char | string tamanho fixo | 8000 caracteres |
+| varchar | string tamanho variavél | 8000 caracteres |
+| text | string tamanho variavél | 2,147,483,647 caracteres |
+
+
+## Outros
+
+| data type | descrição | 
+| ----------- | ----------- | ----------- | 
+| UUID | Universally Unique Identifiers | 
+| XML | xml |
+| JSON | json |
+| Array | vector |
+
+
+# Constrains
+
+https://www.postgresql.org/docs/13/ddl-constraints.html
 
 
