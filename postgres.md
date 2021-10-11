@@ -203,7 +203,7 @@ https://www.postgresql.org/docs/13/datatype.html
 ## Outros
 
 | data type | descrição | 
-| ----------- | ----------- | ----------- | 
+| ----------- | ----------- |
 | UUID | Universally Unique Identifiers | 
 | XML | xml |
 | JSON | json |
