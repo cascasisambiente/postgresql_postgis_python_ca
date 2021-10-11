@@ -117,11 +117,29 @@ Relational Database Management System
 
 ```sql
   CREATE TABLE pessoa(
-    **id** int,
-    **nome** VARCHAR(100),
-    **ativo** BOOLEAN,
-    **inicio_atividade** TIMESTAMP,
-    **data_nacimento** DATE    
+    id int,
+    nome VARCHAR(100),
+    ativo BOOLEAN,
+    inicio_atividade TIMESTAMP,
+    data_nacimento DATE    
   );
 ```
+
+```sql
+  \d pessoa
+```
+
+```sql
+  DROP TABLE pessoa;
+  CREATE TABLE pessoa(
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    ativo BOOLEAN NOT NULL,
+    inicio_atividade TIMESTAMP NOT NULL,
+    data_nacimento DATE NOT NULL    
+  );
+```
+
+
+# Tipo do dados
 
