@@ -51,19 +51,49 @@ Relational Database Management System
 | REVOKE | Retira um privilégio a um utilizador/grupo |
 
 
-# Acesso
+# RoadMap de modos de acesso
 
 1. terminal
 2. pgadmin4/datagrip
 3. qgis
 4. python
 
+# Aceder via terminal (psql)
+
+```console
+  psql --help
+```
+```console
+  psql -h hostname -p port -d database -U user
+```
+- hostname: postgresdatabase-do-user-4575137-0.db.ondigitalocean.com
+- port: 25060
+- database: defaultdb
+- user: doadmin
+
 ```console
   psql -h postgresdatabase-do-user-4575137-0.db.ondigitalocean.com -p 25060 -d defaultdb -U doadmin
 ```
+### Ajuda
 
 ```sql
-  select * from table
+  help
+```
+
+```sql
+  \?
+```
+
+### Listas databases
+
+```sql
+  \l
+```
+
+### Craiar databases
+
+```sql
+  CREATE DATABASE teste;
 ```
 
 
