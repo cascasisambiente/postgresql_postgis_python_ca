@@ -121,7 +121,9 @@ Relational Database Management System
     nome VARCHAR(100),
     ativo BOOLEAN,
     inicio_atividade TIMESTAMP,
-    data_nacimento DATE    
+    data_nascimento DATE,
+    email VARCHAR(200),
+    local_nascimento VARCHAR(100)
   );
 ```
 
@@ -136,12 +138,18 @@ Relational Database Management System
     nome VARCHAR(100) NOT NULL,
     ativo BOOLEAN NOT NULL,
     inicio_atividade TIMESTAMP NOT NULL,
-    data_nacimento DATE NOT NULL    
+    data_nascimento DATE NOT NULL,
+    email VARCHAR(200),
+    local_nascimento VARCHAR(100)
   );
 ```
 
 ```sql
   \d
+```
+
+```sql
+  \dt
 ```
 
 # Tipo do dados
@@ -215,3 +223,176 @@ https://www.postgresql.org/docs/13/datatype.html
 https://www.postgresql.org/docs/13/ddl-constraints.html
 
 
+## INSERT
+
+```sql
+  INSERT INTO pessoa (
+    nome,
+    ativo,
+    inicio_atividade,
+    data_nascimento,
+    email,
+    local_nascimento
+  ) VALUES ('João Silva', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal');
+```
+
+```sql
+  INSERT INTO pessoa (
+    nome,
+    ativo,
+    inicio_atividade,
+    data_nascimento,
+    email,
+    local_nascimento
+  ) VALUES ('Paulo Silva', false, now(), '1945-01-02', null, 'França'), ('Filipa Teixeira', true, now(), '1996-01-02', null, null);
+```
+
+www.mockaroo.com
+
+```sql
+  \i caminho_para_ficheiro_sql
+```
+
+## SELECT
+
+
+```sql
+  SELECT * FROM pessoa;
+```
+
+```sql
+  SELECT nome, ativo FROM pessoa;
+```
+
+### Order by
+
+```sql
+  SELECT * FROM pessoa ORDER BY data_nascimento;
+```
+
+```sql
+  SELECT * FROM pessoa ORDER BY id DESC;
+```
+
+```sql
+  SELECT * FROM pessoa ORDER BY ativo ASC, id DESC;
+```
+
+### Limit e offset
+
+```sql
+  SELECT * FROM pessoa LIMIT 10;
+```
+
+```sql
+  SELECT * FROM pessoa ORDER BY id ASC OFFSET 500 LIMIT 10;
+```
+
+```sql
+  SELECT * FROM pessoa ORDER BY id ASC OFFSET 500 FETCH FIRST 10 ROW ONLY;
+```
+
+### Distinct
+
+
+```sql
+  SELECT DISTINCT(local_nascimento) FROM pessoa ORDER BY local_nascimento;
+```
+
+### Where
+
+```sql
+  SELECT * FROM pessoa WHERE ativo = true;
+```
+
+```sql
+  SELECT * FROM pessoa WHERE ativo = true AND local_nascimento = 'Portugal';
+```
+
+```sql
+  SELECT * FROM pessoa WHERE (ativo = true AND local_nascimento = 'Portugal') OR data_nascimento > '2005-01-01';
+```
+
+### Comparation operators
+
+```sql
+  SELECT 1 = 1, 2 = 4;
+```
+
+```sql
+  SELECT 2 > 2, 2 < 2, 2 <= 2, 2 >= 2, 2 != 2, 2 <> 2;
+```
+
+### In
+
+```sql
+  SELECT * FROM pessoa WHERE local_nascimento IN ('France', 'Italy');
+```
+
+### Between
+
+```sql
+  SELECT * FROM pessoa WHERE data_nascimento BETWEEN '2001-01-01' and '2001-07-01';
+```
+
+### Like
+
+```sql
+  SELECT * FROM pessoa WHERE email like '%wired.com%';
+```
+
+```sql
+  SELECT * FROM pessoa WHERE email ilike '%WiRed.com';
+```
+
+### Aggregate
+
+```sql
+  SELECT local_nascimento, COUNT(*) FROM pessoa GROUP BY local_nascimento;
+```
+
+```sql
+  SELECT local_nascimento, COUNT(*) as count FROM pessoa GROUP BY local_nascimento ORDER BY count DESC;
+```
+
+```sql
+  SELECT local_nascimento, COUNT(*) as count FROM pessoa GROUP BY local_nascimento HAVING COUNT(*) > 10 ORDER BY count DESC;
+```
+
+https://www.postgresql.org/docs/13/functions-aggregate.html
+
+
+```sql
+  CREATE TABLE carro(
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    fabricante VARCHAR(100) NOT NULL,
+    modelo VARCHAR(100) NOT NULL,
+    preco NUMERIC(9, 2) NOT NULL
+  );
+```
+
+```sql
+  SELECT MAX(preco), MIN(preco), AVG(preco) FROM carro;
+```
+
+```sql
+  SELECT MAX(preco), MIN(preco), ROUND(AVG(preco), 2) FROM carro;
+```
+
+```sql
+  SELECT fabricante, MAX(preco) FROM carro GROUP BY fabricante;
+```
+
+```sql
+  SELECT fabricante, MAX(preco) FROM carro GROUP BY fabricante;
+```
+
+### Operadores aritméticos
+
+```sql
+  SELECT 10 + 15 as soma, 10 - 15 as diferenca, 10 * 15 produto, 15/10 divisao, 15%10 resto, 15^10 potencia, 10! as fatorial;
+```
+
+```sql
+  SELECT *, ROUND(preco * .1, 2) as desconto, preco - ROUND(preco * .1, 2) as novo_preco FROM carro;
+```
