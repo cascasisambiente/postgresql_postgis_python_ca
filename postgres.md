@@ -593,7 +593,9 @@ https://www.postgresql.org/docs/13/datatype-datetime.html
   \d pessoa
 ```
 
-## Unique constrains
+# Constrains
+
+## Unique
 
 ```sql
   Select email, COUNT(*) FROM pessoa GROUP BY email HAVING COUNT(*) > 1;
@@ -609,10 +611,31 @@ UNIQUE vs. PRIMARY KEY
   ALTER TABLE pessoa ADD CONSTRAINT unique_nome_local_nascimento_adress UNIQUE (nome, local_nascimento);
 ```
 
+Nome automático:
 
+```sql
+  ALTER TABLE pessoa ADD UNIQUE (nome, local_nascimento);
+```
 
+## Check
 
+```sql
+  ALTER TABLE pessoa ADD COLUMN distrito VARCHAR(50);
+```
 
+```sql
+  UPDATE pessoa SET distrito = 'Lisboa' WHERE id % 3 = 0;
+  UPDATE pessoa SET distrito = 'Braga' WHERE id % 3 = 1;
+  UPDATE pessoa SET distrito = 'Guarda' WHERE id % 3 = 2;
+```
+
+```sql
+  SELECT DISTINCT distrito FROM pessoa;
+```
+
+```sql
+  ALTER TABLE pessoa ADD CONSTRAINT distrito_check_constraint CHECK(distrito = 'Lisboa' OR distrito = 'Braga' OR distrito = 'Guarda');
+```
 
 
 
