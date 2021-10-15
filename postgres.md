@@ -101,16 +101,21 @@ Relational Database Management System
 
 ## Databases
 
+Criar uma base de dados nova
 
 ```sql
   CREATE DATABASE teste;
 ```
+Eliminar uma base de dados
 
 ```sql
   DROP DATABASE teste;
 ```
 
 ## Tables
+
+Criar uma tabela nova
+
 ```sql
   CREATE TABLE nome_da_tabela(
     nome_da_coluna_a(1) + tipo_de_dados_a(1) + constrains_a(0...n), 
@@ -130,6 +135,7 @@ Relational Database Management System
     local_nascimento VARCHAR(100)
   );
 ```
+Descrever um objecto, por exemplo, uma tabela
 
 ```sql
   \d pessoa
@@ -151,6 +157,7 @@ Relational Database Management System
 ```sql
   \d
 ```
+Descrever obejctos
 
 - \dt -- lista tables
 - \dn -- lista schema
@@ -232,6 +239,8 @@ https://www.postgresql.org/docs/13/ddl-constraints.html
 
 ## INSERT
 
+Inserir um registo novo numa tabela
+
 ```sql
   INSERT INTO pessoa (
     nome,
@@ -242,6 +251,8 @@ https://www.postgresql.org/docs/13/ddl-constraints.html
     local_nascimento
   ) VALUES ('João Silva', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal');
 ```
+
+Inserir vários registos numa tabela
 
 ```sql
   INSERT INTO pessoa (
@@ -254,7 +265,9 @@ https://www.postgresql.org/docs/13/ddl-constraints.html
   ) VALUES ('Paulo Silva', false, now(), '1945-01-02', null, 'França'), ('Filipa Teixeira', true, now(), '1996-01-02', null, null);
 ```
 
-www.mockaroo.com
+Retirar fake data em www.mockaroo.com
+
+Executar instruções SQL num ficheiro externo
 
 ```sql
   \i caminho_para_ficheiro_sql
@@ -262,38 +275,49 @@ www.mockaroo.com
 
 ## SELECT
 
+Selecionar todos os campo de todos os registos duma tabela
 
 ```sql
   SELECT * FROM pessoa;
 ```
 
+Selecionar vários campos de todos os registos duma tabela
 ```sql
   SELECT nome, ativo FROM pessoa;
 ```
 
 ### Order by
 
+Selecionar os registos duma tabela ordenados por uma deternimanda coluna
+
 ```sql
   SELECT * FROM pessoa ORDER BY data_nascimento;
 ```
-
+Selecionar os registos duma tabela ordenados, de modo decrescente, por uma deternimanda coluna
 ```sql
   SELECT * FROM pessoa ORDER BY id DESC;
 ```
 
+Selecionar os registos duma tabela ordenados por uma várias colunas
 ```sql
   SELECT * FROM pessoa ORDER BY ativo ASC, id DESC;
 ```
 
 ### Limit e offset
 
+Limitar o número de registos devolvidos 
+
 ```sql
   SELECT * FROM pessoa LIMIT 10;
 ```
 
+Limitar e deslocar o número de registos devolvidos 
+
 ```sql
   SELECT * FROM pessoa ORDER BY id ASC OFFSET 500 LIMIT 10;
 ```
+
+Limitar e deslocar o número de registos devolvidos (SQL válido, mas menos utilizado)
 
 ```sql
   SELECT * FROM pessoa ORDER BY id ASC OFFSET 500 FETCH FIRST 10 ROW ONLY;
@@ -301,6 +325,7 @@ www.mockaroo.com
 
 ### Distinct
 
+Devolver um campo (ou conjunto de campos) distintos
 
 ```sql
   SELECT DISTINCT(local_nascimento) FROM pessoa ORDER BY local_nascimento;
@@ -308,14 +333,18 @@ www.mockaroo.com
 
 ### Where
 
+Filtar registos devolvidos por condição de um campo
+
 ```sql
   SELECT * FROM pessoa WHERE ativo = true;
 ```
 
+Filtar registos devolvidos por condições de vários campos uilizando o operador AND
 ```sql
   SELECT * FROM pessoa WHERE ativo = true AND local_nascimento = 'Portugal';
 ```
 
+Filtar registos devolvidos por condições de vários campos uilizando o operador AND e OR
 ```sql
   SELECT * FROM pessoa WHERE (ativo = true AND local_nascimento = 'Portugal') OR data_nascimento > '2005-01-01';
 ```
