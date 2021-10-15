@@ -95,6 +95,10 @@ Relational Database Management System
   \?
 ```
 
+```sql
+  \h NOME_DO_COMANDO
+```
+
 ## Databases
 
 
@@ -149,7 +153,11 @@ Relational Database Management System
 ```
 
 ```sql
-  \dt
+  \dt -- lista tables
+  \dn -- lista schema
+  \df -- lista functions
+  \dv -- lista views
+  \du -- lista roles
 ```
 
 # Tipo do dados
