@@ -396,3 +396,61 @@ https://www.postgresql.org/docs/13/functions-aggregate.html
 ```sql
   SELECT *, ROUND(preco * .1, 2) as desconto, preco - ROUND(preco * .1, 2) as novo_preco FROM carro;
 ```
+
+# Null
+
+## Coalesce
+
+Valores pré-definidos
+
+```sql
+  SELECT COALESCE(null, 1);
+```
+
+```sql
+  SELECT COALESCE(null, null, 10, 1);
+```
+
+```sql
+  SELECT COALESCE(email, 'sem email') FROM pessoa;
+```
+
+## Nullif
+
+```sql
+  SELECT 1/0;
+```
+
+```sql
+  SELECT NULLIF(1, 0), NULLIF(1, 1), NULLIF(12, 7);
+```
+
+```sql
+  SELECT 1 / NULLIF(0, 0);
+```
+
+```sql
+  SELECT COALESCE(1 / NULLIF(0, 0), 0);
+```
+
+
+# Timestamp / date
+
+https://www.postgresql.org/docs/13/datatype-datetime.html
+
+```sql
+  SELECT NOW() as now, NOW()::DATE as date, NOW()::TIME as time;
+```
+
+```sql
+  SELECT NOW() - INTERVAL '1 YEAR';
+```
+
+```sql
+  SELECT NOW() - '2021-01-01 12:00:00';
+```
+
+```sql
+  SELECT TO_CHAR(NOW(), 'YYYY'), TO_CHAR(NOW(), 'HH:MM:SS dd-mm-YYYY');
+```
+
