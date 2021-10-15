@@ -152,13 +152,12 @@ Relational Database Management System
   \d
 ```
 
-```sql
-  \dt -- lista tables
-  \dn -- lista schema
-  \df -- lista functions
-  \dv -- lista views
-  \du -- lista roles
-```
+- \dt -- lista tables
+- \dn -- lista schema
+- \df -- lista functions
+- \dv -- lista views
+- \du -- lista roles
+
 
 # Tipo do dados
 
