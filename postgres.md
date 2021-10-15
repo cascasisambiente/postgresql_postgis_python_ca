@@ -595,5 +595,24 @@ https://www.postgresql.org/docs/13/datatype-datetime.html
 
 ## Unique constrains
 
-ex
+```sql
+  Select email, COUNT(*) FROM pessoa GROUP BY email HAVING COUNT(*) > 1;
+```
+
+UNIQUE vs. PRIMARY KEY
+
+```sql
+  ALTER TABLE pessoa ADD CONSTRAINT unique_email_adress UNIQUE (email);
+```
+
+```sql
+  ALTER TABLE pessoa ADD CONSTRAINT unique_nome_local_nascimento_adress UNIQUE (nome, local_nascimento);
+```
+
+
+
+
+
+
+
 
