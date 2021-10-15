@@ -637,5 +637,67 @@ Nome automático:
   ALTER TABLE pessoa ADD CONSTRAINT distrito_check_constraint CHECK(distrito = 'Lisboa' OR distrito = 'Braga' OR distrito = 'Guarda');
 ```
 
+# Delete
 
+Usar WHERE (quase) sempre!!
+
+```sql
+  DELETE FROM pessoa WHERE distrito = 'Braga';
+```
+
+# Update
+
+Usar WHERE (quase) sempre!!
+
+```sql
+  UPDATE pessoa SET email = 'aaa@bbb.ccc' WHERE id = 500;
+```
+
+```sql
+  UPDATE pessoa SET email = 'ddd@eee.fff', local_nascimento = 'ggg' WHERE id = 200;
+```
+
+# Exceptions
+
+```sql
+  INSERT INTO pessoa (
+    id,
+    nome,
+    ativo,
+    inicio_atividade,
+    data_nascimento,
+    email,
+    local_nascimento,
+    distrito
+  ) VALUES (200, 'João', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal', 'Braga');
+```
+## On conflict
+
+```sql
+  INSERT INTO pessoa (
+    id,
+    nome,
+    ativo,
+    inicio_atividade,
+    data_nascimento,
+    email,
+    local_nascimento,
+    distrito
+  ) VALUES (200, 'Paulo Silva', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal', 'Braga')
+  ON CONFLICT (id) DO NOTHING;
+```
+
+```sql
+  INSERT INTO pessoa (
+    id,
+    nome,
+    ativo,
+    inicio_atividade,
+    data_nascimento,
+    email,
+    local_nascimento,
+    distrito
+  ) VALUES (200, 'Paulo Silva', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal', 'Braga')
+  ON CONFLICT (id) DO UPDATE SET nome = EXCLUDED.nome;
+```
 
