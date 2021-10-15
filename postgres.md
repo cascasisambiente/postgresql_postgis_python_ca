@@ -454,3 +454,110 @@ https://www.postgresql.org/docs/13/datatype-datetime.html
   SELECT TO_CHAR(NOW(), 'YYYY'), TO_CHAR(NOW(), 'HH:MM:SS dd-mm-YYYY');
 ```
 
+```sql
+  SELECT nome, data_nascimento, AGE(NOW(), data_nascimento) FROM pessoa;
+```
+
+# Primary keys
+
+- id
+- email, etc
+- conjunção
+- uuid
+
+```sql
+  \d pessoa
+```
+
+```sql
+  SELECT * FROM pessoa_id_seq;
+```
+
+```sql
+  INSERT INTO pessoa (
+    nome,
+    ativo,
+    inicio_atividade,
+    data_nascimento,
+    email,
+    local_nascimento
+  ) VALUES ('João Silva', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal');
+```
+
+```sql
+  SELECT * FROM pessoa_id_seq;
+```
+
+```sql
+  INSERT INTO pessoa (
+    id,
+    nome,
+    ativo,
+    inicio_atividade,
+    data_nascimento,
+    email,
+    local_nascimento
+  ) VALUES (1, 'João Silva', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal');
+```
+
+# ALTER 
+
+```sql
+  ALTER TABLE pessoa DROP CONSTRAINT pessoa_pkey;
+```
+
+```sql
+  \d pessoa
+```
+
+```sql
+  INSERT INTO pessoa (
+    id,
+    nome,
+    ativo,
+    inicio_atividade,
+    data_nascimento,
+    email,
+    local_nascimento
+  ) VALUES (1, 'João Silva', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal');
+```
+
+```sql
+  SELECT * FROM pessoa WHERE id = 1;
+```
+
+```sql
+  INSERT INTO pessoa (
+    nome,
+    ativo,
+    inicio_atividade,
+    data_nascimento,
+    email,
+    local_nascimento
+  ) VALUES ('João Silva', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal');
+```
+
+```sql
+  SELECT * FROM pessoa_id_seq;
+```
+
+```sql
+  ALTER TABLE pessoa ADD PRIMARY KEY (nome, email);
+```
+
+```sql
+  DELETE FROM pessoa WHERE id = 1;
+```
+
+```sql
+  ALTER TABLE pessoa ADD PRIMARY KEY (id);
+```
+
+```sql
+  \d pessoa
+```
+
+## Unique constrains
+
+ex
+
