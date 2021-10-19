@@ -855,3 +855,9 @@ Relações um para um
 ```sql
   ALTER SEQUENCE pessoa_id_seq RESTART WITH 2500;
 ```
+
+# Extensions
+
+```sql
+  SELECT * FROM pg_available_extensions;
+```
