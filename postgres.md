@@ -1,32 +1,6 @@
-# POSTGRESQL
+# Comandos
 
-
-PostgreSQL é uma SGBD SQL (Structured Query Language, 1974)
-
-## RDBMS
-
-Relational Database Management System
-
-### Table
-
-![image](https://user-images.githubusercontent.com/60735895/136801316-29c68da5-a564-4301-b83f-086389e3ecb8.png)
-
-### Row
-
-![image](https://user-images.githubusercontent.com/60735895/136801371-63444d9e-b6ab-4d73-86fb-eb07266269f3.png)
-
-### Column
-
-![image](https://user-images.githubusercontent.com/60735895/136801489-1ac6b9f4-70e5-4f7d-b015-ce6e03a58069.png)
-
-### Null
-
-
-## Comandos
-
-### Categorias
-
-#### DDL - Data Definition Language
+DDL - Data Definition Language
 
 | Commando | Descrição |
 | ----------- | ----------- |
@@ -34,21 +8,47 @@ Relational Database Management System
 | ALTER | Modifica um objecto existente na base de dados |
 | DROP | Elimina um objecto existente na base de dados |
 
-#### DML - Data Manipulation Language
+DML - Data Manipulation Language
 
 | Commando | Descrição |
 | ----------- | ----------- |
-| SELECT | Devolve um conjunto de registos |
 | INSERT | Insere um registo |
 | UPDATE | Modifica um registo |
 | DELETE | Elimina um registo |
 
-#### DCL - Data Control Language
+DCL - Data Control Language
 
 | Commando | Descrição |
 | ----------- | ----------- |
 | GRANT | Atribuí um privilégio a um utilizador/grupo |
 | REVOKE | Retira um privilégio a um utilizador/grupo |
+
+DQL - Data Query Language
+
+| Commando | Descrição |
+| ----------- | ----------- |
+| SELECT | Devolve um conjunto de registos |
+
+
+# Conceitos
+
+TABLE (tabela)
+
+![image](https://user-images.githubusercontent.com/60735895/137928978-b9ea9c3a-4efc-4dea-93db-0c9f758faa4a.png)
+
+FIELD (campo)
+
+ROW/RECORD (registo)
+
+![image](https://user-images.githubusercontent.com/60735895/137929167-5ca83e3b-27ca-4a5c-a412-9b57ad2acaa7.png)
+
+
+COLUMN (coluna)
+
+![image](https://user-images.githubusercontent.com/60735895/137929259-ec7069d3-e786-49a3-973a-f08d457e036f.png)
+
+
+NULL (vazio)
 
 
 # RoadMap de modos de acesso
