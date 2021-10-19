@@ -745,6 +745,10 @@ Relações um para um
 ```
 
 ```sql
+  SELECT * FROM pessoa, carro WHERE pessoa.carro_id = carro.id;
+```
+
+```sql
   \x
 ```
 
@@ -760,7 +764,7 @@ Relações um para um
   SELECT p.nome, c.fabricante, c.modelo FROM pessoa p JOIN carro c ON p.carro_id = c.id;
 ```
 
-# Side joins
+# Other joins
 
 ```sql
   SELECT p.nome, c.fabricante, c.modelo FROM pessoa p LEFT JOIN carro c ON p.carro_id = c.id;
@@ -769,3 +773,14 @@ Relações um para um
 ```sql
   SELECT p.nome, c.fabricante, c.modelo FROM pessoa p RIGHT JOIN carro c ON p.carro_id = c.id;
 ```
+
+```sql
+  SELECT p.nome, c.fabricante, c.modelo FROM pessoa p FULL OUTER JOIN carro c ON p.carro_id = c.id;
+```
+
+
+![image](https://user-images.githubusercontent.com/60735895/137899300-b14f35c9-4975-48af-a8bf-828394d3f3ca.png)
+
+![image](https://user-images.githubusercontent.com/60735895/137899416-6f32ecea-072a-4ab0-84e6-5543a0fd65a8.png)
+
+
