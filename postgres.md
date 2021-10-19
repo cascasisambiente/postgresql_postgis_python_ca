@@ -851,3 +851,7 @@ Relações um para um
 ```sql
   SELECT * FROM PESSOA ORDER BY id DESC LIMIT 2;
 ```
+
+```sql
+  ALTER SEQUENCE pessoa_id_seq RESTART WITH 2500;
+```
