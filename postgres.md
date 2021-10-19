@@ -779,8 +779,21 @@ Relações um para um
 ```
 
 
-![image](https://user-images.githubusercontent.com/60735895/137899300-b14f35c9-4975-48af-a8bf-828394d3f3ca.png)
-
 ![image](https://user-images.githubusercontent.com/60735895/137899416-6f32ecea-072a-4ab0-84e6-5543a0fd65a8.png)
+
+
+# Delete fk
+
+```sql
+  DELETE from carro WHERE id = 20;
+```
+
+```sql
+  DELETE from pessoa WHERE id = 23;
+```
+
+```sql
+  DELETE from carro WHERE id = 20;
+```
 
 
