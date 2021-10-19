@@ -905,5 +905,17 @@ Relações um para um
 ```
 
 
+# Window Functions
 
+```sql
+  SELECT fabricante, modelo, MAX(preco) FROM carro GROUP BY fabricante, modelo;
+```
+
+```sql
+  SELECT fabricante, modelo, MAX(preco) OVER (PARTITION BY fabricante) FROM carro;
+```
+
+```sql
+  SELECT fabricante, modelo, MAX(preco) OVER (PARTITION BY fabricante, modelo) FROM carro; 
+```
 
