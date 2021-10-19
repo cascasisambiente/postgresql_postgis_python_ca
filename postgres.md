@@ -898,6 +898,14 @@ Repetidos
 ```sql
   ALTER SEQUENCE pessoa_id_seq RESTART WITH 2500;
 ```
+# With
+
+
+
+# Sub queries
+
+
+
 
 # Extensions
 
