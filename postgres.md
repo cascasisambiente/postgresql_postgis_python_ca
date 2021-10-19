@@ -701,3 +701,11 @@ Usar WHERE (quase) sempre!!
   ON CONFLICT (id) DO UPDATE SET nome = EXCLUDED.nome;
 ```
 
+# Foreign keys
+
+Relações um para um
+
+```sql
+  ALTER TABLE pessoa ADD COLUMN carro_id BIGINT REFERENCES carro (id);
+  ALTER TABLE pessoa ADD UNIQUE (carro_id);
+```
