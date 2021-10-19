@@ -905,7 +905,7 @@ Relações um para um
 ```
 
 
-# Window Functions
+# Window functions
 
 ```sql
   SELECT fabricante, modelo, MAX(preco) FROM carro GROUP BY fabricante, modelo;
