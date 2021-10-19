@@ -808,3 +808,46 @@ Relações um para um
   \copy (SELECT p.nome, c.fabricante, c.modelo FROM pessoa p FULL OUTER JOIN carro c ON p.carro_id = c.id) TO '/home/rui/Desktop/filename.csv' DELIMITER ',' CSV HEADER;
 ```
 
+# Sequences
+
+
+```sql
+  \d pessoa;
+```
+
+```sql
+  \d pessoa_id_seq
+```
+
+```sql
+  SELECT * FROM pessoa_id_seq;
+```
+
+
+```sql
+  SELECT nextval('pessoa_id_seq'::regclass);
+```
+
+```sql
+  SELECT nextval('pessoa_id_seq'::regclass);
+```
+
+```sql
+  SELECT nextval('pessoa_id_seq'::regclass);
+```
+
+```sql
+  INSERT INTO pessoa (
+      nome,
+      ativo,
+      inicio_atividade,
+      data_nascimento,
+      email,
+      local_nascimento,
+      distrito
+    ) VALUES ('Paulo Silva', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal', 'Braga');
+```
+
+```sql
+  SELECT * FROM PESSOA ORDER BY id DESC LIMIT 2;
+```
