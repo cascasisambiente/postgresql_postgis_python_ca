@@ -32,60 +32,59 @@ DQL - Data Query Language
 
 # Conceitos
 
-TABLE (tabela)
+## TABLE (tabela)
 
 ![image](https://user-images.githubusercontent.com/60735895/137928978-b9ea9c3a-4efc-4dea-93db-0c9f758faa4a.png)
 
-FIELD (campo)
+## FIELD (campo)
 
-ROW/RECORD (registo)
+## ROW/RECORD (registo)
 
 ![image](https://user-images.githubusercontent.com/60735895/137929167-5ca83e3b-27ca-4a5c-a412-9b57ad2acaa7.png)
 
-
-COLUMN (coluna)
+## COLUMN (coluna)
 
 ![image](https://user-images.githubusercontent.com/60735895/137929259-ec7069d3-e786-49a3-973a-f08d457e036f.png)
 
+## NULL (vazio)
 
-NULL (vazio)
 
-
-# RoadMap de modos de acesso
+# MODOS DE ACESSO
 
 1. terminal
 2. pgadmin4/datagrip
 3. qgis
 4. python
 
-## Começar
 
-### Aceder via terminal (psql)
+# ACEDR VIA TERMINAL (psql)
 
 ```console
   psql --help
 ```
+
 ```console
   psql -h hostname(default=localhost) -p port(default=5432) -d databasename(default=local username) -U user(default=local username)
 ```
-- hostname: postgresdatabase-do-user-4575137-0.db.ondigitalocean.com
+
+- hostname: training-do-user-4575137-0.b.db.ondigitalocean.comm
 - port: 25060
 - database: defaultdb
 - user: doadmin
 
 ```console
-  psql -h postgresdatabase-do-user-4575137-0.db.ondigitalocean.com -p 25060 -d defaultdb -U doadmin
+  psql -h training-do-user-4575137-0.b.db.ondigitalocean.com -p 25060 -d defaultdb -U doadmin
 ```
 
-### Listar databases
+Listar databases
 ```sql
   \l
 ```
-### Conectar a outra base de dados
+Conectar a outra base de dados
 ```sql
   \c
 ```
-### Ajuda
+## AJUDA
 
 ```sql
   help
@@ -99,7 +98,7 @@ NULL (vazio)
   \h NOME_DO_COMANDO
 ```
 
-## Databases
+# DATABASES
 
 Criar uma base de dados nova
 
@@ -235,6 +234,8 @@ https://www.postgresql.org/docs/13/datatype.html
 # Constrains
 
 https://www.postgresql.org/docs/13/ddl-constraints.html
+
+
 
 
 ## INSERT
