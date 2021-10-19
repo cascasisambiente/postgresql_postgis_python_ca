@@ -123,48 +123,6 @@ Criar uma tabela nova
   );
 ```
 
-```sql
-  CREATE TABLE pessoa(
-    id int,
-    nome VARCHAR(100),
-    ativo BOOLEAN,
-    inicio_atividade TIMESTAMP,
-    data_nascimento DATE,
-    email VARCHAR(200),
-    local_nascimento VARCHAR(100)
-  );
-```
-Descrever um objecto, por exemplo, uma tabela
-
-```sql
-  \d pessoa
-```
-
-```sql
-  DROP TABLE pessoa;
-  CREATE TABLE pessoa(
-    id BIGSERIAL NOT NULL PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    ativo BOOLEAN NOT NULL,
-    inicio_atividade TIMESTAMP NOT NULL,
-    data_nascimento DATE NOT NULL,
-    email VARCHAR(200),
-    local_nascimento VARCHAR(100)
-  );
-```
-
-```sql
-  \d
-```
-Descrever obejctos
-
-- \dt -- lista tables
-- \dn -- lista schema
-- \df -- lista functions
-- \dv -- lista views
-- \du -- lista roles
-
-
 # Tipo do dados
 
 https://www.postgresql.org/docs/13/datatype.html
@@ -235,6 +193,56 @@ https://www.postgresql.org/docs/13/datatype.html
 
 https://www.postgresql.org/docs/13/ddl-constraints.html
 
+- NOT NULL
+- DEFAULT
+- UNIQUE
+- PRIMARY KEY
+- FOREIGN KEY
+- CHECK
+- INDEX
+
+
+```sql
+  CREATE TABLE pessoa(
+    id int,
+    nome VARCHAR(100),
+    ativo BOOLEAN,
+    inicio_atividade TIMESTAMP,
+    data_nascimento DATE,
+    email VARCHAR(200),
+    local_nascimento VARCHAR(100)
+  );
+```
+Descrever um objecto, por exemplo, uma tabela
+
+```sql
+  \d pessoa
+```
+
+```sql
+  DROP TABLE pessoa;
+  CREATE TABLE pessoa(
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    ativo BOOLEAN NOT NULL,
+    inicio_atividade TIMESTAMP NOT NULL,
+    data_nascimento DATE NOT NULL,
+    email VARCHAR(200),
+    local_nascimento VARCHAR(100),
+    zona INT DEFAULT 25 CHECK (zona > 20),
+  );
+```
+
+```sql
+  \d
+```
+Descrever obejctos
+
+- \dt -- lista tables
+- \dn -- lista schema
+- \df -- lista functions
+- \dv -- lista views
+- \du -- lista roles
 
 
 
