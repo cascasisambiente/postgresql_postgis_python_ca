@@ -709,3 +709,35 @@ Relações um para um
   ALTER TABLE pessoa ADD COLUMN carro_id BIGINT REFERENCES carro (id);
   ALTER TABLE pessoa ADD UNIQUE (carro_id);
 ```
+
+```sql
+  SELECT * FROM pessoa;
+```
+
+```sql
+  UPDATE pessoa SET carro_id = 18500 WHERE id = 20; 
+```
+
+```sql
+  UPDATE pessoa SET carro_id = 18 WHERE id = 20; 
+```
+
+```sql
+  SELECT * FROM pessoa WHERE id = 20;
+```
+
+```sql
+  UPDATE pessoa SET carro_id = 18 WHERE id = 23; 
+```
+
+```sql
+  UPDATE pessoa SET carro_id = 20 WHERE id = 23; 
+```
+
+```sql
+  SELECT * FROM pessoa WHERE carro_id IS NOT NULL;
+```
+
+## Inner joins
+
+
