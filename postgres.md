@@ -756,4 +756,16 @@ Relações um para um
   SELECT * FROM pessoa p JOIN carro c ON p.carro_id = c.id;
 ```
 
+```sql
+  SELECT p.nome, c.fabricante, c.modelo FROM pessoa p JOIN carro c ON p.carro_id = c.id;
+```
 
+# Side joins
+
+```sql
+  SELECT p.nome, c.fabricante, c.modelo FROM pessoa p LEFT JOIN carro c ON p.carro_id = c.id;
+```
+
+```sql
+  SELECT p.nome, c.fabricante, c.modelo FROM pessoa p RIGHT JOIN carro c ON p.carro_id = c.id;
+```
