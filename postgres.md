@@ -806,6 +806,18 @@ Relações um para um
 ![image](https://user-images.githubusercontent.com/60735895/137899416-6f32ecea-072a-4ab0-84e6-5543a0fd65a8.png)
 
 
+# Union
+
+```sql
+  SELECT id, nome FROM pessoa UNION SELECT id, modelo FROM carro;
+```
+
+Repetidos
+
+```sql
+  SELECT id, nome FROM pessoa UNION ALL SELECT id, modelo FROM carro;
+```
+
 # Delete fk
 
 ```sql
@@ -818,6 +830,13 @@ Relações um para um
 
 ```sql
   DELETE from carro WHERE id = 20;
+```
+
+# INDEX
+
+
+```sql
+  CREATE INDEX index_name ON table_name ( column1, column2.....);
 ```
 
 
