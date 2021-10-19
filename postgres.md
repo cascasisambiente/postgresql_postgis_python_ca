@@ -423,6 +423,21 @@ https://www.postgresql.org/docs/13/functions-aggregate.html
   SELECT fabricante, MAX(preco) FROM carro GROUP BY fabricante;
 ```
 
+### Window functions
+
+```sql
+  SELECT fabricante, modelo, MAX(preco) FROM carro GROUP BY fabricante, modelo;
+```
+
+```sql
+  SELECT fabricante, modelo, MAX(preco) OVER (PARTITION BY fabricante) FROM carro;
+```
+
+```sql
+  SELECT fabricante, modelo, MAX(preco) OVER (PARTITION BY fabricante, modelo) FROM carro;
+```
+
+
 ### Operadores aritméticos
 
 ```sql
@@ -861,3 +876,34 @@ Relações um para um
 ```sql
   SELECT * FROM pg_available_extensions;
 ```
+
+# Views
+
+```sql
+  CREATE VIEW pessoa_carro AS 
+    SELECT p.nome, c.fabricante, c.modelo FROM pessoa p JOIN carro c ON p.carro_id = c.id; 
+```
+
+```sql
+  SELECT * FROM pessoa_carro; 
+```
+
+```sql
+  UPDATE carro SET modelo = 'Range Rover 2' WHERE id = 18; 
+```
+
+```sql
+  SELECT * FROM pessoa_carro; 
+```
+
+# Transactions
+
+```sql
+  BEGIN;
+    instruções;
+  COMMIT;
+```
+
+
+
+
