@@ -740,4 +740,20 @@ Relações um para um
 
 ## Inner joins
 
+```sql
+  SELECT * FROM pessoa INNER JOIN carro ON pessoa.carro_id = carro.id;
+```
+
+```sql
+  \x
+```
+
+```sql
+  SELECT * FROM pessoa JOIN carro ON pessoa.carro_id = carro.id;
+```
+
+```sql
+  SELECT * FROM pessoa p JOIN carro c ON p.carro_id = c.id;
+```
+
 
