@@ -824,7 +824,7 @@ x2
 # Delete fk
 
 ```sql
-  DELETE from carro WHERE id = 20;
+  DELETE from carro WHERE id = 1;
 ```
 
 ```sql
@@ -832,7 +832,45 @@ x2
 ```
 
 ```sql
-  DELETE from carro WHERE id = 20;
+  DELETE from carro WHERE id = 1;
+```
+
+- RESTRICT
+- CASCADE
+- SET NULL
+- SET DEFAULT
+- NO ACTION (potenciais problemas de integridade de dados)
+
+-ON DELETE
+-ON UPDATE
+-ON INSERT
+
+```sql
+  ALTER TABLE pessoa DROP COLUMN carro_id;
+```
+
+```sql
+  ALTER TABLE pessoa ADD COLUMN carro_id BIGINT REFERENCES carro (id) ON DELETE SET NULL;
+```
+
+```sql
+  UPDATE pessoa SET carro_id = 3 WHERE id = 12; 
+  UPDATE pessoa SET carro_id = 1 WHERE id = 23; 
+  UPDATE pessoa SET carro_id = 7 WHERE id = 15; 
+  UPDATE pessoa SET carro_id = 2 WHERE id = 5;  
+  UPDATE pessoa SET carro_id = 4 WHERE id IN (26, 14, 18);
+```
+
+```sql
+  SELECT * FROM pessoa WHERE id = 12;
+```
+
+```sql
+  DELETE from carro WHERE id = 3;
+```
+
+```sql
+  SELECT * FROM pessoa WHERE id = 12;
 ```
 
 # INDEX
@@ -899,8 +937,10 @@ x2
 ```
 
 ```sql
-  ALTER SEQUENCE pessoa_id_seq RESTART WITH 2500;
+  ALTER SEQUENCE pessoa_id_seq RESTART WITH 250;
 ```
+
+
 # With
 
 
