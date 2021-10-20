@@ -669,6 +669,10 @@ Nome automático:
   ALTER TABLE pessoa ADD CONSTRAINT distrito_check_constraint CHECK(distrito = 'Lisboa' OR distrito = 'Braga' OR distrito = 'Guarda');
 ```
 
+```sql
+  UPDATE pessoa SET distrito = 'Porto' WHERE id % 3 = 0;
+```
+
 # Delete
 
 Usar WHERE (quase) sempre!!
@@ -682,11 +686,11 @@ Usar WHERE (quase) sempre!!
 Usar WHERE (quase) sempre!!
 
 ```sql
-  UPDATE pessoa SET email = 'aaa@bbb.ccc' WHERE id = 500;
+  UPDATE pessoa SET email = 'aaa@bbb.ccc' WHERE id IN (12, 15, 18);
 ```
 
 ```sql
-  UPDATE pessoa SET email = 'ddd@eee.fff', local_nascimento = 'ggg' WHERE id = 200;
+  UPDATE pessoa SET email = 'ddd@eee.fff', local_nascimento = 'ggg' WHERE id IN (11, 14, 17, 20, 23);
 ```
 
 # Exceptions
