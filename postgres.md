@@ -1060,9 +1060,15 @@ Função invocada automaticamente quando ocorre um evento, associado a uma tabel
 - INSERT
 - UPDATE
 - DELETE
-- TRUNCATE
+- TRUNCATE (não SQL)
 
+Dois tipos de invocações:
+- Row
+- Statement-level
 
+Dois momentos de invocação:
+- BEFORE
+- AFTER
 
 
 - CREATE TRIGGER
