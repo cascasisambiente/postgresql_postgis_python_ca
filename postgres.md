@@ -229,7 +229,7 @@ Descrever um objecto, por exemplo, uma tabela
     data_nascimento DATE NOT NULL,
     email VARCHAR(200),
     local_nascimento VARCHAR(100),
-    zona INT DEFAULT 25 CHECK (zona > 20),
+    zona INT DEFAULT 25 CHECK (zona > -20)
   );
 ```
 
@@ -317,19 +317,19 @@ Selecionar os registos duma tabela ordenados por uma várias colunas
 Limitar o número de registos devolvidos 
 
 ```sql
-  SELECT * FROM pessoa LIMIT 10;
+  SELECT * FROM pessoa LIMIT 2;
 ```
 
 Limitar e deslocar o número de registos devolvidos 
 
 ```sql
-  SELECT * FROM pessoa ORDER BY id ASC OFFSET 500 LIMIT 10;
+  SELECT * FROM pessoa ORDER BY id ASC OFFSET 5 LIMIT 3;
 ```
 
 Limitar e deslocar o número de registos devolvidos (SQL válido, mas menos utilizado)
 
 ```sql
-  SELECT * FROM pessoa ORDER BY id ASC OFFSET 500 FETCH FIRST 10 ROW ONLY;
+  SELECT * FROM pessoa ORDER BY id ASC OFFSET 5 FETCH FIRST 3 ROW ONLY;
 ```
 
 ### Distinct
@@ -350,12 +350,12 @@ Filtar registos devolvidos por condição de um campo
 
 Filtar registos devolvidos por condições de vários campos uilizando o operador AND
 ```sql
-  SELECT * FROM pessoa WHERE ativo = true AND local_nascimento = 'Portugal';
+  SELECT * FROM pessoa WHERE ativo = true AND local_nascimento = 'China';
 ```
 
 Filtar registos devolvidos por condições de vários campos uilizando o operador AND e OR
 ```sql
-  SELECT * FROM pessoa WHERE (ativo = true AND local_nascimento = 'Portugal') OR data_nascimento > '2005-01-01';
+  SELECT * FROM pessoa WHERE (ativo = true AND local_nascimento = 'China') OR data_nascimento > '2012-01-01';
 ```
 
 ### Comparation operators
@@ -371,7 +371,7 @@ Filtar registos devolvidos por condições de vários campos uilizando o operado
 ### In
 
 ```sql
-  SELECT * FROM pessoa WHERE local_nascimento IN ('France', 'Italy');
+  SELECT * FROM pessoa WHERE local_nascimento IN ('Poland', 'Canada');
 ```
 
 ### Between
@@ -422,10 +422,6 @@ https://www.postgresql.org/docs/13/functions-aggregate.html
 
 ```sql
   SELECT MAX(preco), MIN(preco), ROUND(AVG(preco), 2) FROM carro;
-```
-
-```sql
-  SELECT fabricante, MAX(preco) FROM carro GROUP BY fabricante;
 ```
 
 ```sql
@@ -490,7 +486,19 @@ Valores pré-definidos
 ```
 
 ```sql
-  SELECT COALESCE(1 / NULLIF(0, 0), 0);
+  SELECT nome, 1000/zona FROM pessoa;
+```
+
+```sql
+  UPDATE pessoa SET zona = 0 WHERE id%3 = 0;
+```
+
+```sql
+  SELECT nome, 1000/zona FROM pessoa;
+```
+
+```sql
+  SELECT nome, COALESCE(1000 / NULLIF(zona, 0), NULL) FROM pessoa;
 ```
 
 
