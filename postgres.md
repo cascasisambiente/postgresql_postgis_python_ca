@@ -1063,8 +1063,8 @@ Função invocada automaticamente quando ocorre um evento, associado a uma tabel
 - TRUNCATE (não SQL)
 
 Dois tipos de invocações:
-- Row
-- Statement-level
+- FOR EACH ROW
+- FOR EACH STATEMENT
 
 Dois momentos de invocação:
 - BEFORE
