@@ -1051,3 +1051,25 @@ x2
   SELECT fabricante, modelo, MAX(preco) OVER (PARTITION BY fabricante, modelo) FROM carro; 
 ```
 
+# User defined functions
+
+
+# Triggers
+
+Função invocada automaticamente quando ocorre um evento, associado a uma tabela:
+-- INSERT
+-- UPDATE
+-- DELETE
+-- TRUNCATE
+
+
+
+
+-- CREATE TRIGGER
+-- DROP TRIGGER
+-- ALTER TRIGGER
+-- DISABLE TRIGGER
+-- ENABLE TRIGGER
+
+
+
