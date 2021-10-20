@@ -995,11 +995,13 @@ x2
 ```
 
 
-
 # Sub queries
 
-
-
+```sql
+  SELECT * FROM animal WHERE tipo_id IN (
+    SELECT id FROM tipo WHERE tipo LIKE '%l%' 
+  );
+```
 
 # Extensions
 
