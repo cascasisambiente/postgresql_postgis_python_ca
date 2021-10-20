@@ -944,6 +944,57 @@ x2
 # With
 
 
+```sql
+  WITH cte(var1, var2) AS ( VALUES(48, ' string') )
+  SELECT id * var1, CONCAT(nome, var2),  zona * var1 FROM pessoa, cte;
+```
+
+```sql
+  WITH cte AS (SELECT 48 as var1, ' string' AS var2)
+  SELECT id * var1, CONCAT(nome, var2),  zona * var1 FROM pessoa, cte;
+```
+
+# -----
+
+```sql
+  CREATE TABLE tipo(
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    tipo VARCHAR(100) NOT NULL
+  );
+```
+
+```sql
+  CREATE TABLE animal(
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    tipo_id BIGINT REFERENCES tipo(id),
+    genero CHAR(1) CHECK(genero IS NULL OR genero IN ('M', 'F'))
+  );
+```
+
+```sql
+  UPDATE animal SET SELECT tipo_id = NULLIF((RANDOM() * 5)::INT, 0);
+```
+
+```sql
+  CREATE TABLE veterinario(
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    tipo_animal_id BIGINT REFERENCES tipo(id)
+  );
+```
+
+```sql
+  UPDATE veterinario SET tipo_animal_id = RANDOM() * 4 + 1;
+```
+
+
+```sql
+  SELECT * FROM animal a JOIN tipo t ON a.tipo_id = t.id
+      JOIN veterinario v ON v.tipo_animal_id = t.id;
+```
+
+
 
 # Sub queries
 
