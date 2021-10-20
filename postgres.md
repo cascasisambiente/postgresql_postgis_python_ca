@@ -697,7 +697,6 @@ Usar WHERE (quase) sempre!!
 
 ```sql
   INSERT INTO pessoa (
-    id,
     nome,
     ativo,
     inicio_atividade,
@@ -705,8 +704,10 @@ Usar WHERE (quase) sempre!!
     email,
     local_nascimento,
     distrito
-  ) VALUES (200, 'João', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal', 'Braga');
+  ) VALUES ('João', true, now(), '2001-01-02', 'joao@foo.com', 'Portugal', 'Braga');
 ```
+x2
+
 ## On conflict
 
 ```sql
