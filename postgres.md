@@ -712,7 +712,6 @@ x2
 
 ```sql
   INSERT INTO pessoa (
-    id,
     nome,
     ativo,
     inicio_atividade,
@@ -720,13 +719,12 @@ x2
     email,
     local_nascimento,
     distrito
-  ) VALUES (200, 'Paulo Silva', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal', 'Braga')
-  ON CONFLICT (id) DO NOTHING;
+  ) VALUES ('João', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal', 'Braga')
+  ON CONFLICT (nome, local_nascimento) DO NOTHING;
 ```
 
 ```sql
   INSERT INTO pessoa (
-    id,
     nome,
     ativo,
     inicio_atividade,
@@ -734,17 +732,15 @@ x2
     email,
     local_nascimento,
     distrito
-  ) VALUES (200, 'Paulo Silva', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal', 'Braga')
-  ON CONFLICT (id) DO UPDATE SET nome = EXCLUDED.nome;
+  ) VALUES ('João', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal', 'Braga')
+  ON CONFLICT (nome, local_nascimento) DO UPDATE SET nome = 'António', local_nascimento=EXCLUDED.local_nascimento;
 ```
 
 # Foreign keys
 
-Relações um para um
 
 ```sql
   ALTER TABLE pessoa ADD COLUMN carro_id BIGINT REFERENCES carro (id);
-  ALTER TABLE pessoa ADD UNIQUE (carro_id);
 ```
 
 ```sql
@@ -752,23 +748,22 @@ Relações um para um
 ```
 
 ```sql
-  UPDATE pessoa SET carro_id = 18500 WHERE id = 20; 
+  UPDATE pessoa SET carro_id = 18500 WHERE id = 12; 
 ```
 
 ```sql
-  UPDATE pessoa SET carro_id = 18 WHERE id = 20; 
+  UPDATE pessoa SET carro_id = 3 WHERE id = 12; 
 ```
 
 ```sql
-  SELECT * FROM pessoa WHERE id = 20;
+  SELECT * FROM pessoa WHERE id = 12;
 ```
 
 ```sql
-  UPDATE pessoa SET carro_id = 18 WHERE id = 23; 
-```
-
-```sql
-  UPDATE pessoa SET carro_id = 20 WHERE id = 23; 
+  UPDATE pessoa SET carro_id = 1 WHERE id = 23; 
+  UPDATE pessoa SET carro_id = 7 WHERE id = 15; 
+  UPDATE pessoa SET carro_id = 2 WHERE id = 5;
+  UPDATE pessoa SET carro_id = 4 WHERE id IN (26, 14, 18);
 ```
 
 ```sql
@@ -798,7 +793,7 @@ Relações um para um
 ```
 
 ```sql
-  SELECT p.nome, c.fabricante, c.modelo FROM pessoa p JOIN carro c ON p.carro_id = c.id;
+  SELECT p.nome, p.data_nascimento, c.fabricante, c.modelo FROM pessoa p JOIN carro c ON p.carro_id = c.id;
 ```
 
 # Other joins
@@ -822,14 +817,9 @@ Relações um para um
 # Union
 
 ```sql
-  SELECT id, nome FROM pessoa UNION SELECT id, modelo FROM carro;
+  SELECT id, nome FROM pessoa UNION (ALL) SELECT id, modelo FROM carro;
 ```
 
-Repetidos
-
-```sql
-  SELECT id, nome FROM pessoa UNION ALL SELECT id, modelo FROM carro;
-```
 
 # Delete fk
 
