@@ -1,4 +1,6 @@
-# Tipos de dados adicionais (geometrias)
+# postgis
+
+## Tipos de dados adicionais (geometry, geography e raster)
 
 - **POINT** - uma coordenada única, habitualmente – mas não necessariamente - bidimensional
 - **LINESTRING** - um conjunto de duas ou mais coordenadas, com interpretação linear do caminho entre as coordenadas
@@ -9,8 +11,10 @@
 - **MULTIPOLYGON** - conjunto de polígonos - polygons
 - **GEOMETRYCOLLECTION** - um conjunto heterogéneo de geometrias
 
+## Novsa funções
 
-# Indíces
+## Indíces espaciais mais eficientes
+
 
 - **B-tree** (não espaciais, ordenamento fácil)
 - **R-tree** (espacial, postgis)
