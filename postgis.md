@@ -32,6 +32,7 @@
 - **builders** - que usam inputs geométricos e geram novos outputs alterados (tais como unions, differences, buffers, convex hulls, etc.)
 - **aggregates** - que a partir de conjuntos de geometrias devolvem resultados únicos (union é a mais comum)
 
+<hr>
 
 ```sql
   CREATE EXTENSION postgis;
