@@ -54,5 +54,23 @@ Criar tabela
   );
 ```
 
+```sql
+  INSERT INTO points (nome, geom) VALUES (’p1’, ST_GeomFromText(’POINT(0 0)’));
+  INSERT INTO points (nome, geom) VALUES (’p2’, ST_GeomFromText(’POINT(5 0)’));
+  INSERT INTO points (nome, geom) VALUES (’p3’, ST_GeomFromText(’POINT(0 5)’));
+```
+
+```sql
+  \d geometry_columns
+```
+
+```sql
+  SELECT * FROM geometry_columns;
+```
+
+```sql
+  SELECT st_srid(geom) FROM points;
+```
+
 
 
