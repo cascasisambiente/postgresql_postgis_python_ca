@@ -22,7 +22,7 @@
 - **grids** (espaciais)
 
 
-# Funcionalidades adicinais de bases de dados geográficas
+## Funcionalidades adicinais de bases de dados geográficas
 
 - **construction** - para construção de geometrias a partir de representações de texto e binárias
 - **serialization** - para fazer output de geometrias em diversas representações de texto e binárias (tais como KML, GML, JSON e SVG)
@@ -34,7 +34,15 @@
 
 <hr>
 
+# Usar postgis
+
 ```sql
   CREATE EXTENSION postgis;
 ```
+
+```sql
+  ALTER EXTENSION postgis UPDATE;
+```
+
+
 
