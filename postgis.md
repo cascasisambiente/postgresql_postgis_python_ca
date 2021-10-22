@@ -128,3 +128,8 @@ https://postgis.net/docs/index.html
   SELECT ROUND(SUM(ST_Perimeter(ST_Transform(geom, 3763)))::NUMERIC/1000, 1) as km FROM concelhos WHERE name_2 = 'Cascais';
 ```
 
+### Representação de geometrias
+
+```sql
+  SELECT ST_AsTEXT(ST_Centroid(geom)), ST_AsEWKT(ST_Centroid(geom)), ST_X(ST_Centroid(geom)), ST_Y(ST_Centroid(geom)) FROM concelhos WHERE name_2 = 'Cascais';
+```
