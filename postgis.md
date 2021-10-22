@@ -85,5 +85,46 @@ Criar tabela
 https://postgis.net/docs/index.html
 
 
+*Qual o comprimento de cada linha de água de Cascais, em km*
 
+```sql
+  SELECT nome, SUM(ST_Length(geom))/1000 as km FROM linha_agua_cascais WHERE nome IS NOT NULL GROUP BY nome;
+```
+
+!!!!
+
+```sql
+  SELECT nome, SUM(ST_Length(ST_Transform(geom, 3763)))/1000 as km FROM linha_agua_cascais GROUP BY nome;
+```
+
+*Qual o comprimento de todas as linha de água de Cascais, em km*
+
+
+```sql
+  SELECT SUM(ST_Length(ST_Transform(geom, 3763)))/1000 as km FROM linha_agua_cascais;
+```
+
+*Qual a área em, km2, do distrito de Viseu (código do distrito = name_1)*
+
+
+```sql
+  SELECT SUM(ST_Area(ST_Transform(geom, 3763)))/1000000 as km2 FROM concelhos WHERE name_1 = 'Viseu';
+```
+
+*Qual o nome e a área, do distrito com maior área (código do distrito = name_1)*
+
+
+```sql
+  SELECT name_1, SUM(ST_Area(ST_Transform(geom, 3763)))/1000000 as km2 FROM concelhos GROUP BY name_1 ORDER BY km DESC LIMIT 1;
+```
+
+*Qual o perímetro, em km arredondado à décima de unidade, do concelho de Cascais (código do concelho = name_2)*
+
+```sql
+  SELECT ROUND(SUM(ST_Perimeter(ST_Transform(geom, 3763)))/1000, 1) as km FROM concelhos WHERE name_2 = 'Cascais';
+```
+
+```sql
+  SELECT ROUND(SUM(ST_Perimeter(ST_Transform(geom, 3763)))::NUMERIC/1000, 1) as km FROM concelhos WHERE name_2 = 'Cascais';
+```
 
