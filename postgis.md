@@ -44,5 +44,15 @@
   ALTER EXTENSION postgis UPDATE;
 ```
 
+Criar tabela
+
+```sql
+  CREATE TABLE points (
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    nome VARCHAR(50),
+    geom geometry(Point, 4326)
+  );
+```
+
 
 
