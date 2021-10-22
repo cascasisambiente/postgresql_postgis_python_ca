@@ -11,7 +11,7 @@
 - **MULTIPOLYGON** - conjunto de polígonos - polygons
 - **GEOMETRYCOLLECTION** - um conjunto heterogéneo de geometrias
 
-## Novsa funções
+## Novas funções
 
 ## Indíces espaciais mais eficientes
 
@@ -33,5 +33,7 @@
 - **aggregates** - que a partir de conjuntos de geometrias devolvem resultados únicos (union é a mais comum)
 
 
-
+```sql
+  CREATE EXTENSION postgis;
+```
 
