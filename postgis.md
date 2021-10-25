@@ -174,8 +174,13 @@ https://postgis.net/docs/index.html
 *Qual a distância entre a Ribeira do Assobio (coluna nome) e o centroide de Cascais*
 
 ```sql
-  SELECT ST_Distance(ST_Transform(c.centroid, 3763), ST_Transform(lac.geom, 3763)) as m FROM concelhos c, linha_agua_cascais lac WHERE c.name_2 = 'Cascais' AND lac.nome = 'Ribeira do Assobio';
+  SELECT ST_Distance(ST_Transform(c.centroid, 3763), ST_Transform(lac.geom, 3763)) as m 
+    FROM concelhos c, linha_agua_cascais lac 
+    WHERE c.name_2 = 'Cascais' AND lac.nome = 'Ribeira do Assobio';
 ```
+
+
+### minline, maxline, closestpoint
 
 
 *Quais os concelhos cujo centroíde está fora do concelho, e as distâncias, em metros, entre o centroide e o concelho* 
@@ -183,6 +188,5 @@ https://postgis.net/docs/index.html
 ```sql
   SELECT name_2, ST_Distance(ST_Transform(centroid, 3763), ST_Transform(geom, 3763)) as m FROM concelhos WHERE NOT ST_Intersects(centroid, geom);
 ```
-
 
 
