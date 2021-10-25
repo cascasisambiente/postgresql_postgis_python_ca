@@ -289,8 +289,25 @@ https://postgis.net/docs/index.html
 ```
 
 
+*Quais os concelhos que ficam afastados mais de 100km da rede ferroviária"
 
 
+```sql
+  SELECT c.name_2, ST_Distance(ST_Transform(c.geom, 3763), ST_Transform(r.geom, 3763)) km
+    FROM concelhos c, railway r
+    WHERE ST_Distance(ST_Transform(c.geom, 3763), ST_Transform(r.geom, 3763)) > 100
+    ORDER BY km DESC;
+```
+
+```sql
+  WITH rail AS (
+    SELECT ST_Union(geom) geom FROM railway
+  )
+  SELECT c.name_2, ST_Distance(ST_Transform(c.centroid, 3763), ST_Transform(r.geom, 3763)) km
+    FROM concelhos c, rail r
+    WHERE ST_Distance(ST_Transform(c.geom, 3763), ST_Transform(r.geom, 3763)) > 100
+    ORDER BY km DESC;
+```
 
 
 *Quais os concelhos cujo centroíde está fora do concelho, e as distâncias, em metros, entre o centroide e o concelho* 
