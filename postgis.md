@@ -133,3 +133,30 @@ https://postgis.net/docs/index.html
 ```sql
   SELECT ST_AsTEXT(ST_Centroid(geom)), ST_AsEWKT(ST_Centroid(geom)), ST_X(ST_Centroid(geom)), ST_Y(ST_Centroid(geom)) FROM concelhos WHERE name_2 = 'Cascais';
 ```
+
+### Acrescentar geometrias
+
+```sql
+  ALTER TABLE concelhos ADD COLUMN centroid geometry(Point, 4326);
+```
+
+*Preencher coluna centroid*
+
+```sql
+  UPDATE concelhos SET centroid = ST_Centroid(geom);
+```
+
+*Qual a área de todos os concelhos com*
+
+```sql
+  UPDATE concelhos SET centroid = ST_Centroid(geom);
+```
+
+*Quais os concelhos cujo centroíde está fora do concelho, e as distâncias, em metros, entre o centroide e o concelho*
+
+```sql
+  SELECT name_2, ST_Distance(ST_Transform(centroid, 3763), ST_Transform(geom, 3763)) as m FROM concelhos WHERE NOT ST_Intersects(centroid, geom);
+```
+
+
+
