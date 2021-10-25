@@ -224,7 +224,7 @@ https://postgis.net/docs/index.html
 
 ```sql
   CREATE TABLE minline AS (
-    SELECT ST_ShortestLine(c.centroid, lac.geom)
+    SELECT ST_ShortestLine(c.centroid, lac.geom), c.name_1, lac.nome
       FROM concelhos c, linha_agua_cascais lac 
       WHERE c.name_2 = 'Cascais'
       );
@@ -237,7 +237,7 @@ https://postgis.net/docs/index.html
 
 ```sql
   CREATE TABLE maxline AS (
-    SELECT ST_LongestLine(c.centroid, lac.geom)
+    SELECT ST_LongestLine(c.centroid, lac.geom), c.name_1, lac.nome
       FROM concelhos c, linha_agua_cascais lac 
       WHERE c.name_2 = 'Cascais'
       );
@@ -246,7 +246,7 @@ https://postgis.net/docs/index.html
 
 ```sql
   CREATE TABLE closepoint AS (
-    SELECT ST_ClosestPoint(lac.geom, c.centroid)
+    SELECT ST_ClosestPoint(lac.geom, c.centroid), c.name_1, lac.nome
       FROM concelhos c, linha_agua_cascais lac 
       WHERE c.name_2 = 'Cascais'
       );
@@ -255,7 +255,43 @@ https://postgis.net/docs/index.html
 
 ```sql
   DROP TABLE minline;
+  DROP TABLE maxline;
+  DROP TABLE closepoint;
 ```
+
+```sql
+  CREATE TABLE minline AS (
+    SELECT ST_ShortestLine(c.centroid, ST_UNION(lac.geom))::GEOMETRY('LINESTRING', 4326), c.name_1, lac.nome
+      FROM concelhos c, linha_agua_cascais lac 
+      WHERE c.name_2 = 'Cascais'
+      GROUP BY lac.nome, c.name_1, c.centroid
+      );
+```
+
+
+```sql
+  CREATE TABLE maxline AS (
+    SELECT ST_LongestLine(c.centroid, ST_UNION(lac.geom))::GEOMETRY('LINESTRING', 4326), c.name_1, lac.nome
+      FROM concelhos c, linha_agua_cascais lac 
+      WHERE c.name_2 = 'Cascais'
+      GROUP BY lac.nome, c.name_1, c.centroid
+      );
+```
+
+
+```sql
+  CREATE TABLE closepoint AS (
+    SELECT ST_ClosestPoint(ST_UNION(lac.geom), c.centroid)::GEOMETRY('POINT', 4326), c.name_1, lac.nome
+      FROM concelhos c, linha_agua_cascais lac 
+      WHERE c.name_2 = 'Cascais'
+      GROUP BY lac.nome, c.name_1, c.centroid
+      );
+```
+
+
+
+
+
 
 *Quais os concelhos cujo centroíde está fora do concelho, e as distâncias, em metros, entre o centroide e o concelho* 
 
