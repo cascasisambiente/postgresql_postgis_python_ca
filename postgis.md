@@ -222,6 +222,41 @@ https://postgis.net/docs/index.html
 ### minline, maxline, closestpoint
 
 
+```sql
+  CREATE TABLE minline AS (
+    SELECT ST_ShortestLine(c.centroid, lac.geom)
+      FROM concelhos c, linha_agua_cascais lac 
+      WHERE c.name_2 = 'Cascais'
+      );
+```
+
+```sql
+  \d minline
+```
+
+
+```sql
+  CREATE TABLE maxline AS (
+    SELECT ST_LongestLine(c.centroid, lac.geom)
+      FROM concelhos c, linha_agua_cascais lac 
+      WHERE c.name_2 = 'Cascais'
+      );
+```
+
+
+```sql
+  CREATE TABLE closepoint AS (
+    SELECT ST_ClosestPoint(lac.geom, c.centroid)
+      FROM concelhos c, linha_agua_cascais lac 
+      WHERE c.name_2 = 'Cascais'
+      );
+```
+
+
+```sql
+  DROP TABLE minline;
+```
+
 *Quais os concelhos cujo centroíde está fora do concelho, e as distâncias, em metros, entre o centroide e o concelho* 
 
 ```sql
