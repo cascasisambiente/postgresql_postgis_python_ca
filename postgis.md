@@ -289,13 +289,14 @@ https://postgis.net/docs/index.html
 ```
 
 
-*Quais os concelhos que ficam afastados mais de 100km da rede ferroviária"
+*Quais os concelhos do Distrito de Bragança que ficam afastados mais de 100km da rede ferroviária"
 
 
 ```sql
-  SELECT c.name_2, ST_Distance(ST_Transform(c.geom, 3763), ST_Transform(r.geom, 3763)) km
+  SELECT c.name_2, ST_Distance(ST_Transform(c.centroid, 3763), ST_Transform(r.geom, 3763)) / 1000 km
     FROM concelhos c, railway r
-    WHERE ST_Distance(ST_Transform(c.geom, 3763), ST_Transform(r.geom, 3763)) > 100
+    WHERE ST_Distance(ST_Transform(c.geom, 3763), ST_Transform(r.geom, 3763)) / 1000 > 50
+      AND c.name_1 = 'Bragança'
     ORDER BY km DESC;
 ```
 
@@ -303,9 +304,10 @@ https://postgis.net/docs/index.html
   WITH rail AS (
     SELECT ST_Union(geom) geom FROM railway
   )
-  SELECT c.name_2, ST_Distance(ST_Transform(c.centroid, 3763), ST_Transform(r.geom, 3763)) km
+  SELECT c.name_2, ST_Distance(ST_Transform(c.centroid, 3763), ST_Transform(r.geom, 3763)) / 1000 km
     FROM concelhos c, rail r
-    WHERE ST_Distance(ST_Transform(c.geom, 3763), ST_Transform(r.geom, 3763)) > 100
+    WHERE ST_Distance(ST_Transform(c.geom, 3763), ST_Transform(r.geom, 3763)) / 1000 > 50
+      AND c.name_1 = 'Bragança'
     ORDER BY km DESC;
 ```
 
@@ -317,5 +319,23 @@ https://postgis.net/docs/index.html
     FROM concelhos 
     WHERE NOT ST_Intersects(centroid, geom);
 ```
+
+
+### buffer
+
+*Criar um buffer de 100 em cada linha de água*
+
+multilinestring => buffer vai ser multipolygon
+
+```sql
+  ALTER TABLE linha_agua_cascais ADD COLUMN buffer GEOMETRY('MULTIPOLYGON', 4326);
+ ```
+ 
+ 
+ ```sql
+  UPDATE linha_agua_cascais SET buffer = ST_Multi(ST_Buffer(geom, 100));
+ ```
+
+várias opções: https://www.postgis.net/docs/ST_Buffer.html
 
 
