@@ -312,12 +312,6 @@ https://postgis.net/docs/index.html
 ```
 
 
-*Quais os concelhos cujo centroíde está fora do concelho, e as distâncias, em metros, entre o centroide e o concelho* 
-
-```sql
-  SELECT name_2, ST_Distance(ST_Transform(centroid, 3763), ST_Transform(geom, 3763)) as m 
-    FROM concelhos 
-    WHERE NOT ST_Intersects(centroid, geom);
 ```
 
 
@@ -360,4 +354,14 @@ várias opções: https://www.postgis.net/docs/ST_Buffer.html
     WHERE ST_Within(e.geom, lac.buffer);
  ```
  
+ ST_Intersects vs. ST_Within
+ 
+*Quais os concelhos cujo centroíde está fora do concelho, e as distâncias, em metros, entre o centroide e o concelho* 
+
+```sql
+  SELECT name_2, ST_Distance(ST_Transform(centroid, 3763), ST_Transform(geom, 3763)) as m 
+    FROM concelhos 
+    WHERE NOT ST_Intersects(centroid, geom);
+    
+    
 
