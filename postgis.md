@@ -146,11 +146,32 @@ https://postgis.net/docs/index.html
   UPDATE concelhos SET centroid = ST_Centroid(geom);
 ```
 
-*Qual a área de todos os concelhos com*
+*Quantos concelhos têm área superior a 1000km2 (código do concelho = name_2)*
 
 ```sql
-  UPDATE concelhos SET centroid = ST_Centroid(geom);
+  SELECT COUNT(*) FROM concelhos WHERE ST_Area(ST_Transform(geom, 3763)) / 1000000 > 1000;
 ```
+
+*Quantos concelhos têm área superior à área do concelho de Cascais (código do concelho = name_2)*
+
+```sql
+  WITH cascais AS (
+    SELECT ST_Area(ST_Transform(geom, 3763)) as area FROM concelhos WHERE name_2 = 'Cascais'
+  )
+  SELECT COUNT(*) FROM concelhos, cascais WHERE ST_Area(ST_Transform(geom, 3763)) > cascais.area;
+```
+
+*Ordenar os distritos alfabeticamente (código do distrito = name_1)*
+
+```sql
+  SELECT DISTINCT(name_1) FROM concelhos ORDER BY name_1;
+```
+
+```sql
+  SELECT name_1 FROM concelhos GROUP BY name_1 ORDER BY name_1;
+```
+
+
 
 *Quais os concelhos cujo centroíde está fora do concelho, e as distâncias, em metros, entre o centroide e o concelho*
 
