@@ -338,4 +338,26 @@ multilinestring => buffer vai ser multipolygon
 
 várias opções: https://www.postgis.net/docs/ST_Buffer.html
 
+```sql
+  \d edificios
+ ```
+
+*Quantas familias estão dentro do buffer das linhas de água*
+
+```sql
+  SELECT SUM(familias) 
+    FROM edificio e, linha_agua_cascais lac 
+    WHERE ST_Within(e.geom, lac.buffer);
+ ```
+ 
+ 
+```sql
+  WITH linhas_agua AS (
+    SELECT ST_Union(buffer) buffer FROM linha_agua_cascais
+  )
+  SELECT SUM(familias) 
+    FROM edificio e, linhas_agua lac 
+    WHERE ST_Within(e.geom, lac.buffer);
+ ```
+ 
 
