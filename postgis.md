@@ -416,3 +416,23 @@ várias opções: https://www.postgis.net/docs/ST_Buffer.html
  
  ### multi vs single
  
+  
+ ```sql
+    SELECT ST_Multi(geom_field) FROM table;
+ ```
+ 
+ https://postgis.net/docs/ST_Dump.html
+   
+ ```sql
+    SELECT ST_Dump(geom) FROM freguesia;
+ ```
+ 
+  ```sql
+    SELECT (ST_Dump(geom)).path, (ST_Dump(geom)).geom FROM freguesia;
+ ```
+  
+  ```sql
+     SELECT (ST_Dump(geom)).path, (ST_Dump(geom)).geom FROM eixos_de_via;
+ ```
+ 
+
