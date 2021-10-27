@@ -339,7 +339,7 @@ várias opções: https://www.postgis.net/docs/ST_Buffer.html
 *Quantas familias estão dentro do buffer das linhas de água*
 
 ```sql
-  SELECT SUM(familias) 
+  SELECT SUM(familias)::INT 
     FROM edificio e, linha_agua_cascais lac 
     WHERE ST_Within(e.geom, lac.buffer);
  ```
@@ -349,7 +349,7 @@ várias opções: https://www.postgis.net/docs/ST_Buffer.html
   WITH linhas_agua AS (
     SELECT ST_Union(buffer) buffer FROM linha_agua_cascais
   )
-  SELECT SUM(familias) 
+  SELECT SUM(familias)::INT 
     FROM edificio e, linhas_agua lac 
     WHERE ST_Within(e.geom, lac.buffer);
  ```
@@ -362,6 +362,28 @@ várias opções: https://www.postgis.net/docs/ST_Buffer.html
   SELECT name_2, ST_Distance(ST_Transform(centroid, 3763), ST_Transform(geom, 3763)) as m 
     FROM concelhos 
     WHERE NOT ST_Intersects(centroid, geom);
+    
+    
+*Quantos edificios por freguesia em Cascais*
+
+```sql
+  SELECT f.nome, COUNT(*) count
+    FROM freguesia f, edificio e 
+    WHERE ST_Intersects(f.geom, e.geom)
+    GROUP BY f.nome;
+ ```
+ 
+*Quantos edificios por freguesia em Cascais com mais de 10000 edificios*
+
+```sql
+  SELECT f.nome, COUNT(*) count
+    FROM freguesia f, edificio e 
+    WHERE ST_Intersects(f.geom, e.geom)
+    GROUP BY f.nome
+    HAVING COUNT(*) > 10000;
+ ```
+ 
+    
     
     
 
