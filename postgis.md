@@ -385,7 +385,20 @@ várias opções: https://www.postgis.net/docs/ST_Buffer.html
  
  *Qual a freguesia de cada secao estatistica*
     
+ 
+```sql
+  SELECT f.nome, s.codigo
+    FROM freguesia f, seccaoestatistica s
+    WHERE ST_Intersects(s.geom, f.geom)
+    ORDER BY s.codigo;
+ ```
+ 
+ ```sql
+  SELECT f.nome, s.codigo
+    FROM freguesia f, seccaoestatistica s
+    WHERE ST_Within(s.geom, f.geom)
+    ORDER BY s.codigo;
+ ```
     
-    
- se com várias freguesias (ST_Intersects vs. ST_Within)
+ se com várias freguesias (ST_Intersects vs. ST_Within) border contact
 
