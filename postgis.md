@@ -400,5 +400,7 @@ várias opções: https://www.postgis.net/docs/ST_Buffer.html
     ORDER BY s.codigo;
  ```
     
- se com várias freguesias (ST_Intersects vs. ST_Within) border contact
+ se com várias freguesias (ST_Intersects vs. ST_Within vs. ST_Overlaps) border contact
+
+*Pecentagem da área da cada concelho"
 
