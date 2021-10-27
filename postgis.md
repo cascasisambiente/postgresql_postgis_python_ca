@@ -383,7 +383,9 @@ várias opções: https://www.postgis.net/docs/ST_Buffer.html
     HAVING COUNT(*) > 10000;
  ```
  
+ *Qual a freguesia de cada secao estatistica*
     
     
     
+ se com várias freguesias (ST_Intersects vs. ST_Within)
 
