@@ -455,3 +455,7 @@ ST_IsValid
      CREATE INDEX edificio_gidx ON edificio
         USING GIST (geom);
   ```
+  
+     ```sql
+     VACUUM VACUUM ANALYZE;
+  ```
