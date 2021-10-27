@@ -414,3 +414,5 @@ várias opções: https://www.postgis.net/docs/ST_Buffer.html
     ORDER BY percentagem DESC;
  ```
  
+ ### multi vs single
+ 
