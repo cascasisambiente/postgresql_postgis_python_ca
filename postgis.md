@@ -435,4 +435,18 @@ várias opções: https://www.postgis.net/docs/ST_Buffer.html
      SELECT (ST_Dump(geom)).path, (ST_Dump(geom)).geom FROM eixos_de_via;
  ```
  
+ ### Simplificar geometrias
+ 
+ https://postgis.net/docs/ST_Simplify.html
+ 
+   ```sql
+     CREATE VIEW freguesia_simplificada AS (
+      SELECT nome, ST_transform(ST_Simplify(ST_Transform(geom, 3763), 1000), 4326)::geometry('Multipolygon' , 4326) FROM freguesia
+     );
+ ```
+
+ST_SimplifyPreserveTopology
+ST_IsValid
+
+
 
