@@ -451,4 +451,7 @@ ST_IsValid
 
 ## Indices
 
-
+   ```sql
+     CREATE INDEX edificio_gidx ON edificio
+        USING GIST (geom);
+  ```
