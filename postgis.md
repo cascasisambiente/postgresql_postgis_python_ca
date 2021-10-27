@@ -401,6 +401,16 @@ várias opções: https://www.postgis.net/docs/ST_Buffer.html
  ```
     
  se com várias freguesias (ST_Intersects vs. ST_Within vs. ST_Overlaps) border contact
+ 
 
-*Pecentagem da área da cada concelho"
+*Área e percentagem da área da cada concelho"
 
+ ```sql
+ WITH portugal AS (
+    SELECT ST_Union(geom) geom FROM concelhos
+  )
+  SELECT c.name_2, ST_Area(ST_Transform(c.geom, 3763)) / 1000000 , ST_Area(ST_Transform(c.geom, 3763)) * 100 /ST_Area(ST_Transform(p.geom, 3763)) AS percentagem
+    FROM concelhos c, portugal p
+    ORDER BY percentagem DESC;
+ ```
+ 
