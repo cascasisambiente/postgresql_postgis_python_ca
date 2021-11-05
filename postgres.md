@@ -1,3 +1,24 @@
+
+
+# Conceitos
+
+## TABLE (tabela)
+
+![image](https://user-images.githubusercontent.com/60735895/137928978-b9ea9c3a-4efc-4dea-93db-0c9f758faa4a.png)
+
+## FIELD (campo)
+
+## ROW/RECORD (registo)
+
+![image](https://user-images.githubusercontent.com/60735895/137929167-5ca83e3b-27ca-4a5c-a412-9b57ad2acaa7.png)
+
+## COLUMN (coluna)
+
+![image](https://user-images.githubusercontent.com/60735895/137929259-ec7069d3-e786-49a3-973a-f08d457e036f.png)
+
+## NULL (vazio)
+
+
 # Comandos
 
 DDL - Data Definition Language
@@ -30,25 +51,6 @@ DQL - Data Query Language
 | SELECT | Devolve um conjunto de registos |
 
 
-# Conceitos
-
-## TABLE (tabela)
-
-![image](https://user-images.githubusercontent.com/60735895/137928978-b9ea9c3a-4efc-4dea-93db-0c9f758faa4a.png)
-
-## FIELD (campo)
-
-## ROW/RECORD (registo)
-
-![image](https://user-images.githubusercontent.com/60735895/137929167-5ca83e3b-27ca-4a5c-a412-9b57ad2acaa7.png)
-
-## COLUMN (coluna)
-
-![image](https://user-images.githubusercontent.com/60735895/137929259-ec7069d3-e786-49a3-973a-f08d457e036f.png)
-
-## NULL (vazio)
-
-
 # MODOS DE ACESSO
 
 1. terminal
@@ -57,7 +59,7 @@ DQL - Data Query Language
 4. python
 
 
-# ACEDR VIA TERMINAL (psql)
+# ACEDER VIA TERMINAL (psql)
 
 ```console
   psql --help
@@ -1052,6 +1054,25 @@ x2
 ```
 
 # User defined functions
+
+```sql
+  CREATE FUNCTION nome_da_funcao(parametro1 tipo, parametro2 tipo)
+    RETURNS tipo AS
+      BEGIN
+       -- logica
+      END;
+    LANGUAGE nome_da_linguagem;
+```
+
+```sql
+  CREATE FUNCTION incrementa(val INTEGER) 
+    RETURNS INTEGER AS $$
+      BEGIN
+        RETURN val + 1;
+      END; $$
+    LANGUAGE PLPGSQL;
+```
+Criar functions via pgadmin4
 
 
 # Triggers
