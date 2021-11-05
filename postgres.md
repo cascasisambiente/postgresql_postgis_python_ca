@@ -1075,6 +1075,9 @@ x2
 Criar functions via pgadmin4
 
 
+In Postgres, the main functional difference between a function and a stored procedure is that a function returns a result, whereas a stored procedure does not. This is because the intention behind a stored procedure is to perform some sort of activity and then finish, which would then return control to the caller.
+
+
 # Triggers
 
 Função invocada automaticamente quando ocorre um evento, associado a uma tabela:
