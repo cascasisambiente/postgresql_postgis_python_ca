@@ -281,12 +281,14 @@ Executar instruções SQL num ficheiro externo
 Selecionar todos os campo de todos os registos duma tabela
 
 ```sql
-  SELECT * FROM pessoa;
+  SELECT * 
+    FROM pessoa;
 ```
 
 Selecionar vários campos de todos os registos duma tabela
 ```sql
-  SELECT nome, ativo FROM pessoa;
+  SELECT nome, ativo 
+    FROM pessoa;
 ```
 
 ### Order by
@@ -294,16 +296,22 @@ Selecionar vários campos de todos os registos duma tabela
 Selecionar os registos duma tabela ordenados por uma deternimanda coluna
 
 ```sql
-  SELECT * FROM pessoa ORDER BY data_nascimento;
+  SELECT * 
+    FROM pessoa 
+    ORDER BY data_nascimento;
 ```
 Selecionar os registos duma tabela ordenados, de modo decrescente, por uma deternimanda coluna
 ```sql
-  SELECT * FROM pessoa ORDER BY id DESC;
+  SELECT * 
+    FROM pessoa 
+    ORDER BY id DESC;
 ```
 
 Selecionar os registos duma tabela ordenados por uma várias colunas
 ```sql
-  SELECT * FROM pessoa ORDER BY ativo ASC, id DESC;
+  SELECT * 
+    FROM pessoa 
+    ORDER BY ativo ASC, id DESC;
 ```
 
 ### Limit e offset
@@ -311,19 +319,27 @@ Selecionar os registos duma tabela ordenados por uma várias colunas
 Limitar o número de registos devolvidos 
 
 ```sql
-  SELECT * FROM pessoa LIMIT 2;
+  SELECT * 
+    FROM pessoa 
+    LIMIT 2;
 ```
 
 Limitar e deslocar o número de registos devolvidos 
 
 ```sql
-  SELECT * FROM pessoa ORDER BY id ASC OFFSET 5 LIMIT 3;
+  SELECT * 
+    FROM pessoa 
+    ORDER BY id ASC 
+    OFFSET 5 LIMIT 3;
 ```
 
 Limitar e deslocar o número de registos devolvidos (SQL válido, mas menos utilizado)
 
 ```sql
-  SELECT * FROM pessoa ORDER BY id ASC OFFSET 5 FETCH FIRST 3 ROW ONLY;
+  SELECT * 
+    FROM pessoa 
+    ORDER BY id ASC 
+    OFFSET 5 FETCH FIRST 3 ROW ONLY;
 ```
 
 ### Distinct
@@ -331,7 +347,9 @@ Limitar e deslocar o número de registos devolvidos (SQL válido, mas menos util
 Devolver um campo (ou conjunto de campos) distintos
 
 ```sql
-  SELECT DISTINCT(local_nascimento) FROM pessoa ORDER BY local_nascimento;
+  SELECT DISTINCT(local_nascimento) 
+    FROM pessoa 
+    ORDER BY local_nascimento;
 ```
 
 ### Where
@@ -339,17 +357,24 @@ Devolver um campo (ou conjunto de campos) distintos
 Filtar registos devolvidos por condição de um campo
 
 ```sql
-  SELECT * FROM pessoa WHERE ativo = true;
+  SELECT * 
+    FROM pessoa 
+    WHERE ativo = true;
 ```
 
 Filtar registos devolvidos por condições de vários campos uilizando o operador AND
 ```sql
-  SELECT * FROM pessoa WHERE ativo = true AND local_nascimento = 'China';
+  SELECT * 
+    FROM pessoa 
+    WHERE ativo = true AND local_nascimento = 'China';
 ```
 
 Filtar registos devolvidos por condições de vários campos uilizando o operador AND e OR
 ```sql
-  SELECT * FROM pessoa WHERE (ativo = true AND local_nascimento = 'China') OR data_nascimento > '2012-01-01';
+  SELECT * 
+    FROM pessoa 
+    WHERE (ativo = true AND local_nascimento = 'China')  
+      OR data_nascimento > '2012-01-01';
 ```
 
 ### Comparation operators
@@ -367,7 +392,9 @@ Filtar registos devolvidos por condições de vários campos uilizando o operado
 Pesquisar num conjunto
 
 ```sql
-  SELECT * FROM pessoa WHERE local_nascimento IN ('Poland', 'Canada');
+  SELECT * 
+    FROM pessoa 
+    WHERE local_nascimento IN ('Poland', 'Canada');
 ```
 
 ### Between
@@ -375,7 +402,10 @@ Pesquisar num conjunto
 Pesquisar num intervalo
 
 ```sql
-  SELECT * FROM pessoa WHERE data_nascimento BETWEEN '2001-01-01' and '2001-07-01';
+  SELECT * 
+    FROM pessoa 
+    WHERE data_nascimento 
+    BETWEEN '2001-01-01' and '2001-07-01';
 ```
 
 ### Like
@@ -385,18 +415,24 @@ Pesquisar em cadeias de texto
 https://www.postgresql.org/docs/13/functions-matching.html
 
 ```sql
-  SELECT * FROM pessoa WHERE email like 'wired.com';
+  SELECT * 
+    FROM pessoa 
+    WHERE email like 'wired.com';
 ```
 - % (0+ caracteres)
 - _ (1 caracter)
 
 
 ```sql
-  SELECT * FROM pessoa WHERE email like '%wired.com%';
+  SELECT * 
+    FROM pessoa 
+    WHERE email like '%wired.com%';
 ```
 
 ```sql
-  SELECT * FROM pessoa WHERE email ilike '%WiRed.com';
+  SELECT * 
+    FROM pessoa 
+    WHERE email ilike '%WiRed.com';
 ```
 
 
@@ -429,15 +465,24 @@ https://www.postgresql.org/docs/13/datatype-datetime.html
 Agregar resultados
 
 ```sql
-  SELECT local_nascimento, COUNT(*) FROM pessoa GROUP BY local_nascimento;
+  SELECT local_nascimento, COUNT(*) 
+    FROM pessoa 
+    GROUP BY local_nascimento;
 ```
 
 ```sql
-  SELECT local_nascimento, COUNT(*) as count FROM pessoa GROUP BY local_nascimento ORDER BY count DESC;
+  SELECT local_nascimento, COUNT(*) as count 
+    FROM pessoa 
+    GROUP BY local_nascimento 
+    ORDER BY count DESC;
 ```
 
 ```sql
-  SELECT local_nascimento, COUNT(*) as count FROM pessoa GROUP BY local_nascimento HAVING COUNT(*) > 2 ORDER BY count DESC;
+  SELECT local_nascimento, COUNT(*) as count 
+    FROM pessoa 
+    GROUP BY local_nascimento 
+      HAVING COUNT(*) > 2 
+    ORDER BY count DESC;
 ```
 
 https://www.postgresql.org/docs/13/functions-aggregate.html
@@ -459,17 +504,21 @@ Nota: HAVING vs. WHERE
 ```
 
 ```sql
-  SELECT MAX(preco), MIN(preco), AVG(preco) FROM carro;
+  SELECT MAX(preco), MIN(preco), AVG(preco) 
+    FROM carro;
 ```
 
 ```sql
-  SELECT MAX(preco), MIN(preco), ROUND(AVG(preco), 2) FROM carro;
+  SELECT MAX(preco), MIN(preco), ROUND(AVG(preco), 2) 
+    FROM carro;
 ```
 
 *Qual o valor mais elevado de cada fabricante?*
 
 ```sql
-  SELECT fabricante, MAX(preco) FROM carro GROUP BY fabricante;
+  SELECT fabricante, MAX(preco) 
+    FROM carro 
+    GROUP BY fabricante;
 ```
 
 ### Window functions
@@ -477,11 +526,13 @@ Nota: HAVING vs. WHERE
 https://www.postgresql.org/docs/13/tutorial-window.html
 
 ```sql
-  SELECT fabricante, modelo, MAX(preco) OVER (PARTITION BY fabricante) FROM carro;
+  SELECT fabricante, modelo, MAX(preco) OVER (PARTITION BY fabricante) 
+    FROM carro;
 ```
 
 ```sql
-  SELECT fabricante, modelo, MAX(preco) OVER (PARTITION BY fabricante, modelo) FROM carro;
+  SELECT fabricante, modelo, MAX(preco) OVER (PARTITION BY fabricante, modelo) 
+    FROM carro;
 ```
 
 
@@ -512,7 +563,8 @@ Valores pré-definidos - devolve o primeiro valor não null
 ```
 
 ```sql
-  SELECT COALESCE(email, 'sem email') FROM pessoa;
+  SELECT COALESCE(email, 'sem email') 
+    FROM pessoa;
 ```
 
 ## NULLIF
@@ -532,7 +584,8 @@ NULLIF(v1, v2) devolve null se v1 = v2, caso contrário devolve v1
 ```
 
 ```sql
-  SELECT nome, 1000/zona FROM pessoa;
+  SELECT nome, 1000/zona 
+    FROM pessoa;
 ```
 
 ```sql
@@ -540,16 +593,24 @@ NULLIF(v1, v2) devolve null se v1 = v2, caso contrário devolve v1
 ```
 
 ```sql
-  SELECT nome, 1000/zona FROM pessoa;
+  SELECT nome, 1000/zona 
+    FROM pessoa;
 ```
 
 *Null se zona = 0?*
 
 ```sql
-  SELECT nome, COALESCE(1000 / NULLIF(zona, 0), NULL) FROM pessoa;
+  SELECT nome, COALESCE(1000 / NULLIF(zona, 0), NULL) 
+    FROM pessoa;
 ```
 
 # CASE
+
+
+```sql
+  SELECT nome, CASE WHEN AGE(NOW(), data_nascimento) > '76 years' THEN 'Sénior' CASE WHEN AGE(NOW(), data_nascimento) > '76 years' THEN 'Sénior' CASE WHEN AGE(NOW(), data_nascimento) > '76 years' THEN 'Sénior' FROM pessoa;
+
+```
 
 # GREATEST and LEAST
 
