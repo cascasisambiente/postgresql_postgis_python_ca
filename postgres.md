@@ -606,6 +606,8 @@ NULLIF(v1, v2) devolve null se v1 = v2, caso contrário devolve v1
 
 # CASE
 
+Igual a if-then-else noutras linguagens de programação
+
 ```sql
   SELECT nome, 
          CASE 
@@ -617,6 +619,8 @@ NULLIF(v1, v2) devolve null se v1 = v2, caso contrário devolve v1
 ```
 
 # GREATEST e LEAST
+
+Maior e menor entre listas
 
 ```sql
   SELECT GREATEST(zona, id), LEAST(zona, id), zona, id 
@@ -690,21 +694,6 @@ NULLIF(v1, v2) devolve null se v1 = v2, caso contrário devolve v1
 
 ```sql
   SELECT * FROM pessoa WHERE id = 1;
-```
-
-```sql
-  INSERT INTO pessoa (
-    nome,
-    ativo,
-    inicio_atividade,
-    data_nascimento,
-    email,
-    local_nascimento
-  ) VALUES ('João Silva', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal');
-```
-
-```sql
-  SELECT * FROM pessoa_id_seq;
 ```
 
 ```sql
