@@ -85,9 +85,6 @@ Conectar a outra base de dados
 ```
 ## AJUDA
 
-```sql
-  help
-```
 
 ```sql
   \?
@@ -273,12 +270,10 @@ Inserir vários registos numa tabela
   ) VALUES ('Paulo Silva', false, now(), '1945-01-02', null, 'França'), ('Filipa Teixeira', true, now(), '1996-01-02', null, null);
 ```
 
-Retirar fake data em www.mockaroo.com
-
 Executar instruções SQL num ficheiro externo
 
 ```sql
-  \i caminho_para_ficheiro_sql
+  \i caminho_para_ficheiro/pessoa.sql
 ```
 
 ## SELECT
@@ -380,6 +375,15 @@ Filtar registos devolvidos por condições de vários campos uilizando o operado
 ```
 
 ### Like
+
+https://www.postgresql.org/docs/13/functions-matching.html
+
+```sql
+  SELECT * FROM pessoa WHERE email like 'wired.com';
+```
+- % (0+ caracteres)
+- _ (1 caracter)
+
 
 ```sql
   SELECT * FROM pessoa WHERE email like '%wired.com%';
