@@ -606,15 +606,23 @@ NULLIF(v1, v2) devolve null se v1 = v2, caso contrário devolve v1
 
 # CASE
 
-
 ```sql
-  SELECT nome, CASE WHEN AGE(NOW(), data_nascimento) > '76 years' THEN 'Sénior' CASE WHEN AGE(NOW(), data_nascimento) > '76 years' THEN 'Sénior' CASE WHEN AGE(NOW(), data_nascimento) > '76 years' THEN 'Sénior' FROM pessoa;
-
+  SELECT nome, 
+         CASE 
+            WHEN AGE(NOW(), data_nascimento) > '76 years' THEN 'Sénior'
+            WHEN AGE(NOW(), data_nascimento) > '18 years' THEN 'Adulto'
+            ELSE 'Criança'
+         END
+    FROM pessoa;
 ```
 
-# GREATEST and LEAST
+# GREATEST e LEAST
 
-
+```sql
+  SELECT GREATEST(zona, id), LEAST(zona, id), zona, id 
+    FROM pessoa
+    ORDER BY id;
+```
 
 # Primary keys
 
