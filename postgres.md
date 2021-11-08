@@ -449,9 +449,7 @@ Nota: HAVING vs. WHERE
 
 ### Window functions
 
-```sql
-  SELECT fabricante, modelo, MAX(preco) FROM carro GROUP BY fabricante, modelo;
-```
+https://www.postgresql.org/docs/13/tutorial-window.html
 
 ```sql
   SELECT fabricante, modelo, MAX(preco) OVER (PARTITION BY fabricante) FROM carro;
@@ -474,9 +472,11 @@ Nota: HAVING vs. WHERE
 
 # Null
 
-## Coalesce
+https://www.postgresql.org/docs/13/functions-conditional.html
 
-Valores pré-definidos
+## COALESCE
+
+Valores pré-definidos - devolve o primeiro valor não null
 
 ```sql
   SELECT COALESCE(null, 1);
@@ -490,11 +490,13 @@ Valores pré-definidos
   SELECT COALESCE(email, 'sem email') FROM pessoa;
 ```
 
-## Nullif
+## NULLIF
 
 ```sql
   SELECT 1/0;
 ```
+
+NULLIF(v1, v2) devolve null se v1 = v2, caso contrário devolve v1
 
 ```sql
   SELECT NULLIF(1, 0), NULLIF(1, 1), NULLIF(12, 7);
@@ -519,6 +521,10 @@ Valores pré-definidos
 ```sql
   SELECT nome, COALESCE(1000 / NULLIF(zona, 0), NULL) FROM pessoa;
 ```
+
+# CASE
+
+# GREATEST and LEAST
 
 
 # Timestamp / date
