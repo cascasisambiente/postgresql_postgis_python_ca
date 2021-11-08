@@ -399,6 +399,31 @@ https://www.postgresql.org/docs/13/functions-matching.html
   SELECT * FROM pessoa WHERE email ilike '%WiRed.com';
 ```
 
+
+# Timestamp / date
+
+https://www.postgresql.org/docs/13/datatype-datetime.html
+
+```sql
+  SELECT NOW() as now, NOW()::DATE as date, NOW()::TIME as time;
+```
+
+```sql
+  SELECT NOW() - INTERVAL '1 YEAR';
+```
+
+```sql
+  SELECT NOW() - '2021-01-01 12:00:00';
+```
+
+```sql
+  SELECT TO_CHAR(NOW(), 'YYYY'), TO_CHAR(NOW(), 'HH:MM:SS dd-mm-YYYY');
+```
+
+```sql
+  SELECT nome, data_nascimento, AGE(NOW(), data_nascimento) FROM pessoa;
+```
+
 ### Aggregate
 
 Agregar resultados
@@ -518,6 +543,8 @@ NULLIF(v1, v2) devolve null se v1 = v2, caso contrário devolve v1
   SELECT nome, 1000/zona FROM pessoa;
 ```
 
+*Null se zona = 0?*
+
 ```sql
   SELECT nome, COALESCE(1000 / NULLIF(zona, 0), NULL) FROM pessoa;
 ```
@@ -527,29 +554,6 @@ NULLIF(v1, v2) devolve null se v1 = v2, caso contrário devolve v1
 # GREATEST and LEAST
 
 
-# Timestamp / date
-
-https://www.postgresql.org/docs/13/datatype-datetime.html
-
-```sql
-  SELECT NOW() as now, NOW()::DATE as date, NOW()::TIME as time;
-```
-
-```sql
-  SELECT NOW() - INTERVAL '1 YEAR';
-```
-
-```sql
-  SELECT NOW() - '2021-01-01 12:00:00';
-```
-
-```sql
-  SELECT TO_CHAR(NOW(), 'YYYY'), TO_CHAR(NOW(), 'HH:MM:SS dd-mm-YYYY');
-```
-
-```sql
-  SELECT nome, data_nascimento, AGE(NOW(), data_nascimento) FROM pessoa;
-```
 
 # Primary keys
 
