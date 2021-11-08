@@ -53,12 +53,9 @@ DQL - Data Query Language
 
 # MODOS DE ACESSO
 
-1. terminal
+1. terminal (psql)
 2. pgadmin4/datagrip
 3. qgis
-4. python
-
-
 # ACEDER VIA TERMINAL (psql)
 
 ```console
@@ -66,7 +63,7 @@ DQL - Data Query Language
 ```
 
 ```console
-  psql -h hostname(default=localhost) -p port(default=5432) -d databasename(default=local username) -U user(default=local username)
+  psql -h hostname(default=localhost) -p port(default=5432) -d databasename(default=username) -U user(default=local username)
 ```
 
 - hostname: training-do-user-4575137-0.b.db.ondigitalocean.comm
