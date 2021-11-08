@@ -364,17 +364,23 @@ Filtar registos devolvidos por condições de vários campos uilizando o operado
 
 ### In
 
+Pesquisar num conjunto
+
 ```sql
   SELECT * FROM pessoa WHERE local_nascimento IN ('Poland', 'Canada');
 ```
 
 ### Between
 
+Pesquisar num intervalo
+
 ```sql
   SELECT * FROM pessoa WHERE data_nascimento BETWEEN '2001-01-01' and '2001-07-01';
 ```
 
 ### Like
+
+Pesquisar em cadeias de texto
 
 https://www.postgresql.org/docs/13/functions-matching.html
 
@@ -395,6 +401,8 @@ https://www.postgresql.org/docs/13/functions-matching.html
 
 ### Aggregate
 
+Agregar resultados
+
 ```sql
   SELECT local_nascimento, COUNT(*) FROM pessoa GROUP BY local_nascimento;
 ```
@@ -406,6 +414,8 @@ https://www.postgresql.org/docs/13/functions-matching.html
 ```sql
   SELECT local_nascimento, COUNT(*) as count FROM pessoa GROUP BY local_nascimento HAVING COUNT(*) > 10 ORDER BY count DESC;
 ```
+
+HAVING vs. WHERE
 
 https://www.postgresql.org/docs/13/functions-aggregate.html
 
