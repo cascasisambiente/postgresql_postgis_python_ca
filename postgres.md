@@ -412,13 +412,13 @@ Agregar resultados
 ```
 
 ```sql
-  SELECT local_nascimento, COUNT(*) as count FROM pessoa GROUP BY local_nascimento HAVING COUNT(*) > 10 ORDER BY count DESC;
+  SELECT local_nascimento, COUNT(*) as count FROM pessoa GROUP BY local_nascimento HAVING COUNT(*) > 2 ORDER BY count DESC;
 ```
-
-HAVING vs. WHERE
 
 https://www.postgresql.org/docs/13/functions-aggregate.html
 
+
+Nota: HAVING vs. WHERE
 
 ```sql
   CREATE TABLE carro(
@@ -430,12 +430,18 @@ https://www.postgresql.org/docs/13/functions-aggregate.html
 ```
 
 ```sql
+  \i caminho_para_ficheiro/carro.sql
+```
+
+```sql
   SELECT MAX(preco), MIN(preco), AVG(preco) FROM carro;
 ```
 
 ```sql
   SELECT MAX(preco), MIN(preco), ROUND(AVG(preco), 2) FROM carro;
 ```
+
+*Qual o valor mais elevado de cada fabricante?*
 
 ```sql
   SELECT fabricante, MAX(preco) FROM carro GROUP BY fabricante;
