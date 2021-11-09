@@ -1149,26 +1149,34 @@ https://www.postgresql.org/docs/13/sql-copy.html
 # Extensions
 
 ```sql
-  SELECT * FROM pg_available_extensions;
+  SELECT * 
+    FROM pg_available_extensions;
 ```
 
 # Views
 
 ```sql
   CREATE VIEW pessoa_carro AS 
-    SELECT p.nome, c.fabricante, c.modelo FROM pessoa p JOIN carro c ON p.carro_id = c.id; 
+    SELECT p.nome, c.fabricante, c.modelo 
+      FROM pessoa p 
+      JOIN carro c 
+        ON p.carro_id = c.id; 
 ```
 
 ```sql
-  SELECT * FROM pessoa_carro; 
+  SELECT * 
+    FROM pessoa_carro; 
 ```
 
 ```sql
-  UPDATE carro SET modelo = 'Range Rover 2' WHERE id = 18; 
+  UPDATE carro 
+    SET modelo = 'Range Rover 2' 
+    WHERE id = 18; 
 ```
 
 ```sql
-  SELECT * FROM pessoa_carro; 
+  SELECT * 
+    FROM pessoa_carro; 
 ```
 
 # Transactions
