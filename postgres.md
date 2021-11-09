@@ -980,8 +980,13 @@ Nomeação (AS)
 # Union
 
 ```sql
-  SELECT id, nome FROM pessoa UNION (ALL) SELECT id, modelo FROM carro;
+  SELECT id, nome FROM pessoa 
+    UNION (ALL) 
+    SELECT id, modelo 
+      FROM carro;
 ```
+
+ALL não remove duplicados
 
 
 # Delete fk
