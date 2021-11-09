@@ -826,6 +826,8 @@ x2
 
 ## On conflict
 
+https://www.postgresql.org/docs/13/sql-insert.html
+
 ```sql
   INSERT INTO pessoa (
     nome,
@@ -861,23 +863,26 @@ x2
 
 
 ```sql
-  ALTER TABLE pessoa ADD COLUMN carro_id BIGINT REFERENCES carro (id);
+  ALTER TABLE pessoa 
+    ADD COLUMN carro_id BIGINT REFERENCES carro (id);
 ```
 
 ```sql
-  SELECT * FROM pessoa;
+  UPDATE pessoa 
+    SET carro_id = 18500 
+    WHERE id = 12; 
 ```
 
 ```sql
-  UPDATE pessoa SET carro_id = 18500 WHERE id = 12; 
+  UPDATE pessoa 
+    SET carro_id = 3 
+    WHERE id = 12; 
 ```
 
 ```sql
-  UPDATE pessoa SET carro_id = 3 WHERE id = 12; 
-```
-
-```sql
-  SELECT * FROM pessoa WHERE id = 12;
+  SELECT * 
+    FROM pessoa 
+    WHERE id = 12;
 ```
 
 ```sql
@@ -888,7 +893,9 @@ x2
 ```
 
 ```sql
-  SELECT * FROM pessoa WHERE carro_id IS NOT NULL;
+  SELECT * 
+    FROM pessoa 
+    WHERE carro_id IS NOT NULL;
 ```
 
 ## Inner joins
