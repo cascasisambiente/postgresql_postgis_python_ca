@@ -640,7 +640,8 @@ Maior e menor entre listas
 ```
 
 ```sql
-  SELECT * FROM pessoa_id_seq;
+  SELECT * 
+    FROM pessoa_id_seq;
 ```
 
 ```sql
@@ -655,7 +656,8 @@ Maior e menor entre listas
 ```
 
 ```sql
-  SELECT * FROM pessoa_id_seq;
+  SELECT * 
+    FROM pessoa_id_seq;
 ```
 
 ```sql
@@ -673,7 +675,8 @@ Maior e menor entre listas
 # ALTER 
 
 ```sql
-  ALTER TABLE pessoa DROP CONSTRAINT pessoa_pkey;
+  ALTER TABLE pessoa 
+    DROP CONSTRAINT pessoa_pkey;
 ```
 
 ```sql
@@ -693,19 +696,24 @@ Maior e menor entre listas
 ```
 
 ```sql
-  SELECT * FROM pessoa WHERE id = 1;
+  SELECT * 
+    FROM pessoa WHERE id = 1;
 ```
 
 ```sql
-  ALTER TABLE pessoa ADD PRIMARY KEY (nome, email);
+  ALTER TABLE pessoa 
+    ADD PRIMARY KEY (nome, email);
 ```
 
 ```sql
-  DELETE FROM pessoa WHERE id = 1;
+  DELETE 
+    FROM pessoa 
+    WHERE id = 1;
 ```
 
 ```sql
-  ALTER TABLE pessoa ADD PRIMARY KEY (id);
+  ALTER TABLE pessoa 
+    ADD PRIMARY KEY (id);
 ```
 
 ```sql
@@ -717,23 +725,31 @@ Maior e menor entre listas
 ## Unique
 
 ```sql
-  Select email, COUNT(*) FROM pessoa GROUP BY email HAVING COUNT(*) > 1;
+  Select email, COUNT(*) 
+    FROM pessoa 
+    GROUP BY email 
+      HAVING COUNT(*) > 1;
 ```
 
 UNIQUE vs. PRIMARY KEY
 
 ```sql
-  ALTER TABLE pessoa ADD CONSTRAINT unique_email_adress UNIQUE (email);
+  ALTER TABLE pessoa 
+    ADD CONSTRAINT unique_email_adress 
+      UNIQUE (email);
 ```
 
 ```sql
-  ALTER TABLE pessoa ADD CONSTRAINT unique_nome_local_nascimento_adress UNIQUE (nome, local_nascimento);
+  ALTER TABLE pessoa 
+    ADD CONSTRAINT unique_nome_local_nascimento_adress 
+      UNIQUE (nome, local_nascimento);
 ```
 
 Nome automático:
 
 ```sql
-  ALTER TABLE pessoa ADD UNIQUE (nome, local_nascimento);
+  ALTER TABLE pessoa 
+    ADD UNIQUE (nome, local_nascimento);
 ```
 
 ## Check
