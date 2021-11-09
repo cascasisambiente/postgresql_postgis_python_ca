@@ -1117,6 +1117,15 @@ Optimizar performance das consultas, potencialmente à custa da performance das 
     LIMIT 1000;
 ```
 
+Preços a pagar:
+- Espaço em disco($)
+- Potencial menor performance na operação de INSERT
+- DELETE pode ser impraticável se tabela muito grande com fk's
+- Apenas usar em tabelas grandes
+- Índices espaciais são caso à parte (conceito de ordenação)
+- btree => tabela de 1 trilhião (10E12) => avg de 5*10E11 para 13, max de 10E12 para 14 
+
+
 ```sql
   CREATE INDEX index_name 
     ON table_name ( column1, column2.....);
