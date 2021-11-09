@@ -720,8 +720,7 @@ Maior e menor entre listas
 
 ```sql
   \d pessoa
-```
-
+```s
 # Constrains
 
 ## Unique
@@ -820,7 +819,8 @@ Usar WHERE (quase) sempre!!
     email,
     local_nascimento,
     distrito
-  ) VALUES ('João', true, now(), '2001-01-02', 'joao@foo.com', 'Portugal', 'Braga');
+  ) 
+    VALUES ('João', true, now(), '2001-01-02', 'joao@foo.com', 'Portugal', 'Braga');
 ```
 x2
 
@@ -835,8 +835,10 @@ x2
     email,
     local_nascimento,
     distrito
-  ) VALUES ('João', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal', 'Braga')
-  ON CONFLICT (nome, local_nascimento) DO NOTHING;
+  ) 
+    VALUES ('João', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal', 'Braga')
+    ON CONFLICT (nome, local_nascimento) 
+      DO NOTHING;
 ```
 
 ```sql
@@ -848,8 +850,11 @@ x2
     email,
     local_nascimento,
     distrito
-  ) VALUES ('João', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal', 'Braga')
-  ON CONFLICT (nome, local_nascimento) DO UPDATE SET nome = 'António', local_nascimento=EXCLUDED.local_nascimento;
+  ) 
+    VALUES ('João', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal', 'Braga')
+    ON CONFLICT (nome, local_nascimento) 
+      DO UPDATE 
+        SET nome = 'António', local_nascimento=EXCLUDED.local_nascimento;
 ```
 
 # Foreign keys
