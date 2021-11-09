@@ -1157,7 +1157,7 @@ https://www.postgresql.org/docs/13/sql-copy.html
 
 ```sql
   CREATE VIEW pessoa_carro AS 
-    SELECT p.nome, c.fabricante, c.modelo 
+    SELECT p.id, p.nome, c.fabricante, c.modelo 
       FROM pessoa p 
       JOIN carro c 
         ON p.carro_id = c.id; 
@@ -1169,8 +1169,8 @@ https://www.postgresql.org/docs/13/sql-copy.html
 ```
 
 ```sql
-  UPDATE carro 
-    SET modelo = 'Range Rover 2' 
+  UPDATE pessoa 
+    SET carro_id = 2 
     WHERE id = 18; 
 ```
 
