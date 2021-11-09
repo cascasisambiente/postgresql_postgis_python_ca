@@ -953,15 +953,24 @@ Nomeação (AS)
 # Other joins
 
 ```sql
-  SELECT p.nome, c.fabricante, c.modelo FROM pessoa p LEFT JOIN carro c ON p.carro_id = c.id;
+  SELECT p.nome, c.fabricante, c.modelo 
+    FROM pessoa p 
+    LEFT JOIN carro c 
+      ON p.carro_id = c.id;
 ```
 
 ```sql
-  SELECT p.nome, c.fabricante, c.modelo FROM pessoa p RIGHT JOIN carro c ON p.carro_id = c.id;
+  SELECT p.nome, c.fabricante, c.modelo 
+    FROM pessoa p 
+    RIGHT JOIN carro c 
+      ON p.carro_id = c.id;
 ```
 
 ```sql
-  SELECT p.nome, c.fabricante, c.modelo FROM pessoa p FULL OUTER JOIN carro c ON p.carro_id = c.id;
+  SELECT p.nome, c.fabricante, c.modelo 
+    FROM pessoa p 
+    FULL OUTER JOIN carro c 
+      ON p.carro_id = c.id;
 ```
 
 
