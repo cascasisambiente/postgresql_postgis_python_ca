@@ -639,8 +639,6 @@ Identificam um registo
 - conjunção
 - uuid (útil para exportações)
 
-## Sequências
-
 ```sql
   \d pessoa
 ```
@@ -660,11 +658,6 @@ Identificam um registo
     local_nascimento
   ) 
     VALUES ('João Silva', true, now(), '2001-01-02', 'joao.silva2@foo.com', 'Portugal');
-```
-
-```sql
-  SELECT * 
-    FROM pessoa_id_seq;
 ```
 
 ```sql
@@ -1017,52 +1010,6 @@ Tipos de acções
 - ON UPDATE
 - ON INSERT
 
-```sql
-  ALTER TABLE pessoa DROP COLUMN carro_id;
-```
-
-```sql
-  ALTER TABLE pessoa ADD COLUMN carro_id BIGINT REFERENCES carro (id) ON DELETE SET NULL;
-```
-
-```sql
-  UPDATE pessoa SET carro_id = 3 WHERE id = 12; 
-  UPDATE pessoa SET carro_id = 1 WHERE id = 23; 
-  UPDATE pessoa SET carro_id = 7 WHERE id = 15; 
-  UPDATE pessoa SET carro_id = 2 WHERE id = 5;  
-  UPDATE pessoa SET carro_id = 4 WHERE id IN (26, 14, 18);
-```
-
-```sql
-  SELECT * FROM pessoa WHERE id = 12;
-```
-
-```sql
-  DELETE from carro WHERE id = 3;
-```
-
-```sql
-  SELECT * FROM pessoa WHERE id = 12;
-```
-
-# INDEX
-
-
-```sql
-  CREATE INDEX index_name ON table_name ( column1, column2.....);
-```
-
-
-# Export
-
-
-```sql
-  SELECT p.nome, c.fabricante, c.modelo FROM pessoa p FULL OUTER JOIN carro c ON p.carro_id = c.id;
-```
-
-```sql
-  \copy (SELECT p.nome, c.fabricante, c.modelo FROM pessoa p FULL OUTER JOIN carro c ON p.carro_id = c.id) TO '/home/rui/Desktop/filename.csv' DELIMITER ',' CSV HEADER;
-```
 
 # Sequences
 
@@ -1173,6 +1120,27 @@ Tipos de acções
   SELECT * FROM animal WHERE tipo_id IN (
     SELECT id FROM tipo WHERE tipo LIKE '%l%' 
   );
+```
+
+
+
+# INDEX
+
+
+```sql
+  CREATE INDEX index_name ON table_name ( column1, column2.....);
+```
+
+
+# Export
+
+
+```sql
+  SELECT p.nome, c.fabricante, c.modelo FROM pessoa p FULL OUTER JOIN carro c ON p.carro_id = c.id;
+```
+
+```sql
+  \copy (SELECT p.nome, c.fabricante, c.modelo FROM pessoa p FULL OUTER JOIN carro c ON p.carro_id = c.id) TO '/home/rui/Desktop/filename.csv' DELIMITER ',' CSV HEADER;
 ```
 
 # Extensions
