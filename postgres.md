@@ -56,6 +56,8 @@ DQL - Data Query Language
 1. terminal (psql)
 2. pgadmin4/datagrip
 3. qgis
+4. python (psycopg2)
+
 # ACEDER VIA TERMINAL (psql)
 
 ```console
