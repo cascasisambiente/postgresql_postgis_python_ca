@@ -1080,9 +1080,46 @@ Tipos de acções
 
 # INDEX
 
+Optimizar performance das consultas, potencialmente à custa da performance das restantes operações!
+
+```console
+  psql -h hostname(default=localhost) -p port(default=5432) -d databasename(default=username) -U user(default=local username)
+```
+
+- hostname: postgresdatabase-do-user-4575137-0.db.ondigitalocean.com
+- port: 25060
+- database: defaultdb
+- user: training
+- password: a mesma!!!
 
 ```sql
-  CREATE INDEX index_name ON table_name ( column1, column2.....);
+  SELECT count(*) n 
+    FROM posicoes_posicao;
+```
+
+```sql
+  SELECT * 
+    FROM posicoes_posicao
+    ORDER BY time ASC
+    LIMIT 1;
+```
+
+```sql
+  SELECT * 
+    FROM posicoes_posicao
+    WHERE poistion_id = 1234414;
+```
+
+```sql
+  SELECT * 
+    FROM posicoes_posicao
+    ORDER BY viatura_id, time ASC
+    LIMIT 1000;
+```
+
+```sql
+  CREATE INDEX index_name 
+    ON table_name ( column1, column2.....);
 ```
 
 
@@ -1131,20 +1168,6 @@ Tipos de acções
 ```
 
 
-# Window functions
-
-```sql
-  SELECT fabricante, modelo, MAX(preco) FROM carro GROUP BY fabricante, modelo;
-```
-
-```sql
-  SELECT fabricante, modelo, MAX(preco) OVER (PARTITION BY fabricante) FROM carro;
-```
-
-```sql
-  SELECT fabricante, modelo, MAX(preco) OVER (PARTITION BY fabricante, modelo) FROM carro; 
-```
-
 # User defined functions
 
 ```sql
@@ -1166,6 +1189,14 @@ Tipos de acções
 ```
 Criar functions via pgadmin4
 
+```console
+  psql -h hostname(default=localhost) -p port(default=5432) -d databasename(default=username) -U user(default=local username)
+```
+
+- hostname: training-do-user-4575137-0.b.db.ondigitalocean.comm
+- port: 25060
+- database: defaultdb
+- user: doadmin
 
 In Postgres, the main functional difference between a function and a stored procedure is that a function returns a result, whereas a stored procedure does not. This is because the intention behind a stored procedure is to perform some sort of activity and then finish, which would then return control to the caller.
 
