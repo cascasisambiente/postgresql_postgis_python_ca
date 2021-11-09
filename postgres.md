@@ -632,10 +632,14 @@ Maior e menor entre listas
 
 # Primary keys
 
+Identificam um registo 
+
 - id
 - email, etc
 - conjunção
-- uuid
+- uuid (útil para exportações)
+
+## Sequências
 
 ```sql
   \d pessoa
@@ -654,7 +658,8 @@ Maior e menor entre listas
     data_nascimento,
     email,
     local_nascimento
-  ) VALUES ('João Silva', true, now(), '2001-01-02', 'joao.silva2@foo.com', 'Portugal');
+  ) 
+    VALUES ('João Silva', true, now(), '2001-01-02', 'joao.silva2@foo.com', 'Portugal');
 ```
 
 ```sql
@@ -671,7 +676,8 @@ Maior e menor entre listas
     data_nascimento,
     email,
     local_nascimento
-  ) VALUES (1, 'João Silva', true, now(), '2001-01-02', 'joao.silva3@foo.com', 'Portugal');
+  ) 
+    VALUES (1, 'João Silva', true, now(), '2001-01-02', 'joao.silva3@foo.com', 'Portugal');
 ```
 
 # ALTER 
@@ -694,7 +700,8 @@ Maior e menor entre listas
     data_nascimento,
     email,
     local_nascimento
-  ) VALUES (1, 'João Silva', true, now(), '2001-01-02', 'joao.silva3@foo.com', 'Portugal');
+  ) 
+    VALUES (1, 'João Silva', true, now(), '2001-01-02', 'joao.silva3@foo.com', 'Portugal');
 ```
 
 ```sql
@@ -900,28 +907,47 @@ https://www.postgresql.org/docs/13/sql-insert.html
 
 ## Inner joins
 
+"Unir" duas tabelas
+
 ```sql
-  SELECT * FROM pessoa INNER JOIN carro ON pessoa.carro_id = carro.id;
+  SELECT * 
+    FROM pessoa 
+    INNER JOIN carro 
+      ON pessoa.carro_id = carro.id;
+```
+Sintaxe alternativa
+
+```sql
+  SELECT * 
+    FROM pessoa, carro 
+    WHERE pessoa.carro_id = carro.id;
+```
+
+INNER JOIN == JOIN
+
+```sql
+  SELECT * 
+    FROM pessoa 
+    JOIN carro 
+      ON pessoa.carro_id = carro.id;
+```
+
+### Alias
+
+Nomeação (AS)
+
+```sql
+  SELECT * 
+    FROM pessoa AS p 
+    JOIN carro AS c 
+      ON p.carro_id = c.id;
 ```
 
 ```sql
-  SELECT * FROM pessoa, carro WHERE pessoa.carro_id = carro.id;
-```
-
-```sql
-  \x
-```
-
-```sql
-  SELECT * FROM pessoa JOIN carro ON pessoa.carro_id = carro.id;
-```
-
-```sql
-  SELECT * FROM pessoa p JOIN carro c ON p.carro_id = c.id;
-```
-
-```sql
-  SELECT p.nome, p.data_nascimento, c.fabricante, c.modelo FROM pessoa p JOIN carro c ON p.carro_id = c.id;
+  SELECT p.nome, p.data_nascimento, c.fabricante, c.modelo 
+    FROM pessoa p 
+    JOIN carro c 
+      ON p.carro_id = c.id;
 ```
 
 # Other joins
