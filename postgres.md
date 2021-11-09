@@ -1134,9 +1134,12 @@ Preços a pagar:
 
 # Export
 
+https://www.postgresql.org/docs/13/sql-copy.html
 
 ```sql
-  SELECT p.nome, c.fabricante, c.modelo FROM pessoa p FULL OUTER JOIN carro c ON p.carro_id = c.id;
+  SELECT p.nome, c.fabricante, c.modelo 
+    FROM pessoa p 
+      FULL OUTER JOIN carro c ON p.carro_id = c.id;
 ```
 
 ```sql
