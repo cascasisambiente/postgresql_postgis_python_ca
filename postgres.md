@@ -757,7 +757,8 @@ Nome automático:
 ## Check
 
 ```sql
-  ALTER TABLE pessoa ADD COLUMN distrito VARCHAR(50);
+  ALTER TABLE pessoa 
+    ADD COLUMN distrito VARCHAR(50);
 ```
 
 ```sql
@@ -767,15 +768,20 @@ Nome automático:
 ```
 
 ```sql
-  SELECT DISTINCT distrito FROM pessoa;
+  SELECT DISTINCT distrito 
+    FROM pessoa;
 ```
 
 ```sql
-  ALTER TABLE pessoa ADD CONSTRAINT distrito_check_constraint CHECK(distrito = 'Lisboa' OR distrito = 'Braga' OR distrito = 'Guarda');
+  ALTER TABLE pessoa 
+    ADD CONSTRAINT distrito_check_constraint 
+      CHECK(distrito = 'Lisboa' OR distrito = 'Braga' OR distrito = 'Guarda');
 ```
 
 ```sql
-  UPDATE pessoa SET distrito = 'Porto' WHERE id % 3 = 0;
+  UPDATE pessoa 
+    SET distrito = 'Porto' 
+      WHERE id % 3 = 0;
 ```
 
 # Delete
@@ -783,7 +789,8 @@ Nome automático:
 Usar WHERE (quase) sempre!!
 
 ```sql
-  DELETE FROM pessoa WHERE distrito = 'Braga';
+  DELETE FROM pessoa 
+    WHERE distrito = 'Braga';
 ```
 
 # Update
@@ -791,11 +798,15 @@ Usar WHERE (quase) sempre!!
 Usar WHERE (quase) sempre!!
 
 ```sql
-  UPDATE pessoa SET email = 'aaa@bbb.ccc' WHERE id IN (12, 15, 18);
+  UPDATE pessoa 
+    SET email = 'aaa@bbb.ccc' 
+      WHERE id IN (12, 15, 18);
 ```
 
 ```sql
-  UPDATE pessoa SET email = 'ddd@eee.fff', local_nascimento = 'ggg' WHERE id IN (11, 14, 17, 20, 23);
+  UPDATE pessoa 
+    SET email = 'ddd@eee.fff', local_nascimento = 'ggg' 
+      WHERE id IN (11, 14, 17, 20, 23);
 ```
 
 # Exceptions
