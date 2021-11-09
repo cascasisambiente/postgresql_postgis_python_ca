@@ -654,7 +654,7 @@ Maior e menor entre listas
     data_nascimento,
     email,
     local_nascimento
-  ) VALUES ('João Silva', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal');
+  ) VALUES ('João Silva', true, now(), '2001-01-02', 'joao.silva2@foo.com', 'Portugal');
 ```
 
 ```sql
@@ -671,7 +671,7 @@ Maior e menor entre listas
     data_nascimento,
     email,
     local_nascimento
-  ) VALUES (1, 'João Silva', true, now(), '2001-01-02', 'joao.silva2@foo.com', 'Portugal');
+  ) VALUES (1, 'João Silva', true, now(), '2001-01-02', 'joao.silva3@foo.com', 'Portugal');
 ```
 
 # ALTER 
