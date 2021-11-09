@@ -1013,9 +1013,9 @@ Tipos de comportamentos
 - NO ACTION (potenciais problemas de integridade de dados)
 
 Tipos de acções
--ON DELETE
--ON UPDATE
--ON INSERT
+- ON DELETE
+- ON UPDATE
+- ON INSERT
 
 ```sql
   ALTER TABLE pessoa DROP COLUMN carro_id;
