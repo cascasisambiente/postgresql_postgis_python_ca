@@ -992,23 +992,27 @@ ALL não remove duplicados
 # Delete fk
 
 ```sql
-  DELETE from carro WHERE id = 1;
+  DELETE from carro 
+    WHERE id = 1;
 ```
 
 ```sql
-  DELETE from pessoa WHERE id = 23;
+  DELETE from pessoa 
+    WHERE id = 23;
 ```
 
 ```sql
-  DELETE from carro WHERE id = 1;
+  DELETE from carro 
+    WHERE id = 1;
 ```
-
+Tipos de comportamentos 
 - RESTRICT
 - CASCADE
 - SET NULL
 - SET DEFAULT
 - NO ACTION (potenciais problemas de integridade de dados)
 
+Tipos de acções
 -ON DELETE
 -ON UPDATE
 -ON INSERT
