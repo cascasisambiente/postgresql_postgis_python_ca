@@ -761,6 +761,7 @@ Nome automático:
 
 ## Check
 
+
 ```sql
   ALTER TABLE pessoa 
     ADD COLUMN distrito VARCHAR(50);
@@ -777,6 +778,9 @@ Nome automático:
     FROM pessoa;
 ```
 
+Verifica condições definidas  
+Podemos relacionar multiplas colunas  
+
 ```sql
   ALTER TABLE pessoa 
     ADD CONSTRAINT distrito_check_constraint 
@@ -791,7 +795,9 @@ Nome automático:
 
 # Delete
 
-Usar WHERE (quase) sempre!!
+Usar WHERE (quase) sempre!!  
+Não existe undo  
+
 
 ```sql
   DELETE FROM pessoa 
@@ -800,7 +806,9 @@ Usar WHERE (quase) sempre!!
 
 # Update
 
-Usar WHERE (quase) sempre!!
+Usar WHERE (quase) sempre!!  
+Não existe undo  
+
 
 ```sql
   UPDATE pessoa 
@@ -815,6 +823,8 @@ Usar WHERE (quase) sempre!!
 ```
 
 # Exceptions
+
+Prever erros e definir comportamentos adequados  
 
 ```sql
   INSERT INTO pessoa (
@@ -831,6 +841,9 @@ Usar WHERE (quase) sempre!!
 x2
 
 ## On conflict
+
+Erros de integridade  
+
 
 https://www.postgresql.org/docs/13/sql-insert.html
 
@@ -864,6 +877,7 @@ https://www.postgresql.org/docs/13/sql-insert.html
       DO UPDATE 
         SET nome = 'António', local_nascimento=EXCLUDED.local_nascimento;
 ```
+
 
 # Foreign keys
 
