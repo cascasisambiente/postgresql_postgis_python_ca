@@ -18,6 +18,8 @@
 
 # postgis
 
+https://www.ogc.org/
+
 ## Tipos de dados adicionais (geometry, geography e raster)
 
 - **POINT** - uma coordenada única, habitualmente – mas não necessariamente - bidimensional
