@@ -736,9 +736,9 @@ Identificam univocamente um registo
       HAVING COUNT(*) > 1;
 ```
 
-Define que o valor dum campo duma coluna é único em todos sos registos da tabela
-Valores NULL não são considerados (usar NOT NULL, se necessário)
-Cria automaticamente um índice
+Define que o valor dum campo duma coluna é único em todos sos registos da tabela  
+Valores NULL não são considerados (usar NOT NULL, se necessário)  
+Cria automaticamente um índice  
 
 ```sql
   ALTER TABLE pessoa 
