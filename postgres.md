@@ -381,6 +381,8 @@ Filtar registos devolvidos por condições de vários campos uilizando o operado
 
 ### Comparation operators
 
+Devolvem um booleano
+
 ```sql
   SELECT 1 = 1, 2 = 4;
 ```
@@ -412,7 +414,7 @@ Pesquisar num intervalo
 
 ### Like
 
-Pesquisar em cadeias de texto
+Pesquisar correspondências em cadeias de texto
 
 https://www.postgresql.org/docs/13/functions-matching.html
 
@@ -490,7 +492,7 @@ Agregar resultados
 https://www.postgresql.org/docs/13/functions-aggregate.html
 
 
-Nota: HAVING vs. WHERE
+HAVING != WHERE
 
 ```sql
   CREATE TABLE carro(
@@ -515,7 +517,7 @@ Nota: HAVING vs. WHERE
     FROM carro;
 ```
 
-*Qual o valor mais elevado de cada fabricante?*
+*No conjunto de carros, qual o valor mais elevado de cada fabricante?*
 
 ```sql
   SELECT fabricante, MAX(preco) 
@@ -622,7 +624,7 @@ Igual a if-then-else noutras linguagens de programação
 
 # GREATEST e LEAST
 
-Maior e menor entre listas
+Maior e menor entre conjuntos com dados ordenáveis entre si
 
 ```sql
   SELECT GREATEST(zona, id), LEAST(zona, id), zona, id 
@@ -632,7 +634,7 @@ Maior e menor entre listas
 
 # Primary keys
 
-Identificam um registo 
+Identificam univocamente um registo 
 
 - id
 - email, etc
@@ -720,10 +722,12 @@ Identificam um registo
 
 ```sql
   \d pessoa
-```s
-# Constrains
+```
+
+# Constrains em maior detalhe
 
 ## Unique
+
 
 ```sql
   Select email, COUNT(*) 
@@ -732,7 +736,9 @@ Identificam um registo
       HAVING COUNT(*) > 1;
 ```
 
-UNIQUE vs. PRIMARY KEY
+Define que o valor dum campo duma coluna é único em todos sos registos da tabela
+Valores NULL não são considerados (usar NOT NULL, se necessário)
+Cria automaticamente um índice
 
 ```sql
   ALTER TABLE pessoa 
