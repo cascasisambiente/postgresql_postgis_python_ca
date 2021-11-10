@@ -1,3 +1,21 @@
+# Acções prévias
+
+```sql
+  SELECT name, default_version,installed_version
+    FROM pg_available_extensions 
+    WHERE name LIKE 'postgis%';
+```
+
+```sql
+  CREATE EXTENSION postgis;
+  CREATE EXTENSION postgis_raster;
+  CREATE EXTENSION postgis_sfcgal;
+```
+
+```sql
+  \dx postgis*
+```
+
 # postgis
 
 ## Tipos de dados adicionais (geometry, geography e raster)
