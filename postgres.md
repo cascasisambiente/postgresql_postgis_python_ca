@@ -881,6 +881,9 @@ https://www.postgresql.org/docs/13/sql-insert.html
 
 # Foreign keys
 
+Relacionar duas tabelas  
+Uma FOREIGN KEY tem de estar associada a uma PRIMARY KEY de outra tabela  
+
 
 ```sql
   ALTER TABLE pessoa 
@@ -918,9 +921,11 @@ https://www.postgresql.org/docs/13/sql-insert.html
     WHERE carro_id IS NOT NULL;
 ```
 
-## Inner joins
+## JOINS
 
-"Unir" duas tabelas
+Resultados da query apresentam a "união" de duas tabelas
+
+### Inner joins
 
 ```sql
   SELECT * 
@@ -945,7 +950,7 @@ INNER JOIN == JOIN
       ON pessoa.carro_id = carro.id;
 ```
 
-### Alias
+#### Alias
 
 Nomeação (AS)
 
@@ -963,7 +968,7 @@ Nomeação (AS)
       ON p.carro_id = c.id;
 ```
 
-# Other joins
+### Outros joins
 
 ```sql
   SELECT p.nome, c.fabricante, c.modelo 
@@ -990,19 +995,8 @@ Nomeação (AS)
 ![image](https://user-images.githubusercontent.com/60735895/137899416-6f32ecea-072a-4ab0-84e6-5543a0fd65a8.png)
 
 
-# Union
 
-```sql
-  SELECT id, nome FROM pessoa 
-    UNION (ALL) 
-    SELECT id, modelo 
-      FROM carro;
-```
-
-ALL não remove duplicados
-
-
-# Delete fk
+## Comportamentos das relações entre tabelas após alterações
 
 ```sql
   DELETE from carro 
@@ -1033,6 +1027,7 @@ Tipos de acções
 
 # Sequences
 
+Normalmente utilizados para guardar os valores para a atribuição automatica de ids
 
 ```sql
   \d pessoa;
@@ -1046,7 +1041,6 @@ Tipos de acções
   SELECT * 
     FROM pessoa_id_seq;
 ```
-
 
 ```sql
   SELECT nextval('pessoa_id_seq'::regclass);
@@ -1081,8 +1075,21 @@ Tipos de acções
     RESTART WITH 250;
 ```
 
+# MIX
 
-# With
+## Union
+
+```sql
+  SELECT id, nome FROM pessoa 
+    UNION (ALL) 
+    SELECT id, modelo 
+      FROM carro;
+```
+
+ALL não remove duplicados
+
+
+## With
 
 
 ```sql
@@ -1098,7 +1105,7 @@ Tipos de acções
 ```
 
 
-# INDEX
+## INDEX
 
 Optimizar performance das consultas, potencialmente à custa da performance das restantes operações!
 
@@ -1152,7 +1159,9 @@ Preços a pagar:
 ```
 
 
-# Export
+## Export
+
+Guarda o resultado duma query num ficheiro de texto
 
 https://www.postgresql.org/docs/13/sql-copy.html
 
@@ -1166,14 +1175,10 @@ https://www.postgresql.org/docs/13/sql-copy.html
   \copy (SELECT p.nome, c.fabricante, c.modelo FROM pessoa p FULL OUTER JOIN carro c ON p.carro_id = c.id) TO '/home/rui/Desktop/filename.csv' DELIMITER ',' CSV HEADER;
 ```
 
-# Extensions
 
-```sql
-  SELECT * 
-    FROM pg_available_extensions;
-```
+## Views
 
-# Views
+Visualização, automaticamente atualizável, duma query especifica
 
 ```sql
   CREATE VIEW pessoa_carro AS 
@@ -1199,7 +1204,7 @@ https://www.postgresql.org/docs/13/sql-copy.html
     FROM pessoa_carro; 
 ```
 
-# Transactions
+## Transactions
 
 ```sql
   BEGIN;
@@ -1208,7 +1213,14 @@ https://www.postgresql.org/docs/13/sql-copy.html
 ```
 
 
-# User defined functions
+## Extensions
+
+```sql
+  SELECT * 
+    FROM pg_available_extensions;
+```
+
+## FUNCTION
 
 ```sql
   CREATE FUNCTION nome_da_funcao(parametro1 tipo, parametro2 tipo)
@@ -1227,21 +1239,9 @@ https://www.postgresql.org/docs/13/sql-copy.html
       END; $$
     LANGUAGE PLPGSQL;
 ```
-Criar functions via pgadmin4
-
-```console
-  psql -h hostname(default=localhost) -p port(default=5432) -d databasename(default=username) -U user(default=local username)
-```
-
-- hostname: training-do-user-4575137-0.b.db.ondigitalocean.comm
-- port: 25060
-- database: defaultdb
-- user: doadmin
-
-In Postgres, the main functional difference between a function and a stored procedure is that a function returns a result, whereas a stored procedure does not. This is because the intention behind a stored procedure is to perform some sort of activity and then finish, which would then return control to the caller.
 
 
-# Triggers
+## TRIGGER
 
 Função invocada automaticamente quando ocorre um evento, associado a uma tabela:
 - INSERT
@@ -1257,6 +1257,7 @@ Dois momentos de invocação:
 - BEFORE
 - AFTER
 
+Acções sobre os triggers
 
 - CREATE TRIGGER
 - DROP TRIGGER
