@@ -251,7 +251,20 @@ https://en.wikipedia.org/wiki/DE-9IM
 
 ![image](https://user-images.githubusercontent.com/60735895/141338211-d64e1264-35b1-4a74-9428-19ab9e939466.png)
 
- 
+ - ST_Contains
+ - ST_Crosses
+ - ST_Disjoint
+ - ST_Equals
+ - ST_Intersects
+ - ST_Overlaps
+ - ST_Touches
+ - ST_Within
+ - ST_Covers
+ - ST_CoveredBy
+ - ST_ContainsProperly
+
+
+
 
 ## Funcionalidades adicinais de bases de dados geográficas
 
