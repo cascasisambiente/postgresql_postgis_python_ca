@@ -177,6 +177,22 @@ ST_IsSimple()
 ST_IsValid()
 
 
+```sql
+  SELECT
+    ST_IsValid('LINESTRING(0 0, 1 1)'),
+    ST_IsSimple('LINESTRING(0 0, 0 0, 0 0)');
+```
+
+Por questões de performance não são validas as geometrias aquando do inserção (INSERT ou UPDATE).
+
+* como validar todas as geometrias *
+
+```sql
+  ALTER TABLE tabela
+    ADD CONSTRAINT validar_geometria
+    CHECK (ST_IsValid(geom));
+```
+
 ## Novas funções
 
 ## Indíces espaciais mais eficientes
