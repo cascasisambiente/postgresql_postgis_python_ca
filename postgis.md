@@ -244,7 +244,14 @@ btw
 
 https://en.wikipedia.org/wiki/DE-9IM
 
+- PONIT = 0
+- LINE = 1
+- AREA = 2
+- VAZIO = F
 
+![image](https://user-images.githubusercontent.com/60735895/141338211-d64e1264-35b1-4a74-9428-19ab9e939466.png)
+
+ 
 
 ## Funcionalidades adicinais de bases de dados geográficas
 
