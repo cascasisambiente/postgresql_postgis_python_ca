@@ -57,7 +57,7 @@ Especificação OpenGIS precisa dum SRID para criar a geometria
 
 ```sql
   INSERT INTO tabela (geom, nome)
-    VALUES (ST_GeomFromText('POINT(-126.4 45.32)', 3763), 'Um lugar');
+    VALUES (ST_GeomFromText('POINT(-110258.656131153 -103959.586840153)', 3763), 'cascais_centroid');
 ```
 
 - 3D
