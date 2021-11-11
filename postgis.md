@@ -55,6 +55,14 @@ Especificação OpenGIS precisa dum SRID para criar a geometria
   geometry = ST_GeometryFromText(text WKT, SRID);
 ```
 
+- Output
+    - binary: EWKB
+    - ascii: HEXEWKB
+- Input
+    - binary: EWKB
+    - ascii: HEXEWKB|EWKT
+
+
 ```sql
   INSERT INTO tabela (geom, nome)
     VALUES (ST_GeomFromText('POINT(-110258.656131153 -103959.586840153)', 3763), 'cascais_centroid');
@@ -67,6 +75,10 @@ Especificação OpenGIS precisa dum SRID para criar a geometria
 - CURVEPOLYGON
 - MULTICURVE
 - MULTISURFACE
+- TRIANGLE
+- TIN
+
+
 
 ## Novas funções
 
