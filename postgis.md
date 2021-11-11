@@ -15,6 +15,22 @@
 ```sql
   \dx postgis*
 ```
+# Standards
+
+## WKT /WBT
+
+- POINT(0 0)
+- POINT Z (0 0 0)
+- POINT ZM (0 0 0 0)
+- LINESTRING(0 0,1 1,1 2)
+- POLYGON((0 0,4 0,4 4,0 4,0 0),(1 1, 2 1, 2 2, 1 2,1 1))
+- MULTIPOINT((0 0),(1 2))
+- MULTIPOINT Z ((0 0 0),(1 2 3))
+- MULTILINESTRING((0 0,1 1,1 2),(2 3,3 2,5 4))
+- MULTIPOLYGON(((0 0,4 0,4 4,0 4,0 0),(1 1,2 1,2 2,1 2,1 1)), ((-1 -1,-1 -2,-2 -2,-2 -1,-1 -1)))
+- GEOMETRYCOLLECTION(POINT(2 3),LINESTRING(2 3,3 4))
+
+
 
 # postgis
 
