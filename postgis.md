@@ -127,6 +127,29 @@ e / ou
     ADD COLUMN geom2 geometry(LINESTRING, 4326);
 ```
 
+### Geometrias válidas
+
+Geometrias tem de ser válidas e simples
+
+#### POINT
+
+Sempre simples
+
+
+#### MULTIPOINT
+
+Simples se nenhuma de duas coordenadas (POINT) são iguais
+
+
+#### LINESTRING
+
+Simples se não 'passa' no mesmo ponto duas vezes (excepto anéis)
+
+![image](https://user-images.githubusercontent.com/60735895/141315794-96ad207a-8fda-4068-a11d-31a125660f96.png)
+
+![image](https://user-images.githubusercontent.com/60735895/141315848-7e197cb9-90d0-4f3d-bf02-6d3902d39a28.png)
+
+
 ## Novas funções
 
 ## Indíces espaciais mais eficientes
