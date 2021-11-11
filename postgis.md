@@ -1,4 +1,4 @@
-# Acções prévias
+# Notas prévias
 
 ```sql
   SELECT name, default_version,installed_version
@@ -16,11 +16,11 @@
   \dx postgis*
 ```
 
-# postgis
+## postgis
 
 https://www.ogc.org/
 
-## Tipos de dados adicionais (geometry, geography e raster)
+### Tipos de dados adicionais (geometry, geography e raster)
 
 - **POINT** - uma coordenada única, habitualmente – mas não necessariamente - bidimensional
 - **LINESTRING** - um conjunto de duas ou mais coordenadas, com interpretação linear do caminho entre as coordenadas
@@ -92,9 +92,9 @@ Da documentação oficial:
   \x
 ```
 
-## TABELAS
+### TABELAS
 
-### SPATIAL_REF_SYS
+#### SPATIAL_REF_SYS
 
 ```sql
   SELECT srid, auth_name, srtext
@@ -102,11 +102,29 @@ Da documentação oficial:
     WHERE srid in (3763, 4936, 4937, 4258, 4274, 27493, 4207, 5018, 20790, 4326) ;
 ```
 
-### GEOMETRY_COLUMNS
+#### GEOMETRY_COLUMNS
 
 ```sql
   SELECT *
     FROM geometry_columns;
+```
+
+### Criar tabelas espaciais
+
+
+```sql
+  CREATE TABLE tabela (
+    id SERIAL, 
+    nome text, 
+    geom geometry(LINESTRING,4326)
+  );
+```
+
+e / ou
+
+```sql
+  ALTER TABLE tabela 
+    ADD COLUMN geom2 geometry(LINESTRING, 4326);
 ```
 
 ## Novas funções
