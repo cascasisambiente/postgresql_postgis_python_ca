@@ -15,22 +15,6 @@
 ```sql
   \dx postgis*
 ```
-# Standards
-
-## WKT /WBT
-
-- POINT(0 0)
-- POINT Z (0 0 0)
-- POINT ZM (0 0 0 0)
-- LINESTRING(0 0,1 1,1 2)
-- POLYGON((0 0,4 0,4 4,0 4,0 0),(1 1, 2 1, 2 2, 1 2,1 1))
-- MULTIPOINT((0 0),(1 2))
-- MULTIPOINT Z ((0 0 0),(1 2 3))
-- MULTILINESTRING((0 0,1 1,1 2),(2 3,3 2,5 4))
-- MULTIPOLYGON(((0 0,4 0,4 4,0 4,0 0),(1 1,2 1,2 2,1 2,1 1)), ((-1 -1,-1 -2,-2 -2,-2 -1,-1 -1)))
-- GEOMETRYCOLLECTION(POINT(2 3),LINESTRING(2 3,3 4))
-
-
 
 # postgis
 
@@ -46,6 +30,43 @@ https://www.ogc.org/
 - **MULTILINESTRING** - conjunto de linhas - linestrings
 - **MULTIPOLYGON** - conjunto de polígonos - polygons
 - **GEOMETRYCOLLECTION** - um conjunto heterogéneo de geometrias
+
+### Standards
+
+#### WKT /WBT
+
+- POINT(0 0)
+- POINT Z (0 0 0)
+- POINT ZM (0 0 0 0)
+- LINESTRING(0 0,1 1,1 2)
+- POLYGON((0 0,4 0,4 4,0 4,0 0),(1 1, 2 1, 2 2, 1 2,1 1))
+- MULTIPOINT((0 0),(1 2))
+- MULTIPOINT Z ((0 0 0),(1 2 3))
+- MULTILINESTRING((0 0,1 1,1 2),(2 3,3 2,5 4))
+- MULTIPOLYGON(((0 0,4 0,4 4,0 4,0 0),(1 1,2 1,2 2,1 2,1 1)), ((-1 -1,-1 -2,-2 -2,-2 -1,-1 -1)))
+- GEOMETRYCOLLECTION(POINT(2 3),LINESTRING(2 3,3 4))
+
+Especificação OpenGIS precisa dum SRID para criar a geometria 
+
+```sql
+  bytea WKB = ST_AsBinary(geometry);
+  text WKT = ST_AsText(geometry);
+  geometry = ST_GeomFromWKB(bytea WKB, SRID);
+  geometry = ST_GeometryFromText(text WKT, SRID);
+```
+
+```sql
+  INSERT INTO tabela (geom, nome)
+    VALUES (ST_GeomFromText('POINT(-126.4 45.32)', 3763), 'Um lugar');
+```
+
+- 3D
+- 4D
+- CIRCULARSTRING
+- COMPOUNDCURVE
+- CURVEPOLYGON
+- MULTICURVE
+- MULTISURFACE
 
 ## Novas funções
 
