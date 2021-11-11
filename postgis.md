@@ -150,6 +150,23 @@ Simples se não 'passa' no mesmo ponto duas vezes (excepto anéis)
 ![image](https://user-images.githubusercontent.com/60735895/141315848-7e197cb9-90d0-4f3d-bf02-6d3902d39a28.png)
 
 
+#### MULTILINESTRING
+
+Simples se todos os elementos forem simples e intersecções apenas em pontos
+
+![image](https://user-images.githubusercontent.com/60735895/141316186-4496a5aa-d057-4d6a-b04d-370804223820.png)
+
+
+#### POLYGON
+
+É sempre simples
+É válido se não existirem dois aneis (interior e exterior) na fronteira que se cruzam, sem linhas de corte e os aneis interiores têm de se encontrar totalmente 'dentro' do anel exterior
+
+![image](https://user-images.githubusercontent.com/60735895/141316718-9819d24c-843f-4599-b401-93e3a8ee6e07.png)
+
+![image](https://user-images.githubusercontent.com/60735895/141316821-927857a5-7293-4293-9c52-e35f10e1418f.png)
+
+
 ## Novas funções
 
 ## Indíces espaciais mais eficientes
