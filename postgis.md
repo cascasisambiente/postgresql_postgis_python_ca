@@ -199,9 +199,51 @@ Por questões de performance não são validas as geometrias aquando do inserç�
 
 
 - **B-tree** (não espaciais, ordenamento fácil)
-- **R-tree** (espacial, postgis)
+- **R-tree (GIST)** (espacial, postgis)
 - **Q-tree** (espacial)
 - **grids** (espaciais)
+
+#### Criar indíces
+
+2D
+
+```sql
+  CREATE INDEX index_name 
+    ON tabela 
+      USING GIST(geom);
+```
+
+Em ambiente de produção
+
+```sql
+  CREATE INDEX CONCURRENTLY index_name 
+    ON tabela 
+      USING GIST(geom);
+```
+
+```sql
+  VACUUM ANALYSE tabela [geom];
+```
+
+btw
+
+```sql
+  VACUUM(FULL, ANALYZE, VERBOSE);
+```
+
+-- performance? à parte!?
+
+
+## Topologia básica (mas mega necessária!!)
+
+3 conceitos base (2D geometry):
+
+- Fronteira
+- Interior
+- Exterior
+
+https://en.wikipedia.org/wiki/DE-9IM
+
 
 
 ## Funcionalidades adicinais de bases de dados geográficas
