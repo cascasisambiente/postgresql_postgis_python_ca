@@ -167,6 +167,16 @@ Simples se todos os elementos forem simples e intersecções apenas em pontos
 ![image](https://user-images.githubusercontent.com/60735895/141316821-927857a5-7293-4293-9c52-e35f10e1418f.png)
 
 
+#### MULTIPOLYGON
+
+Válido se todos os poligonos forem válidos, se não existirem intersecções e fronteriras partilhada apenas num numero finito de pontos 
+
+![image](https://user-images.githubusercontent.com/60735895/141317275-1db20656-02c9-4c24-8686-62a540c6459d.png)
+
+ST_IsSimple()
+ST_IsValid()
+
+
 ## Novas funções
 
 ## Indíces espaciais mais eficientes
