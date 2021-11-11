@@ -33,7 +33,7 @@ https://www.ogc.org/
 
 ### Standards
 
-#### WKT /WBT
+WKT /WBT
 
 - POINT(0 0)
 - POINT Z (0 0 0)
@@ -78,7 +78,25 @@ Especificação OpenGIS precisa dum SRID para criar a geometria
 - TRIANGLE
 - TIN
 
+### Geography
 
+- geometry - plano (mais rápido, mais funções, menos rigoroso, mas espaço em disco)
+- geograpfy - esfera (mais lento, menos funções, mais rigoroso, customizável, menos espaço em disco)
+- rigor - geoide
+
+Da documentação oficial:
+![Screenshot from 2021-11-11 14-07-27](https://user-images.githubusercontent.com/60735895/141311901-5d55f6d9-5880-4967-b267-a93fb10b616c.png)
+
+
+```sql
+  \x
+```
+
+```sql
+  SELECT srid, auth_name, srtext
+    FROM spatial_ref_sys
+    WHERE srid in (3763, 4936, 4937, 4258, 4274, 27493, 4207, 5018, 20790, 4326) ;
+```
 
 ## Novas funções
 
