@@ -173,6 +173,8 @@ Válido se todos os poligonos forem válidos, se não existirem intersecções e
 
 ![image](https://user-images.githubusercontent.com/60735895/141317275-1db20656-02c9-4c24-8686-62a540c6459d.png)
 
+<hr>
+
 ST_IsSimple()
 ST_IsValid()
 
@@ -193,9 +195,7 @@ Por questões de performance não são validas as geometrias aquando do inserç�
     CHECK (ST_IsValid(geom));
 ```
 
-## Novas funções
-
-## Indíces espaciais mais eficientes
+### Indíces espaciais
 
 
 - **B-tree** (não espaciais, ordenamento fácil)
@@ -215,6 +215,10 @@ Por questões de performance não são validas as geometrias aquando do inserç�
 - **aggregates** - que a partir de conjuntos de geometrias devolvem resultados únicos (union é a mais comum)
 
 <hr>
+
+
+## Novas funções
+
 
 # Usar postgis
 
