@@ -92,10 +92,21 @@ Da documentação oficial:
   \x
 ```
 
+## TABELAS
+
+### SPATIAL_REF_SYS
+
 ```sql
   SELECT srid, auth_name, srtext
     FROM spatial_ref_sys
     WHERE srid in (3763, 4936, 4937, 4258, 4274, 27493, 4207, 5018, 20790, 4326) ;
+```
+
+### GEOMETRY_COLUMNS
+
+```sql
+  SELECT *
+    FROM geometry_columns;
 ```
 
 ## Novas funções
