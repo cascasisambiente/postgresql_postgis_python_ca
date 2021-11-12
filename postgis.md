@@ -264,7 +264,7 @@ https://en.wikipedia.org/wiki/DE-9IM
  - ST_ContainsProperly
 
 
-
+<hr>
 
 ## Funcionalidades adicinais de bases de dados geográficas
 
@@ -281,61 +281,42 @@ https://en.wikipedia.org/wiki/DE-9IM
 
 ## Novas funções
 
+```sql
+  \df
+```
 
 # Usar postgis
 
-```sql
-  CREATE EXTENSION postgis;
-```
 
 ```sql
-  ALTER EXTENSION postgis UPDATE;
-```
-
-Criar tabela
-
-```sql
-  CREATE TABLE points (
+  CREATE TABLE pontos (
     id BIGSERIAL NOT NULL PRIMARY KEY,
     nome VARCHAR(50),
-    geom geometry(Point, 4326)
+    geom geometry(Point, 3763)
   );
 ```
 
 ```sql
-  INSERT INTO points (nome, geom) 
-    VALUES ('p1', ST_GeomFromText('POINT(0 0)'));
+  INSERT INTO pontos (nome, geom) 
+    VALUES ('Mêda', ST_GeomFromText('POINT(73267 144418)'));
     
-  INSERT INTO points (nome, geom) 
-    VALUES ('p2', ST_GeomFromText('POINT(5 0)'));
+  INSERT INTO pontos (nome, geom) 
+    VALUES ('Belmonte', ST_GeomFromText('POINT(66560.4 77001.8)'));
     
-  INSERT INTO points (nome, geom) 
-    VALUES ('p3', ST_GeomFromText('POINT(0 5)'));
+  INSERT INTO pontos (nome, geom) 
+    VALUES ('Leiria', ST_GeomFromText('POINT(-57968.5 8687.1)'));
 ```
 
 ```sql
-  \d geometry_columns
+  SELECT st_srid(geom) FROM pontos;
 ```
 
-```sql
-  SELECT * FROM geometry_columns;
-```
+QGIS
 
-```sql
-  SELECT st_srid(geom) FROM points;
-```
-
-```sql
-  \d spatial_ref_sys
-```
-
-```sql
-  SELECT * FROM spatial_ref_sys;
-```
+<hr>
 
 ## Análise espacial
 
-https://postgis.net/docs/index.html
 
 
 *Qual o comprimento de cada linha de água de Cascais, em km*
