@@ -528,9 +528,9 @@ https://postgis.net/docs/ST_Centroid.html
 
 
 ```sql
-  SELECT c.name_2, ST_Distance(ST_Transform(c.centroid, 3763), ST_Transform(r.geom, 3763)) / 1000 km
+  SELECT c.name_2, ST_Distance(c.centroid, r.geom) / 1000 km
     FROM concelhos c, railway r
-    WHERE ST_Distance(ST_Transform(c.geom, 3763), ST_Transform(r.geom, 3763)) / 1000 > 50
+    WHERE ST_Distance(c.geom, r.geom) / 1000 > 50
       AND c.name_1 = 'Bragança'
     ORDER BY km DESC;
 ```
@@ -539,20 +539,17 @@ https://postgis.net/docs/ST_Centroid.html
   WITH rail AS (
     SELECT ST_Union(geom) geom FROM railway
   )
-  SELECT c.name_2, ST_Distance(ST_Transform(c.centroid, 3763), ST_Transform(r.geom, 3763)) / 1000 km
+  SELECT c.name_2, ST_Distance(c.centroid, r.geom) / 1000 km
     FROM concelhos c, rail r
-    WHERE ST_Distance(ST_Transform(c.geom, 3763), ST_Transform(r.geom, 3763)) / 1000 > 50
+    WHERE ST_Distance(c.geom, r.geom) / 1000 > 50
       AND c.name_1 = 'Bragança'
     ORDER BY km DESC;
 ```
 
 
-```
-
-
 ### buffer
 
-*Criar um buffer de 100 em cada linha de água*
+*Criar um buffer de 100 m em cada linha de água*
 
 multilinestring => buffer vai ser multipolygon
 
