@@ -469,7 +469,6 @@ https://postgis.net/docs/ST_Centroid.html
   \d minline
 ```
 
-
 ```sql
   CREATE TABLE maxline AS (
     SELECT ST_LongestLine(c.centroid, lac.geom), c.name_1, lac.nome
@@ -478,7 +477,6 @@ https://postgis.net/docs/ST_Centroid.html
       );
 ```
 
-
 ```sql
   CREATE TABLE closepoint AS (
     SELECT ST_ClosestPoint(lac.geom, c.centroid), c.name_1, lac.nome
@@ -486,7 +484,6 @@ https://postgis.net/docs/ST_Centroid.html
       WHERE c.name_2 = 'Cascais'
       );
 ```
-
 
 ```sql
   DROP TABLE minline;
@@ -503,7 +500,6 @@ https://postgis.net/docs/ST_Centroid.html
       );
 ```
 
-
 ```sql
   CREATE TABLE maxline AS (
     SELECT ST_LongestLine(c.centroid, ST_UNION(lac.geom))::GEOMETRY('LINESTRING', 3763), c.name_1, lac.nome
@@ -513,7 +509,6 @@ https://postgis.net/docs/ST_Centroid.html
       );
 ```
 
-
 ```sql
   CREATE TABLE closepoint AS (
     SELECT ST_ClosestPoint(ST_UNION(lac.geom), c.centroid)::GEOMETRY('POINT', 3763), c.name_1, lac.nome
@@ -522,7 +517,6 @@ https://postgis.net/docs/ST_Centroid.html
       GROUP BY lac.nome, c.name_1, c.centroid
       );
 ```
-
 
 *Quais os concelhos do Distrito de Bragança que ficam afastados mais de 100km da rede ferroviária"
 
@@ -554,15 +548,14 @@ https://postgis.net/docs/ST_Centroid.html
 multilinestring => buffer vai ser multipolygon
 
 ```sql
-  ALTER TABLE linha_agua_cascais ADD COLUMN buffer GEOMETRY('MULTIPOLYGON', 4326);
+  ALTER TABLE linha_agua_cascais ADD COLUMN buffer GEOMETRY('MULTIPOLYGON', 3763);
  ```
- 
  
  ```sql
   UPDATE linha_agua_cascais SET buffer = ST_Multi(ST_Buffer(geom, 100));
  ```
 
-várias opções: https://www.postgis.net/docs/ST_Buffer.html
+https://www.postgis.net/docs/ST_Buffer.html
 
 ```sql
   \d edificios
