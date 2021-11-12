@@ -584,7 +584,7 @@ https://www.postgis.net/docs/ST_Buffer.html
 *Quais os concelhos cujo centroíde está fora do concelho, e as distâncias, em metros, entre o centroide e o concelho* 
 
 ```sql
-  SELECT name_2, ST_Distance(ST_Transform(centroid, 3763), ST_Transform(geom, 3763)) as m 
+  SELECT name_2, ST_Distance(centroid, geom) as m 
     FROM concelhos 
     WHERE NOT ST_Intersects(centroid, geom);
     
@@ -598,7 +598,7 @@ https://www.postgis.net/docs/ST_Buffer.html
     GROUP BY f.nome;
  ```
  
-*Quantos edificios por freguesia em Cascais com mais de 10000 edificios*
+*Quais as fregeusias de Cacscais com mais de 10000 edificios*
 
 ```sql
   SELECT f.nome, COUNT(*) count
@@ -610,7 +610,6 @@ https://www.postgis.net/docs/ST_Buffer.html
  
  *Qual a freguesia de cada secao estatistica*
     
- 
 ```sql
   SELECT f.nome, s.codigo
     FROM freguesia f, seccaoestatistica s
