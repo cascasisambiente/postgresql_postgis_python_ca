@@ -633,7 +633,7 @@ https://www.postgis.net/docs/ST_Buffer.html
  WITH portugal AS (
     SELECT ST_Union(geom) geom FROM concelhos
   )
-  SELECT c.name_2, ST_Area(ST_Transform(c.geom, 3763)) / 1000000 , ST_Area(ST_Transform(c.geom, 3763)) * 100 /ST_Area(ST_Transform(p.geom, 3763)) AS percentagem
+  SELECT c.name_2, ST_Area(c.geom) / 1000000 , ST_Area(c.geom) * 100 /ST_Area(p.geom) AS percentagem
     FROM concelhos c, portugal p
     ORDER BY percentagem DESC;
  ```
