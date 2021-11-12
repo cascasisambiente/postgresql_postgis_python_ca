@@ -311,11 +311,35 @@ https://en.wikipedia.org/wiki/DE-9IM
   SELECT st_srid(geom) FROM pontos;
 ```
 
+```sql
+  SELECT 
+      geom, 
+      ST_AsText(geom), 
+      ST_AsEWKB(geom), 
+      ST_AsEWKT(geom), 
+      ST_AsTWKB(geom), 
+      ST_X(geom), 
+      ST_Y(geom), 
+      ST_SRID(geom) 
+    FROM pontos;
+```
+
 QGIS
 
 <hr>
 
+
+```console
+  pg_dump -h training-do-user-4575137-0.b.db.ondigitalocean.com -p 25060 -U doadmin -FC defaultdb -v > dump.sql
+```
+
+```console
+  pg_restore -h training-do-user-4575137-0.b.db.ondigitalocean.com -p 25060 -U doadmin -d rui dump.sql
+```
+
+
 ## Análise espacial
+
 
 
 
