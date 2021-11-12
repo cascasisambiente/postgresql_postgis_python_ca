@@ -373,27 +373,21 @@ QGIS
     WHERE name_1 = 'Viseu';
 ```
 
-*Qual o nome e a área, do distrito com maior área (código do distrito = name_1)*
+*Qual o nome e a área, em km2, do distrito com maior área (código do distrito = name_1)*
 
 
 ```sql
-  SELECT name_1, SUM(ST_Area(ST_Transform(geom, 3763)))/1000000 as km2 
+  SELECT name_1, SUM(ST_Area(geom))/1000000 km2
     FROM concelhos 
     GROUP BY name_1 
-    ORDER BY km DESC 
+    ORDER BY km2 DESC 
     LIMIT 1;
 ```
 
 *Qual o perímetro, em km arredondado à décima de unidade, do concelho de Cascais (código do concelho = name_2)*
 
 ```sql
-  SELECT ROUND(SUM(ST_Perimeter(ST_Transform(geom, 3763)))/1000, 1) as km 
-    FROM concelhos 
-    WHERE name_2 = 'Cascais';
-```
-
-```sql
-  SELECT ROUND(SUM(ST_Perimeter(ST_Transform(geom, 3763)))::NUMERIC/1000, 1) as km 
+  SELECT ROUND(SUM(ST_Perimeter(geom)/1000)::NUMERIC, 1) as km 
     FROM concelhos 
     WHERE name_2 = 'Cascais';
 ```
