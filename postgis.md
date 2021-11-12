@@ -368,7 +368,7 @@ QGIS
 *Qual a área em, km2, do distrito de Viseu (código do distrito = name_1)*
 
 ```sql
-  SELECT SUM(ST_Area(ST_Transform(geom, 3763)))/1000000 as km2 
+  SELECT SUM(ST_Area(geom))/1000000 as km2 
     FROM concelhos 
     WHERE name_1 = 'Viseu';
 ```
