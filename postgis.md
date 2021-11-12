@@ -340,22 +340,15 @@ QGIS
 
 ## Análise espacial
 
-
-
+```sql
+  \d linha_agua_cascais
+```
 
 *Qual o comprimento de cada linha de água de Cascais, em km*
 
+
 ```sql
   SELECT nome, SUM(ST_Length(geom))/1000 as km 
-    FROM linha_agua_cascais 
-    WHERE nome IS NOT NULL 
-    GROUP BY nome;
-```
-
-!!!!
-
-```sql
-  SELECT nome, SUM(ST_Length(ST_Transform(geom, 3763)))/1000 as km 
     FROM linha_agua_cascais 
     GROUP BY nome;
 ```
@@ -364,12 +357,15 @@ QGIS
 
 
 ```sql
-  SELECT SUM(ST_Length(ST_Transform(geom, 3763)))/1000 as km 
+  SELECT SUM(ST_Length(geom))/1000 as km 
     FROM linha_agua_cascais;
 ```
 
-*Qual a área em, km2, do distrito de Viseu (código do distrito = name_1)*
+```sql
+  \d concelhos
+```
 
+*Qual a área em, km2, do distrito de Viseu (código do distrito = name_1)*
 
 ```sql
   SELECT SUM(ST_Area(ST_Transform(geom, 3763)))/1000000 as km2 
