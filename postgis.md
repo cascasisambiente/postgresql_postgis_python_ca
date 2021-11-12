@@ -392,25 +392,17 @@ QGIS
     WHERE name_2 = 'Cascais';
 ```
 
-### Representação de geometrias
-
-```sql
-  SELECT 
-      ST_AsTEXT(ST_Centroid(geom)), 
-      ST_AsEWKT(ST_Centroid(geom)), 
-      ST_X(ST_Centroid(geom)), ST_Y(ST_Centroid(geom)) 
-    FROM concelhos 
-    WHERE name_2 = 'Cascais';
-```
 
 ### Acrescentar geometrias
 
 ```sql
   ALTER TABLE concelhos 
-    ADD COLUMN centroid geometry(Point, 4326);
+    ADD COLUMN centroid geometry(Point, 3763);
 ```
 
 *Preencher coluna centroid*
+
+https://postgis.net/docs/ST_Centroid.html
 
 ```sql
   UPDATE concelhos 
@@ -422,20 +414,20 @@ QGIS
 ```sql
   SELECT COUNT(*) 
     FROM concelhos 
-    WHERE ST_Area(ST_Transform(geom, 3763)) / 1000000 > 1000;
+    WHERE ST_Area(geom) / 1000000 > 1000;
 ```
 
 *Quantos concelhos têm área superior à área do concelho de Cascais (código do concelho = name_2)*
 
 ```sql
   WITH cascais AS (
-    SELECT ST_Area(ST_Transform(geom, 3763)) as area 
+    SELECT ST_Area(geom) as area 
       FROM concelhos 
       WHERE name_2 = 'Cascais'
   )
   SELECT COUNT(*) 
     FROM concelhos, cascais 
-    WHERE ST_Area(ST_Transform(geom, 3763)) > cascais.area;
+    WHERE ST_Area(geom) > cascais.area;
 ```
 
 *Ordenar os distritos alfabeticamente (código do distrito = name_1)*
@@ -456,7 +448,7 @@ QGIS
 *Qual a distância entre a Ribeira do Assobio (coluna nome) e o centroide de Cascais*
 
 ```sql
-  SELECT ST_Distance(ST_Transform(c.centroid, 3763), ST_Transform(lac.geom, 3763)) as m 
+  SELECT ST_Distance(c.centroid, lac.geom) as m 
     FROM concelhos c, linha_agua_cascais lac 
     WHERE c.name_2 = 'Cascais' AND lac.nome = 'Ribeira do Assobio';
 ```
@@ -504,7 +496,7 @@ QGIS
 
 ```sql
   CREATE TABLE minline AS (
-    SELECT ST_ShortestLine(c.centroid, ST_UNION(lac.geom))::GEOMETRY('LINESTRING', 4326), c.name_1, lac.nome
+    SELECT ST_ShortestLine(c.centroid, ST_UNION(lac.geom))::GEOMETRY('LINESTRING', 3763), c.name_1, lac.nome
       FROM concelhos c, linha_agua_cascais lac 
       WHERE c.name_2 = 'Cascais'
       GROUP BY lac.nome, c.name_1, c.centroid
@@ -514,7 +506,7 @@ QGIS
 
 ```sql
   CREATE TABLE maxline AS (
-    SELECT ST_LongestLine(c.centroid, ST_UNION(lac.geom))::GEOMETRY('LINESTRING', 4326), c.name_1, lac.nome
+    SELECT ST_LongestLine(c.centroid, ST_UNION(lac.geom))::GEOMETRY('LINESTRING', 3763), c.name_1, lac.nome
       FROM concelhos c, linha_agua_cascais lac 
       WHERE c.name_2 = 'Cascais'
       GROUP BY lac.nome, c.name_1, c.centroid
@@ -524,7 +516,7 @@ QGIS
 
 ```sql
   CREATE TABLE closepoint AS (
-    SELECT ST_ClosestPoint(ST_UNION(lac.geom), c.centroid)::GEOMETRY('POINT', 4326), c.name_1, lac.nome
+    SELECT ST_ClosestPoint(ST_UNION(lac.geom), c.centroid)::GEOMETRY('POINT', 3763), c.name_1, lac.nome
       FROM concelhos c, linha_agua_cascais lac 
       WHERE c.name_2 = 'Cascais'
       GROUP BY lac.nome, c.name_1, c.centroid
