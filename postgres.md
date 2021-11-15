@@ -1394,7 +1394,7 @@ TriggerData;
 	new_zona INT,
 	new_idade_anos INTERVAL
   );
-``
+```
 
 
 ```sql
