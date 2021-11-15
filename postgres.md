@@ -499,13 +499,32 @@ HAVING != WHERE
     id BIGSERIAL NOT NULL PRIMARY KEY,
     fabricante VARCHAR(100) NOT NULL,
     modelo VARCHAR(100) NOT NULL,
-    preco NUMERIC(9, 2) NOT NULL
+    preco NUMERIC(9, 2) NOT NULL,
+    CHECK (char_length(fabricante) >=3 ),
+    CHECK (char_length(modelo) >=3 ),
+    CHECK (preco >= 1000 )
   );
 ```
 
 ```sql
   \i caminho_para_ficheiro/carro.sql
 ```
+
+```sql
+  ALTER TABLE carro
+    ADD CONSTRAINT unique_fabricante_modelo UNIQUE (fabricante, modelo);
+```
+Não existe alter constraint!!
+
+```sql
+  ALTER TABLE carro
+    ALTER TABLE carro DROP CONSTRAINT carro_modelo_check;
+```
+
+```sql
+  \i caminho_para_ficheiro/carro.sql
+```
+
 
 ```sql
   SELECT MAX(preco), MIN(preco), AVG(preco) 
