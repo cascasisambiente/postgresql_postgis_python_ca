@@ -1141,7 +1141,7 @@ Optimizar performance das consultas, potencialmente à custa da performance das 
   SELECT * 
     FROM posicoes_posicao
     ORDER BY viatura_id, time ASC
-    LIMIT 1000;
+    LIMIT 100;
 ```
 
 Preços a pagar:
