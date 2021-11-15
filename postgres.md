@@ -1266,4 +1266,92 @@ Acções sobre os triggers
 - ENABLE TRIGGER
 
 
+```sql
+  CREATE FUNCTION trigger_function() 
+    RETURNS TRIGGER 
+    LANGUAGE PLPGSQL
+      AS $$
+        BEGIN
+          -- logica do trigger
+        END;
+      $$
+```
 
+TriggerData;
+- OLD
+- NEW
+- TG_
+- TG_WHEN
+- TG_TABLE_NAME
+
+
+```sql
+  CREATE TRIGGER trigger_name
+    {BEFORE | AFTER} { event }
+    ON tabela
+    [FOR [EACH] { ROW | STATEMENT }]
+       EXECUTE PROCEDURE trigger_function;
+```
+
+```sql
+  ALTER TABLE pessoa
+    ADD COLUMN
+      idade_anos INTERVAL;
+```
+
+```sql
+  CREATE OR REPLACE FUNCTION mudar_data_nascimento()
+    RETURNS TRIGGER 
+    LANGUAGE PLPGSQL
+      AS $$
+        BEGIN
+	        IF NEW.data_nascimento != OLD.data_nascimento THEN
+		        UPDATE pessoa SET idade_anos = AGE(now(), NEW.data_nascimento);
+	      END IF;
+	      RETURN NEW;
+      END;
+    $$;
+```
+
+```sql
+  CREATE TRIGGER pessoa_mudar_data_nascimento
+    AFTER UPDATE
+    ON pessoa
+    FOR EACH ROW
+      EXECUTE PROCEDURE mudar_data_nascimento();
+```
+
+```sql
+  UPDATE pessoa 
+    SET data_nascimento = '2000-01-01' WHERE id = 1;
+```
+
+```sql
+  SELECT id, data_nascimento, idade_anos 
+    FROM pessoa
+```
+
+```sql
+  CREATE OR REPLACE FUNCTION mudar_data_nascimento()
+    RETURNS TRIGGER 
+    LANGUAGE PLPGSQL
+      AS $$
+        BEGIN
+	        IF NEW.data_nascimento != OLD.data_nascimento THEN
+            RAISE NOTICE '%', NEW.id;
+		        UPDATE pessoa SET idade_anos = AGE(now(), NEW.data_nascimento) WHERE id = NEW.id;
+	      END IF;
+	      RETURN NEW;
+      END;
+    $$;
+```
+
+```sql
+  UPDATE pessoa 
+    SET data_nascimento = '2010-01-01' WHERE id = 1;
+```
+
+```sql
+  SELECT id, data_nascimento, idade_anos 
+    FROM pessoa
+```
