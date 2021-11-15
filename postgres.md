@@ -1370,3 +1370,52 @@ TriggerData;
   ALTER TABLE tabela
     ENABLE TRIGGER trigger_name | ALL;
 ```
+
+#### TRIGGER para logs
+
+```sql
+  CREATE TABLE pessoa_log(
+  	id BIGSERIAL PRIMARY KEY,
+	time TIMESTAMP NOT NULL,
+	username BIGINT NOT NULL,
+	old_id BIGINT NOT NULL,
+	old_nome VARCHAR(100) NOT NULL,
+	old_ativo BOOLEAN NOT NULL,
+	old_data_nascimento DATE NOT NULL,
+	old_email VARCHAR(200),
+	old_local_nascimento VARCHAR(100),
+	old_zona INT,
+	old_idade_anos INTERVAL,
+	new_id BIGINT NOT NULL,
+	new_nome VARCHAR(100) NOT NULL,
+	new_ativo BOOLEAN NOT NULL,
+	new_data_nascimento DATE NOT NULL,
+	new_email VARCHAR(200),
+	new_local_nascimento VARCHAR(100),
+	new_zona INT,
+	new_idade_anos INTERVAL
+  );
+``
+
+
+```sql
+  CREATE OR REPLACE FUNCTION log_pessoa()
+    RETURNS TRIGGER 
+    LANGUAGE PLPGSQL
+      AS $$
+        BEGIN
+          INSERT INTO pessoa_log (time, username, pessoa_id, old_nome, old_ativo, old_data_nascimento, old_email, 		    old_local_nascimento, old_zona, old_idade_anos, new_nome, new_ativo, new_data_nascimento, new_email,                   new_local_nascimento, new_zona, new_idade_anos)
+	    VALUES (now(), 1, NEW.id, OLD.nome, OLD.ativo, OLD.data_nascimento, OLD.email, OLD.local_nascimento,                           OLD.zona, OLD.idade_anos, NEW.nome, NEW.ativo, NEW.data_nascimento, NEW.email,                                         NEW.local_nascimento, NEW.zona, NEW.idade_anos);  
+	  RETURN NEW;
+        END;
+      $$;
+```
+
+```sql
+  CREATE TRIGGER log_pessoa_trigger
+    AFTER UPDATE
+    ON pessoa
+    FOR EACH ROW
+      EXECUTE PROCEDURE log_pessoa();
+```
+
