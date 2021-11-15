@@ -1377,7 +1377,7 @@ TriggerData;
   CREATE TABLE pessoa_log(
   	id BIGSERIAL PRIMARY KEY,
 	time TIMESTAMP NOT NULL,
-	username BIGINT NOT NULL,
+	username TEXT NOT NULL,
 	pessoa_id BIGINT NOT NULL,
 	old_nome VARCHAR(100) NOT NULL,
 	old_ativo BOOLEAN NOT NULL,
@@ -1403,8 +1403,44 @@ TriggerData;
     LANGUAGE PLPGSQL
       AS $$
         BEGIN
-          INSERT INTO pessoa_log (time, username, pessoa_id, old_nome, old_ativo, old_data_nascimento, old_email, 		    old_local_nascimento, old_zona, old_idade_anos, new_nome, new_ativo, new_data_nascimento, new_email,                   new_local_nascimento, new_zona, new_idade_anos)
-	    VALUES (now(), 1, NEW.id, OLD.nome, OLD.ativo, OLD.data_nascimento, OLD.email, OLD.local_nascimento,                           OLD.zona, OLD.idade_anos, NEW.nome, NEW.ativo, NEW.data_nascimento, NEW.email,                                         NEW.local_nascimento, NEW.zona, NEW.idade_anos);  
+          INSERT INTO pessoa_log (
+	    time, 
+	    username, 
+	    pessoa_id, 
+	    old_nome, 
+	    old_ativo, 
+	    old_data_nascimento, 
+	    old_email,
+	    old_local_nascimento, 
+	    old_zona, 
+	    old_idade_anos, 
+	    new_nome, 
+	    new_ativo, 
+	    new_data_nascimento, 
+	    new_email, 
+	    new_local_nascimento, 
+	    new_zona, 
+	    new_idade_anos
+	  )
+	    VALUES (
+	      now(), 
+	      current_user, 
+	      NEW.id, 
+	      OLD.nome, 
+	      OLD.ativo, 
+	      OLD.data_nascimento, 
+	      OLD.email, 
+	      OLD.local_nascimento,
+	      OLD.zona, 
+	      OLD.idade_anos, 
+	      NEW.nome, 
+	      NEW.ativo, 
+	      NEW.data_nascimento, 
+	      NEW.email,
+	      NEW.local_nascimento,
+	      NEW.zona,
+	      NEW.idade_anos
+	    );  
 	  RETURN NEW;
         END;
       $$;
@@ -1423,7 +1459,6 @@ TriggerData;
     SET nome = 'Joana Fonseca da Silva Almeida', local_nascimento = 'Grécia' 
     	WHERE id in (1, 5, 7);
 ```
-
 
 ```sql
   SELECT * 
