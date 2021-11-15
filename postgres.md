@@ -331,7 +331,7 @@ Limitar e deslocar o número de registos devolvidos
 ```sql
   SELECT * 
     FROM pessoa 
-    ORDER BY id ASC 
+    ORDER BY 1 ASC 
     OFFSET 5 LIMIT 3;
 ```
 
