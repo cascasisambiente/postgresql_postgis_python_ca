@@ -1378,7 +1378,7 @@ TriggerData;
   	id BIGSERIAL PRIMARY KEY,
 	time TIMESTAMP NOT NULL,
 	username BIGINT NOT NULL,
-	old_id BIGINT NOT NULL,
+	pessoa_id BIGINT NOT NULL,
 	old_nome VARCHAR(100) NOT NULL,
 	old_ativo BOOLEAN NOT NULL,
 	old_data_nascimento DATE NOT NULL,
@@ -1386,7 +1386,6 @@ TriggerData;
 	old_local_nascimento VARCHAR(100),
 	old_zona INT,
 	old_idade_anos INTERVAL,
-	new_id BIGINT NOT NULL,
 	new_nome VARCHAR(100) NOT NULL,
 	new_ativo BOOLEAN NOT NULL,
 	new_data_nascimento DATE NOT NULL,
@@ -1417,5 +1416,17 @@ TriggerData;
     ON pessoa
     FOR EACH ROW
       EXECUTE PROCEDURE log_pessoa();
+```
+
+```sql
+  UPDATE pessoa 
+    SET nome = 'Joana Fonseca da Silva Almeida', local_nascimento = 'Grécia' 
+    	WHERE id in (1, 5, 7);
+```
+
+
+```sql
+  SELECT * 
+  	FROM pessoa_log; 
 ```
 
