@@ -1251,11 +1251,15 @@ Função invocada automaticamente quando ocorre um evento, associado a uma tabel
 
 Dois tipos de invocações:
 - FOR EACH ROW
+  - Podem devolver TABLE ROW
+  - Usar WHEN
 - FOR EACH STATEMENT
+  - Devolvem NULL
 
 Dois momentos de invocação:
 - BEFORE
 - AFTER
+- INSTEAD OF
 
 Acções sobre os triggers
 
