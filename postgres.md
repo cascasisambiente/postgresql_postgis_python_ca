@@ -1379,16 +1379,16 @@ TriggerData;
 	time TIMESTAMP NOT NULL,
 	username TEXT NOT NULL,
 	pessoa_id BIGINT NOT NULL,
-	old_nome VARCHAR(100) NOT NULL,
-	old_ativo BOOLEAN NOT NULL,
-	old_data_nascimento DATE NOT NULL,
+	old_nome VARCHAR(100),
+	old_ativo BOOLEAN,
+	old_data_nascimento DATE,
 	old_email VARCHAR(200),
 	old_local_nascimento VARCHAR(100),
 	old_zona INT,
 	old_idade_anos INTERVAL,
-	new_nome VARCHAR(100) NOT NULL,
-	new_ativo BOOLEAN NOT NULL,
-	new_data_nascimento DATE NOT NULL,
+	new_nome VARCHAR(100),
+	new_ativo BOOLEAN,
+	new_data_nascimento DATE,
 	new_email VARCHAR(200),
 	new_local_nascimento VARCHAR(100),
 	new_zona INT,
@@ -1425,7 +1425,7 @@ TriggerData;
 	    VALUES (
 	      now(), 
 	      current_user, 
-	      NEW.id, 
+	      COALESCE(NEW.id, OLD.id), 
 	      OLD.nome, 
 	      OLD.ativo, 
 	      OLD.data_nascimento, 
@@ -1448,16 +1448,44 @@ TriggerData;
 
 ```sql
   CREATE TRIGGER log_pessoa_trigger
-    AFTER UPDATE
+    AFTER UPDATE OR DELETE OR INSERT
     ON pessoa
     FOR EACH ROW
       EXECUTE PROCEDURE log_pessoa();
 ```
 
 ```sql
+  INSERT INTO pessoa (
+    nome,
+    ativo,
+    inicio_atividade,
+    data_nascimento,
+    email,
+    local_nascimento
+  ) VALUES ('João Silva', true, now(), '2001-01-02', 'joao.silva@foo.com', 'Portugal');
+
+```
+
+```sql
+  SELECT * 
+  	FROM pessoa_log; 
+```
+
+```sql
+  DELETE 
+    FROM pessoa
+      WHERE id = 1;
+```
+
+```sql
+  SELECT * 
+  	FROM pessoa_log; 
+```
+
+```sql
   UPDATE pessoa 
     SET nome = 'Joana Fonseca da Silva Almeida', local_nascimento = 'Grécia' 
-    	WHERE id in (1, 5, 7);
+    	WHERE id in (3, 5, 7);
 ```
 
 ```sql
