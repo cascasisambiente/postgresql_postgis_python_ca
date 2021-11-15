@@ -1493,3 +1493,7 @@ TriggerData;
   	FROM pessoa_log; 
 ```
 
+
+# PGADMIN4
+
+
