@@ -1353,5 +1353,16 @@ TriggerData;
 
 ```sql
   SELECT id, data_nascimento, idade_anos 
-    FROM pessoa
+    FROM pessoa;
+```
+
+
+```sql
+  ALTER TABLE tabela
+    DISABLE TRIGGER trigger_name | ALL;
+```
+
+```sql
+  ALTER TABLE tabela
+    ENABLE TRIGGER trigger_name | ALL;
 ```
