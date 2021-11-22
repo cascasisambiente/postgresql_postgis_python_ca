@@ -390,6 +390,7 @@ https://postgis.net/docs/ST_Area.html
     ORDER BY km2 DESC 
     LIMIT 1;
 ```
+
 **ST_Perimeter**  
 https://postgis.net/docs/ST_Perimeter.html
 
@@ -404,14 +405,15 @@ https://postgis.net/docs/ST_Perimeter.html
 
 ### Acrescentar geometrias
 
+**ST_Centroid**  
+https://postgis.net/docs/ST_Centroid.html
+
 ```sql
   ALTER TABLE concelhos 
     ADD COLUMN centroid geometry(Point, 3763);
 ```
 
 *Preencher coluna centroid*
-
-https://postgis.net/docs/ST_Centroid.html
 
 ```sql
   UPDATE concelhos 
@@ -439,6 +441,13 @@ https://postgis.net/docs/ST_Centroid.html
     WHERE ST_Area(geom) > cascais.area;
 ```
 
+```sql
+  SELECT COUNT(*) 
+    FROM concelhos c1, concelhos c2
+    WHERE ST_Area(c1.geom) > ST_Area(c2.geom)
+      AND c2.name_2 = 'Cascais';
+```
+
 *Ordenar os distritos alfabeticamente (código do distrito = name_1)*
 
 ```sql
@@ -453,6 +462,9 @@ https://postgis.net/docs/ST_Centroid.html
     GROUP BY name_1 
     ORDER BY name_1;
 ```
+
+**ST_Distance**  
+https://postgis.net/docs/ST_Distance.html
 
 *Qual a distância entre a Ribeira do Assobio (coluna nome) e o centroide de Cascais*
 
