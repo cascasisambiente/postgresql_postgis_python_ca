@@ -477,6 +477,15 @@ https://postgis.net/docs/ST_Distance.html
 
 ### minline, maxline, closestpoint
 
+**ST_ShortestLine**  
+https://postgis.net/docs/ST_ShortestLine.html
+
+**ST_LongestLine**  
+https://postgis.net/docs/ST_LongestLine.html
+
+**ST_ClosestPoint**  
+https://postgis.net/docs/ST_ClosestPoint.html
+
 
 ```sql
   CREATE TABLE minline AS (
