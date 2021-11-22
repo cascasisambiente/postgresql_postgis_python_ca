@@ -713,14 +713,17 @@ https://postgis.net/docs/ST_Within.html
  ### multi vs single
  
   
+**ST_Multi**  
+https://postgis.net/docs/ST_Multi.html
+
+**ST_Dump**  
+https://postgis.net/docs/ST_Dump.html
+  
  ```sql
     SELECT ST_Multi(geom) 
-      FROM tabela;
+      FROM pontos;
  ```
- 
- https://postgis.net/docs/ST_Dump.html
- 
-   
+
  ```sql
     SELECT ST_Dump(geom) 
       FROM freguesia;
@@ -738,7 +741,11 @@ https://postgis.net/docs/ST_Within.html
  
  ### Simplificar geometrias
  
- https://postgis.net/docs/ST_Simplify.html
+**ST_Simplify**  
+https://postgis.net/docs/ST_Simplify.html
+
+**ST_SimplifyPreserveTopology**  
+https://postgis.net/docs/ST_SimplifyPreserveTopology.html
  
    ```sql
      CREATE VIEW freguesia_simplificada AS (
@@ -747,16 +754,4 @@ https://postgis.net/docs/ST_Within.html
  ```
 
 ST_SimplifyPreserveTopology
-ST_IsValid
 
-
-## Indices
-
-   ```sql
-     CREATE INDEX edificio_gidx ON edificio
-        USING GIST (geom);
-  ```
-  
-     ```sql
-     VACUUM VACUUM ANALYZE;
-  ```
