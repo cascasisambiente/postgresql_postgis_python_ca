@@ -653,13 +653,13 @@ https://postgis.net/docs/ST_Intersects.html
 https://postgis.net/docs/ST_Within.html
 
  
-*Quais os concelhos cujo centroíde está fora do concelho, e as distâncias, em metros, entre o centroide e o concelho* 
+*Quais os concelhos cujo centroíde está fora do concelho? Quais as distâncias, em metros, entre o centroide e o concelho* 
 
 ```sql
   SELECT name_2, ST_Distance(centroid, geom) as m 
     FROM concelhos 
     WHERE NOT ST_Intersects(centroid, geom);
-    
+```
     
 *Quantos edificios por freguesia em Cascais*
 
@@ -670,7 +670,7 @@ https://postgis.net/docs/ST_Within.html
     GROUP BY f.nome;
  ```
  
-*Quais as fregeusias de Cacscais com mais de 10000 edificios*
+*Quais as fregeusias de Cascais com mais de 10000 edificios*
 
 ```sql
   SELECT f.nome, COUNT(*) count
@@ -686,13 +686,6 @@ https://postgis.net/docs/ST_Within.html
   SELECT f.nome, s.codigo
     FROM freguesia f, seccaoestatistica s
     WHERE ST_Intersects(s.geom, f.geom)
-    ORDER BY s.codigo;
- ```
- 
- ```sql
-  SELECT f.nome, s.codigo
-    FROM freguesia f, seccaoestatistica s
-    WHERE ST_Within(s.geom, f.geom)
     ORDER BY s.codigo;
  ```
     
