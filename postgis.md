@@ -339,7 +339,7 @@ QGIS
   \d linha_agua_cascais
 ```
 
-*ST_Length*  
+**ST_Length**  
 https://postgis.net/docs/ST_Length.html
 
 *Qual o comprimento de cada linha de água de Cascais, em km*
