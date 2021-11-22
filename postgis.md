@@ -548,7 +548,7 @@ https://postgis.net/docs/ST_ClosestPoint.html
       );
 ```
 
-*Quais os concelhos do Distrito de Bragança que ficam afastados mais de 100km da rede ferroviária"
+*Quais os concelhos do Distrito de Bragança que ficam afastados mais de 100km da rede ferroviária: Apresentar o nome e a distâcia em km"
 
 
 ```sql
@@ -558,6 +558,19 @@ https://postgis.net/docs/ST_ClosestPoint.html
       AND c.name_1 = 'Bragança'
     ORDER BY km DESC;
 ```
+
+```sql
+  SELECT c.name_2, MIN(ST_Distance(c.centroid, r.geom) / 1000) km
+    FROM concelhos c, railway r
+    WHERE ST_Distance(c.geom, r.geom) / 1000 > 50
+      AND c.name_1 = 'Bragança'
+    GROUP BY c.name_2
+    ORDER BY km DESC;
+```
+
+**ST_Union**  
+https://postgis.net/docs/ST_Union.html
+
 
 ```sql
   WITH rail AS (
@@ -570,8 +583,10 @@ https://postgis.net/docs/ST_ClosestPoint.html
     ORDER BY km DESC;
 ```
 
-
 ### buffer
+
+**ST_Buffer**  
+https://postgis.net/docs/ST_Buffer.html
 
 *Criar um buffer de 100 m em cada linha de água*
 
