@@ -568,6 +568,16 @@ https://postgis.net/docs/ST_ClosestPoint.html
     ORDER BY km DESC;
 ```
 
+```sql
+  SELECT c.name_2, MIN(ST_Distance(c.centroid, r.geom) / 1000) km
+    FROM concelhos c, railway r
+    WHERE ST_Distance(c.geom, r.geom) / 1000 > 50
+      AND c.name_1 = 'Bragança'
+    GROUP BY c.name_2
+      HAVING COUNT(r.*) = (SELECT COUNT(*) from railway)
+    ORDER BY km DESC;
+```
+
 **ST_Union**  
 https://postgis.net/docs/ST_Union.html
 
