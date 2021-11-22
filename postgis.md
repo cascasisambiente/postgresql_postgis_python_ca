@@ -670,7 +670,7 @@ https://postgis.net/docs/ST_Within.html
     GROUP BY f.nome;
  ```
  
-*Quais as fregeusias de Cascais com mais de 10000 edificios*
+*Quais as freguesias de Cascais com mais de 10000 edificios*
 
 ```sql
   SELECT f.nome, COUNT(*) count
@@ -693,6 +693,13 @@ https://postgis.net/docs/ST_Within.html
  
 
 *Área e percentagem da área da cada concelho"
+
+ ```sql
+  SELECT c.name_2, ST_Area(c.geom) / 1000000 , ST_Area(c.geom) * 100 /SUM(ST_Area(d.geom)) AS percentagem
+    FROM concelhos c, concelhos d
+    GROUP BY c.name_2, c.geom
+    ORDER BY percentagem DESC;
+ ```
 
  ```sql
  WITH portugal AS (
