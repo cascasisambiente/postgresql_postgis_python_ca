@@ -136,14 +136,9 @@ Geometrias tem de ser válidas e simples
 Sempre simples
 
 
-#### MULTIPOINT
-
-Simples se nenhuma de duas coordenadas (POINT) são iguais
-
-
 #### LINESTRING
 
-Simples se não 'passa' no mesmo ponto duas vezes (excepto anéis)
+Simples se não 'passar' no mesmo ponto duas vezes (excepto anéis)
 
 ![image](https://user-images.githubusercontent.com/60735895/141315794-96ad207a-8fda-4068-a11d-31a125660f96.png)
 
@@ -152,7 +147,7 @@ Simples se não 'passa' no mesmo ponto duas vezes (excepto anéis)
 
 #### MULTILINESTRING
 
-Simples se todos os elementos forem simples e intersecções apenas em pontos
+Simples se todos os elementos forem simples e as intersecções ocorrerem apenas em pontos
 
 ![image](https://user-images.githubusercontent.com/60735895/141316186-4496a5aa-d057-4d6a-b04d-370804223820.png)
 
@@ -169,7 +164,7 @@ Simples se todos os elementos forem simples e intersecções apenas em pontos
 
 #### MULTIPOLYGON
 
-Válido se todos os poligonos forem válidos, se não existirem intersecções e fronteriras partilhada apenas num numero finito de pontos 
+Válido se todos os poligonos forem válidos, se não existirem intersecções e fronteriras partilhada apenas num número finito de pontos 
 
 ![image](https://user-images.githubusercontent.com/60735895/141317275-1db20656-02c9-4c24-8686-62a540c6459d.png)
 
@@ -234,7 +229,7 @@ btw
 -- performance? à parte!?
 
 
-## Topologia básica (mas mega necessária!!)
+## Topologia
 
 3 conceitos base (2D geometry):
 
@@ -266,7 +261,7 @@ https://en.wikipedia.org/wiki/DE-9IM
 
 <hr>
 
-## Funcionalidades adicinais de bases de dados geográficas
+## Funcionalidades adicionais de bases de dados geográficas
 
 - **construction** - para construção de geometrias a partir de representações de texto e binárias
 - **serialization** - para fazer output de geometrias em diversas representações de texto e binárias (tais como KML, GML, JSON e SVG)
