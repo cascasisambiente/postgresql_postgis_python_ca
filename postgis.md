@@ -616,8 +616,6 @@ multilinestring => buffer vai ser multipolygon
   UPDATE linha_agua_cascais SET buffer = ST_Multi(ST_Buffer(geom, 100));
  ```
 
-https://www.postgis.net/docs/ST_Buffer.html
-
 ```sql
   \d edificios
  ```
