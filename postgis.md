@@ -612,6 +612,10 @@ multilinestring => buffer vai ser multipolygon
   ALTER TABLE linha_agua_cascais ADD COLUMN buffer GEOMETRY('MULTIPOLYGON', 3763);
  ```
  
+ 
+**ST_Multi**  
+https://postgis.net/docs/ST_Multi.html
+ 
  ```sql
   UPDATE linha_agua_cascais SET buffer = ST_Multi(ST_Buffer(geom, 100));
  ```
