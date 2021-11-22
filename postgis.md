@@ -170,8 +170,14 @@ Válido se todos os poligonos forem válidos, se não existirem intersecções e
 
 <hr>
 
-ST_IsSimple()
-ST_IsValid()
+**ST_IsSimple()**
+https://postgis.net/docs/ST_IsSimple.html
+
+**ST_IsValid()**
+https://postgis.net/docs/ST_IsValid.html
+
+**ST_MakeValid**
+https://postgis.net/docs/ST_MakeValid.html
 
 
 ```sql
