@@ -369,6 +369,9 @@ https://postgis.net/docs/ST_Length.html
   \d concelhos
 ```
 
+**ST_Area**  
+https://postgis.net/docs/ST_Area.html
+
 *Qual a área em, km2, do distrito de Viseu (código do distrito = name_1)*
 
 ```sql
@@ -387,6 +390,8 @@ https://postgis.net/docs/ST_Length.html
     ORDER BY km2 DESC 
     LIMIT 1;
 ```
+**ST_Perimeter**  
+https://postgis.net/docs/ST_Perimeter.html
 
 *Qual o perímetro, em km arredondado à décima de unidade, do concelho de Cascais (código do concelho = name_2)*
 
