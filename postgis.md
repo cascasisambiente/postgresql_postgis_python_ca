@@ -644,6 +644,15 @@ https://postgis.net/docs/ST_Multi.html
  
  ST_Intersects vs. ST_Within
  
+  
+**ST_Intersects**  
+https://postgis.net/docs/ST_Intersects.html
+
+ 
+**ST_Within**  
+https://postgis.net/docs/ST_Within.html
+
+ 
 *Quais os concelhos cujo centroíde está fora do concelho, e as distâncias, em metros, entre o centroide e o concelho* 
 
 ```sql
