@@ -604,7 +604,7 @@ https://postgis.net/docs/ST_Union.html
 **ST_Buffer**  
 https://postgis.net/docs/ST_Buffer.html
 
-*Criar um buffer de 100 m em cada linha de água*
+*Criar um buffer de 500 m em cada linha de água*
 
 multilinestring => buffer vai ser multipolygon
 
@@ -617,7 +617,7 @@ multilinestring => buffer vai ser multipolygon
 https://postgis.net/docs/ST_Multi.html
  
  ```sql
-  UPDATE linha_agua_cascais SET buffer = ST_Multi(ST_Buffer(geom, 100));
+  UPDATE linha_agua_cascais SET buffer = ST_Multi(ST_Buffer(geom, 500));
  ```
 
 ```sql
@@ -640,6 +640,15 @@ https://postgis.net/docs/ST_Multi.html
   SELECT SUM(familias)::INT 
     FROM edificio e, linhas_agua lac 
     WHERE ST_Within(e.geom, lac.buffer);
+ ```
+ 
+ ```sql
+  WITH familias AS (
+    SELECT DISTINCT e.id, e.familias 
+      FROM edificio e, linha_agua_cascais lac
+      WHERE ST_Within(e.geom, lac.buffer)
+  )
+  SELECT SUM(f.familias)::INT FROM familias f;
  ```
  
  ST_Intersects vs. ST_Within
