@@ -734,7 +734,7 @@ https://postgis.net/docs/ST_Multi.html
 https://postgis.net/docs/ST_Dump.html
   
  ```sql
-    SELECT ST_Multi(geom) 
+    SELECT ST_ASText(geom), ST_ASText(ST_Multi(geom))
       FROM pontos;
  ```
 
@@ -744,14 +744,10 @@ https://postgis.net/docs/ST_Dump.html
  ```
  
   ```sql
-    SELECT (ST_Dump(geom)).path, (ST_Dump(geom)).geom 
+    SELECT nome, (ST_Dump(geom)).path, (ST_Dump(geom)).geom, ST_AsText((ST_Dump(geom)).geom)
       FROM freguesia;
  ```
-  
-  ```sql
-     SELECT (ST_Dump(geom)).path, (ST_Dump(geom)).geom 
-      FROM eixos_de_via;
- ```
+ 
  
  ### Simplificar geometrias
  
