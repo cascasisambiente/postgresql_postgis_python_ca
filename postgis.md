@@ -612,10 +612,6 @@ multilinestring => buffer vai ser multipolygon
   ALTER TABLE linha_agua_cascais ADD COLUMN buffer GEOMETRY('MULTIPOLYGON', 3763);
  ```
  
- 
-**ST_Multi**  
-https://postgis.net/docs/ST_Multi.html
- 
  ```sql
   UPDATE linha_agua_cascais SET buffer = ST_Multi(ST_Buffer(geom, 500));
  ```
@@ -685,7 +681,7 @@ https://postgis.net/docs/ST_Within.html
   SELECT f.nome, COUNT(*) count
     FROM freguesia f, edificio e 
     WHERE ST_Intersects(f.geom, e.geom)
-    GROUP BY f.nome
+      GROUP BY f.nome
     HAVING COUNT(*) > 10000;
  ```
  
@@ -694,8 +690,17 @@ https://postgis.net/docs/ST_Within.html
 ```sql
   SELECT f.nome, s.codigo
     FROM freguesia f, seccaoestatistica s
-    WHERE ST_Intersects(s.geom, f.geom)
+      WHERE ST_Intersects(s.geom, f.geom)
     ORDER BY s.codigo;
+ ```
+ 
+ ```sql
+  SELECT 'seccaoestatistica intersects freguesia', count(*)
+    FROM freguesia f, seccaoestatistica s
+      WHERE ST_Intersects(s.geom, f.geom)
+  UNION 
+  SELECT '#seccaoestatistica', count(*) 
+    FROM seccaoestatistica;
  ```
     
  se com várias freguesias (ST_Intersects vs. ST_Within vs. ST_Overlaps) border contact
