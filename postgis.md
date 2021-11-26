@@ -747,9 +747,12 @@ https://postgis.net/docs/ST_Within.html
       SELECT 1 as id, ST_MakeLine(tabela_ordenada.cent) as geom
         FROM tabela_ordenada;
  ```
- 
+
  **ST_MakeLine**  
 https://postgis.net/docs/ST_MakeLine.html
+
+ **ST_MakePolygon**  
+https://postgis.net/docs/ST_MakePolygon.html
 
  
 ```sql
@@ -759,6 +762,16 @@ https://postgis.net/docs/ST_MakeLine.html
     ORDER BY dist_km ASC;
  ```
  
+  **ST_NPoints**  
+https://postgis.net/docs/ST_NPoints.html
+
+  **ST_PointN**  
+https://postgis.net/docs/ST_PointN.html
+
+```sql
+  SELECT ST_NPoints(geom), ST_PointN(geom, generate_series(1, ST_NPoints(geom)))
+    FROM percurso;
+ ```
  
  ### multi vs single
  
