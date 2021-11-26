@@ -756,7 +756,7 @@ https://postgis.net/docs/ST_Within.html
     ORDER BY dist_km ASC;
  ```
  
- *Construir uma linha que una os pontos anteriores*
+*Construir uma linha que una os pontos anteriores*
  
  ```sql 
    CREATE TABLE percurso AS
@@ -804,20 +804,31 @@ https://postgis.net/docs/ST_Multi.html
 **ST_Dump**  
 https://postgis.net/docs/ST_Dump.html
   
- ```sql
+```sql
     SELECT ST_ASText(geom), ST_ASText(ST_Multi(geom))
       FROM pontos;
- ```
+```
 
- ```sql
+```sql
     SELECT ST_Dump(geom) 
       FROM freguesia;
- ```
+```
  
-  ```sql
-    SELECT nome, (ST_Dump(geom)).path, (ST_Dump(geom)).geom, ST_AsText((ST_Dump(geom)).geom)
+```sql
+    SELECT nome, (ST_Dump(geom)).path, (ST_Dump(geom)).geom::geometry('Polygon', 3763), ST_AsText((ST_Dump(geom)).geom)
       FROM freguesia;
- ```
+```
+ 
+**ST_NumGeometries**  
+https://postgis.net/docs/ST_NumGeometries.html
+
+**ST_GeometryN**  
+https://postgis.net/docs/ST_GeometryN.html
+ 
+ ```sql
+  SELECT nome, ST_GeometryN(geom, generate_series(1, ST_NumGeometries(geom)))::geometry('Polygon', 3763)
+    FROM freguesia;
+```
  
  
  ### Simplificar geometrias
@@ -833,6 +844,8 @@ https://postgis.net/docs/ST_SimplifyPreserveTopology.html
       SELECT nome, ST_Simplify(geom, 1000) FROM freguesia
      );
  ```
+ST_SimplifyPreserveTopology evita erros topológicos (mas poderá criar polígonos sobrepostos), e preserva as ilhas pequenas, que desaparecem com ST_Simplify  
 
-ST_SimplifyPreserveTopology
+
+
 
