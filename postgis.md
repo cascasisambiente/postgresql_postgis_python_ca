@@ -723,6 +723,42 @@ https://postgis.net/docs/ST_Within.html
     FROM concelhos c, portugal p
     ORDER BY percentagem DESC;
  ```
+ ### Percursos
+
+*Ordenar as capitais de distrito por distância do seu centroid ao centroid do concelho de Cascais*
+
+```sql
+  SELECT c.name_2, ST_Distance(c.centroid, cascais.centroid)/1000 dist_km
+    FROM concelhos c, concelhos cascais
+    WHERE c.name_2 = c.name_1 AND cascais.name_2 = 'Cascais'
+    ORDER BY dist_km ASC;
+ ```
+ 
+ *Construir uma linha que una os pontos anteriores*
+ 
+ ```sql 
+   CREATE TABLE percurso AS
+     WITH tabela_ordenada AS (
+       SELECT c.name_2, ST_Distance(c.centroid, cascais.centroid)/1000 dist_km, c.centroid cent
+         FROM concelhos c, concelhos cascais
+         WHERE c.name_2 = c.name_1 AND cascais.name_2 = 'Cascais'
+         ORDER BY dist_km ASC
+      )
+      SELECT 1 as id, ST_MakeLine(tabela_ordenada.cent) as geom
+        FROM tabela_ordenada;
+ ```
+ 
+ **ST_MakeLine**  
+https://postgis.net/docs/ST_MakeLine.html
+
+ 
+```sql
+  SELECT c.name_2, ST_Distance(c.centroid, cascais.centroid)/1000 dist_km
+    FROM concelhos c, concelhos cascais
+    WHERE c.name_2 = c.name_1 AND cascais.name_2 = 'Cascais'
+    ORDER BY dist_km ASC;
+ ```
+ 
  
  ### multi vs single
  
@@ -759,7 +795,7 @@ https://postgis.net/docs/ST_SimplifyPreserveTopology.html
  
    ```sql
      CREATE VIEW freguesia_simplificada AS (
-      SELECT nome, ST_transform(ST_Simplify(ST_Transform(geom, 3763), 1000), 4326)::geometry('Multipolygon' , 4326) FROM freguesia
+      SELECT nome, ST_Simplify(geom, 1000) FROM freguesia
      );
  ```
 
