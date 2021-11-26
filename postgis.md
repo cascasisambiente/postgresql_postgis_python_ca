@@ -587,10 +587,32 @@ https://postgis.net/docs/ST_ClosestPoint.html
 **ST_Union**  
 https://postgis.net/docs/ST_Union.html
 
+**ST_Collect**  
+https://postgis.net/docs/ST_Collect.html
+
+
+ST_Collect, noemalmente é mais rápida que ST_Union  
+ST_Collect agrega geometrias nuam coleção, sem modificar as mesmas. ST_Union cria geometrias novas
+
+
+```sql
+  SELECT ST_GeometryType(ST_Union(geom)), ST_GeometryType(ST_Collect(geom)) FROM railway;
+```
 
 ```sql
   WITH rail AS (
     SELECT ST_Union(geom) geom FROM railway
+  )
+  SELECT c.name_2, ST_Distance(c.centroid, r.geom) / 1000 km
+    FROM concelhos c, rail r
+    WHERE ST_Distance(c.geom, r.geom) / 1000 > 50
+      AND c.name_1 = 'Bragança'
+    ORDER BY km DESC;
+```
+
+```sql
+  WITH rail AS (
+    SELECT ST_Collect(geom) geom FROM railway
   )
   SELECT c.name_2, ST_Distance(c.centroid, r.geom) / 1000 km
     FROM concelhos c, rail r
