@@ -839,13 +839,20 @@ https://postgis.net/docs/ST_Simplify.html
 **ST_SimplifyPreserveTopology**  
 https://postgis.net/docs/ST_SimplifyPreserveTopology.html
  
-   ```sql
+```sql
      CREATE VIEW freguesia_simplificada AS (
-      SELECT nome, ST_Simplify(geom, 1000) FROM freguesia
+       SELECT nome, ST_Simplify(geom, 1000) FROM freguesia
      );
  ```
 ST_SimplifyPreserveTopology evita erros topológicos (mas poderá criar polígonos sobrepostos), e preserva as ilhas pequenas, que desaparecem com ST_Simplify  
 
 
+### Segmentação dinâmica
 
 
+**ST_LineMerge**  
+https://postgis.net/docs/ST_LineMerge.html
+
+```sql
+     SELECT ST_GeometryType(geom), ST_GeometryType(ST_LineMerge(geom)) 
+```
