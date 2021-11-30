@@ -444,7 +444,7 @@ https://postgis.net/docs/ST_Centroid.html
   )
   SELECT COUNT(*) 
     FROM concelhos, cascais 
-    WHERE ST_Area(geom) > cascais.area;
+    WHERE ST_Area(concelhos.geom) > cascais.area;
 ```
 
 ```sql
